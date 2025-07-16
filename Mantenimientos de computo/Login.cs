@@ -18,8 +18,7 @@ namespace Mantenimientos_de_computo
     public partial class Login : Form
     {
         clsConexion conexion;
-        private bool mostrarContrasena = false;
-        private string TextoReal = "";
+     
         
         public Login()
         {

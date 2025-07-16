@@ -29,50 +29,46 @@
         private void InitializeComponent()
         {
             this.PnlFondo = new System.Windows.Forms.Panel();
-            this.DgvTecnicos = new System.Windows.Forms.DataGridView();
-            this.lblIDTecnico = new System.Windows.Forms.Label();
+            this.lblTecnico = new System.Windows.Forms.Label();
+            this.RtbResumenDiagnostico = new System.Windows.Forms.RichTextBox();
+            this.cmbTipoMantenimiento = new System.Windows.Forms.ComboBox();
+            this.cmbTecnico = new System.Windows.Forms.ComboBox();
+            this.DtmFechaDiagnostico = new System.Windows.Forms.DateTimePicker();
+            this.DgvDiagnosticos = new System.Windows.Forms.DataGridView();
+            this.lblIDDiagnostico = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
-            this.txtContrasenia = new System.Windows.Forms.TextBox();
-            this.lblContrasenia = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.btnRegistrar = new System.Windows.Forms.Button();
-            this.txtNumeroTelefono = new System.Windows.Forms.TextBox();
-            this.lblIngreseTelefono = new System.Windows.Forms.Label();
-            this.txtApellidoMaterno = new System.Windows.Forms.TextBox();
-            this.lblApellidoMaterno = new System.Windows.Forms.Label();
-            this.txtApellidoPaterno = new System.Windows.Forms.TextBox();
             this.lblResumenDiagnostico = new System.Windows.Forms.Label();
+            this.btnRegistrar = new System.Windows.Forms.Button();
+            this.lblTipoMantenimiento = new System.Windows.Forms.Label();
+            this.txtIdEjemplar = new System.Windows.Forms.TextBox();
+            this.lblIdEjemplar = new System.Windows.Forms.Label();
             this.lblFechaDiagnostico = new System.Windows.Forms.Label();
             this.PnCaja = new System.Windows.Forms.Panel();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.lblBuscar = new System.Windows.Forms.Label();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.PnlFondo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvTecnicos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvDiagnosticos)).BeginInit();
             this.PnCaja.SuspendLayout();
             this.SuspendLayout();
             // 
             // PnlFondo
             // 
             this.PnlFondo.BackColor = System.Drawing.Color.Bisque;
-            this.PnlFondo.Controls.Add(this.dateTimePicker1);
-            this.PnlFondo.Controls.Add(this.DgvTecnicos);
-            this.PnlFondo.Controls.Add(this.lblIDTecnico);
+            this.PnlFondo.Controls.Add(this.lblTecnico);
+            this.PnlFondo.Controls.Add(this.RtbResumenDiagnostico);
+            this.PnlFondo.Controls.Add(this.cmbTipoMantenimiento);
+            this.PnlFondo.Controls.Add(this.cmbTecnico);
+            this.PnlFondo.Controls.Add(this.DtmFechaDiagnostico);
+            this.PnlFondo.Controls.Add(this.DgvDiagnosticos);
+            this.PnlFondo.Controls.Add(this.lblIDDiagnostico);
             this.PnlFondo.Controls.Add(this.btnVolver);
-            this.PnlFondo.Controls.Add(this.txtContrasenia);
-            this.PnlFondo.Controls.Add(this.lblContrasenia);
-            this.PnlFondo.Controls.Add(this.txtEmail);
-            this.PnlFondo.Controls.Add(this.lblEmail);
-            this.PnlFondo.Controls.Add(this.btnRegistrar);
-            this.PnlFondo.Controls.Add(this.txtNumeroTelefono);
-            this.PnlFondo.Controls.Add(this.lblIngreseTelefono);
-            this.PnlFondo.Controls.Add(this.txtApellidoMaterno);
-            this.PnlFondo.Controls.Add(this.lblApellidoMaterno);
-            this.PnlFondo.Controls.Add(this.txtApellidoPaterno);
             this.PnlFondo.Controls.Add(this.lblResumenDiagnostico);
+            this.PnlFondo.Controls.Add(this.btnRegistrar);
+            this.PnlFondo.Controls.Add(this.lblTipoMantenimiento);
+            this.PnlFondo.Controls.Add(this.txtIdEjemplar);
+            this.PnlFondo.Controls.Add(this.lblIdEjemplar);
             this.PnlFondo.Controls.Add(this.lblFechaDiagnostico);
             this.PnlFondo.Controls.Add(this.PnCaja);
             this.PnlFondo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -81,26 +77,66 @@
             this.PnlFondo.Size = new System.Drawing.Size(1178, 718);
             this.PnlFondo.TabIndex = 20;
             // 
-            // DgvTecnicos
+            // lblTecnico
             // 
-            this.DgvTecnicos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvTecnicos.Location = new System.Drawing.Point(13, 13);
-            this.DgvTecnicos.Name = "DgvTecnicos";
-            this.DgvTecnicos.ReadOnly = true;
-            this.DgvTecnicos.RowHeadersWidth = 51;
-            this.DgvTecnicos.RowTemplate.Height = 24;
-            this.DgvTecnicos.Size = new System.Drawing.Size(1144, 259);
-            this.DgvTecnicos.TabIndex = 38;
+            this.lblTecnico.AutoSize = true;
+            this.lblTecnico.Location = new System.Drawing.Point(311, 383);
+            this.lblTecnico.Name = "lblTecnico";
+            this.lblTecnico.Size = new System.Drawing.Size(94, 23);
+            this.lblTecnico.TabIndex = 43;
+            this.lblTecnico.Text = "Técnico:";
             // 
-            // lblIDTecnico
+            // RtbResumenDiagnostico
             // 
-            this.lblIDTecnico.AutoSize = true;
-            this.lblIDTecnico.Location = new System.Drawing.Point(529, 292);
-            this.lblIDTecnico.Name = "lblIDTecnico";
-            this.lblIDTecnico.Size = new System.Drawing.Size(112, 23);
-            this.lblIDTecnico.TabIndex = 37;
-            this.lblIDTecnico.Text = "IblTecnico";
-            this.lblIDTecnico.Visible = false;
+            this.RtbResumenDiagnostico.Location = new System.Drawing.Point(46, 511);
+            this.RtbResumenDiagnostico.Name = "RtbResumenDiagnostico";
+            this.RtbResumenDiagnostico.Size = new System.Drawing.Size(595, 110);
+            this.RtbResumenDiagnostico.TabIndex = 42;
+            this.RtbResumenDiagnostico.Text = "";
+            // 
+            // cmbTipoMantenimiento
+            // 
+            this.cmbTipoMantenimiento.FormattingEnabled = true;
+            this.cmbTipoMantenimiento.Location = new System.Drawing.Point(395, 438);
+            this.cmbTipoMantenimiento.Name = "cmbTipoMantenimiento";
+            this.cmbTipoMantenimiento.Size = new System.Drawing.Size(249, 31);
+            this.cmbTipoMantenimiento.TabIndex = 41;
+            // 
+            // cmbTecnico
+            // 
+            this.cmbTecnico.FormattingEnabled = true;
+            this.cmbTecnico.Location = new System.Drawing.Point(395, 380);
+            this.cmbTecnico.Name = "cmbTecnico";
+            this.cmbTecnico.Size = new System.Drawing.Size(249, 31);
+            this.cmbTecnico.TabIndex = 40;
+            // 
+            // DtmFechaDiagnostico
+            // 
+            this.DtmFechaDiagnostico.Location = new System.Drawing.Point(395, 301);
+            this.DtmFechaDiagnostico.Name = "DtmFechaDiagnostico";
+            this.DtmFechaDiagnostico.Size = new System.Drawing.Size(246, 31);
+            this.DtmFechaDiagnostico.TabIndex = 39;
+            // 
+            // DgvDiagnosticos
+            // 
+            this.DgvDiagnosticos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvDiagnosticos.Location = new System.Drawing.Point(13, 13);
+            this.DgvDiagnosticos.Name = "DgvDiagnosticos";
+            this.DgvDiagnosticos.ReadOnly = true;
+            this.DgvDiagnosticos.RowHeadersWidth = 51;
+            this.DgvDiagnosticos.RowTemplate.Height = 24;
+            this.DgvDiagnosticos.Size = new System.Drawing.Size(1144, 259);
+            this.DgvDiagnosticos.TabIndex = 38;
+            // 
+            // lblIDDiagnostico
+            // 
+            this.lblIDDiagnostico.AutoSize = true;
+            this.lblIDDiagnostico.Location = new System.Drawing.Point(529, 275);
+            this.lblIDDiagnostico.Name = "lblIDDiagnostico";
+            this.lblIDDiagnostico.Size = new System.Drawing.Size(150, 23);
+            this.lblIDDiagnostico.TabIndex = 37;
+            this.lblIDDiagnostico.Text = "IblDiagnostico";
+            this.lblIDDiagnostico.Visible = false;
             // 
             // btnVolver
             // 
@@ -113,108 +149,59 @@
             this.btnVolver.TabIndex = 26;
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = false;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click_1);
             // 
-            // txtContrasenia
+            // lblResumenDiagnostico
             // 
-            this.txtContrasenia.Location = new System.Drawing.Point(369, 560);
-            this.txtContrasenia.MaxLength = 10;
-            this.txtContrasenia.Name = "txtContrasenia";
-            this.txtContrasenia.Size = new System.Drawing.Size(249, 31);
-            this.txtContrasenia.TabIndex = 36;
-            // 
-            // lblContrasenia
-            // 
-            this.lblContrasenia.AutoSize = true;
-            this.lblContrasenia.Location = new System.Drawing.Point(143, 568);
-            this.lblContrasenia.Name = "lblContrasenia";
-            this.lblContrasenia.Size = new System.Drawing.Size(238, 23);
-            this.lblContrasenia.TabIndex = 35;
-            this.lblContrasenia.Text = "Ingrese su Contraseña:";
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new System.Drawing.Point(369, 515);
-            this.txtEmail.MaxLength = 20;
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(249, 31);
-            this.txtEmail.TabIndex = 34;
-            // 
-            // lblEmail
-            // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(133, 523);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(248, 23);
-            this.lblEmail.TabIndex = 33;
-            this.lblEmail.Text = "Ingrese su correo Email:";
+            this.lblResumenDiagnostico.AutoSize = true;
+            this.lblResumenDiagnostico.Location = new System.Drawing.Point(42, 485);
+            this.lblResumenDiagnostico.Name = "lblResumenDiagnostico";
+            this.lblResumenDiagnostico.Size = new System.Drawing.Size(396, 23);
+            this.lblResumenDiagnostico.TabIndex = 35;
+            this.lblResumenDiagnostico.Text = "Comentarios(Resumen del Diagnóstico)";
             // 
             // btnRegistrar
             // 
             this.btnRegistrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(124)))), ((int)(((byte)(141)))));
             this.btnRegistrar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrar.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrar.Location = new System.Drawing.Point(410, 610);
+            this.btnRegistrar.Location = new System.Drawing.Point(395, 641);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(162, 54);
             this.btnRegistrar.TabIndex = 26;
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = false;
             // 
-            // txtNumeroTelefono
+            // lblTipoMantenimiento
             // 
-            this.txtNumeroTelefono.Location = new System.Drawing.Point(369, 469);
-            this.txtNumeroTelefono.MaxLength = 12;
-            this.txtNumeroTelefono.Name = "txtNumeroTelefono";
-            this.txtNumeroTelefono.Size = new System.Drawing.Size(249, 31);
-            this.txtNumeroTelefono.TabIndex = 32;
+            this.lblTipoMantenimiento.AutoSize = true;
+            this.lblTipoMantenimiento.Location = new System.Drawing.Point(187, 441);
+            this.lblTipoMantenimiento.Name = "lblTipoMantenimiento";
+            this.lblTipoMantenimiento.Size = new System.Drawing.Size(242, 23);
+            this.lblTipoMantenimiento.TabIndex = 31;
+            this.lblTipoMantenimiento.Text = "Tipo de Mantenimiento: ";
             // 
-            // lblIngreseTelefono
+            // txtIdEjemplar
             // 
-            this.lblIngreseTelefono.AutoSize = true;
-            this.lblIngreseTelefono.Location = new System.Drawing.Point(65, 477);
-            this.lblIngreseTelefono.Name = "lblIngreseTelefono";
-            this.lblIngreseTelefono.Size = new System.Drawing.Size(313, 23);
-            this.lblIngreseTelefono.TabIndex = 31;
-            this.lblIngreseTelefono.Text = "Ingrese su número de telefono:";
+            this.txtIdEjemplar.Location = new System.Drawing.Point(395, 338);
+            this.txtIdEjemplar.MaxLength = 20;
+            this.txtIdEjemplar.Name = "txtIdEjemplar";
+            this.txtIdEjemplar.Size = new System.Drawing.Size(249, 31);
+            this.txtIdEjemplar.TabIndex = 28;
             // 
-            // txtApellidoMaterno
+            // lblIdEjemplar
             // 
-            this.txtApellidoMaterno.Location = new System.Drawing.Point(369, 422);
-            this.txtApellidoMaterno.MaxLength = 20;
-            this.txtApellidoMaterno.Name = "txtApellidoMaterno";
-            this.txtApellidoMaterno.Size = new System.Drawing.Size(249, 31);
-            this.txtApellidoMaterno.TabIndex = 30;
-            // 
-            // lblApellidoMaterno
-            // 
-            this.lblApellidoMaterno.AutoSize = true;
-            this.lblApellidoMaterno.Location = new System.Drawing.Point(90, 430);
-            this.lblApellidoMaterno.Name = "lblApellidoMaterno";
-            this.lblApellidoMaterno.Size = new System.Drawing.Size(288, 23);
-            this.lblApellidoMaterno.TabIndex = 29;
-            this.lblApellidoMaterno.Text = "Ingrese su apellido materno:";
-            // 
-            // txtApellidoPaterno
-            // 
-            this.txtApellidoPaterno.Location = new System.Drawing.Point(369, 372);
-            this.txtApellidoPaterno.MaxLength = 20;
-            this.txtApellidoPaterno.Name = "txtApellidoPaterno";
-            this.txtApellidoPaterno.Size = new System.Drawing.Size(249, 31);
-            this.txtApellidoPaterno.TabIndex = 28;
-            // 
-            // lblResumenDiagnostico
-            // 
-            this.lblResumenDiagnostico.AutoSize = true;
-            this.lblResumenDiagnostico.Location = new System.Drawing.Point(220, 380);
-            this.lblResumenDiagnostico.Name = "lblResumenDiagnostico";
-            this.lblResumenDiagnostico.Size = new System.Drawing.Size(164, 23);
-            this.lblResumenDiagnostico.TabIndex = 27;
-            this.lblResumenDiagnostico.Text = "ID del Ejemplar:";
+            this.lblIdEjemplar.AutoSize = true;
+            this.lblIdEjemplar.Location = new System.Drawing.Point(265, 346);
+            this.lblIdEjemplar.Name = "lblIdEjemplar";
+            this.lblIdEjemplar.Size = new System.Drawing.Size(164, 23);
+            this.lblIdEjemplar.TabIndex = 27;
+            this.lblIdEjemplar.Text = "ID del Ejemplar:";
             // 
             // lblFechaDiagnostico
             // 
             this.lblFechaDiagnostico.AutoSize = true;
-            this.lblFechaDiagnostico.Location = new System.Drawing.Point(72, 324);
+            this.lblFechaDiagnostico.Location = new System.Drawing.Point(122, 307);
             this.lblFechaDiagnostico.Name = "lblFechaDiagnostico";
             this.lblFechaDiagnostico.Size = new System.Drawing.Size(334, 23);
             this.lblFechaDiagnostico.TabIndex = 25;
@@ -242,7 +229,7 @@
             // lblBuscar
             // 
             this.lblBuscar.AutoSize = true;
-            this.lblBuscar.Location = new System.Drawing.Point(117, 104);
+            this.lblBuscar.Location = new System.Drawing.Point(134, 104);
             this.lblBuscar.Name = "lblBuscar";
             this.lblBuscar.Size = new System.Drawing.Size(216, 23);
             this.lblBuscar.TabIndex = 24;
@@ -272,13 +259,6 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(372, 324);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(246, 31);
-            this.dateTimePicker1.TabIndex = 39;
-            // 
             // frmDiagnosticos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
@@ -288,10 +268,11 @@
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmDiagnosticos";
-            this.Text = "frmDiagnosticos";
+            this.Text = "Diagnosticos";
+            this.Load += new System.EventHandler(this.frmDiagnosticos_Load);
             this.PnlFondo.ResumeLayout(false);
             this.PnlFondo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvTecnicos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvDiagnosticos)).EndInit();
             this.PnCaja.ResumeLayout(false);
             this.PnCaja.PerformLayout();
             this.ResumeLayout(false);
@@ -301,26 +282,24 @@
         #endregion
 
         private System.Windows.Forms.Panel PnlFondo;
-        private System.Windows.Forms.DataGridView DgvTecnicos;
-        private System.Windows.Forms.Label lblIDTecnico;
+        private System.Windows.Forms.DataGridView DgvDiagnosticos;
+        private System.Windows.Forms.Label lblIDDiagnostico;
         private System.Windows.Forms.Button btnVolver;
-        private System.Windows.Forms.TextBox txtContrasenia;
-        private System.Windows.Forms.Label lblContrasenia;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.Button btnRegistrar;
-        private System.Windows.Forms.TextBox txtNumeroTelefono;
-        private System.Windows.Forms.Label lblIngreseTelefono;
-        private System.Windows.Forms.TextBox txtApellidoMaterno;
-        private System.Windows.Forms.Label lblApellidoMaterno;
-        private System.Windows.Forms.TextBox txtApellidoPaterno;
         private System.Windows.Forms.Label lblResumenDiagnostico;
+        private System.Windows.Forms.Button btnRegistrar;
+        private System.Windows.Forms.Label lblTipoMantenimiento;
+        private System.Windows.Forms.TextBox txtIdEjemplar;
+        private System.Windows.Forms.Label lblIdEjemplar;
         private System.Windows.Forms.Label lblFechaDiagnostico;
         private System.Windows.Forms.Panel PnCaja;
         private System.Windows.Forms.TextBox txtBusqueda;
         private System.Windows.Forms.Label lblBuscar;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker DtmFechaDiagnostico;
+        private System.Windows.Forms.ComboBox cmbTecnico;
+        private System.Windows.Forms.RichTextBox RtbResumenDiagnostico;
+        private System.Windows.Forms.ComboBox cmbTipoMantenimiento;
+        private System.Windows.Forms.Label lblTecnico;
     }
 }
