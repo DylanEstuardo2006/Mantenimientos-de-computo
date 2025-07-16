@@ -67,13 +67,13 @@ namespace Mantenimientos_de_computo
             if (reader.Read())
             {
                 string passHash = reader["Contrasenia"]?.ToString();
-
+                string Estado = reader["Estado"]?.ToString();
                 //verificamos que el password coincida
 
                 bool verifica = BCrypt.Net.BCrypt.Verify(pass, passHash);
                 // nombre = reader["Nombre_tecnico"].ToString() + " " + reader["Apellido_paterno"].ToString() + " " + reader["Apellido_materno"].ToString();
 
-                if (verifica == true)
+                if (verifica == true && Estado == "1" )
                 {
                     MessageBox.Show("Acceso correcto");
                     con.Close();

@@ -60,7 +60,7 @@ namespace Mantenimientos_de_computo
         private void btnDiagnostico_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmTecnicos principal = new frmTecnicos();
+            frmDiagnosticos principal = new frmDiagnosticos();
             principal.Show();
         }
     }

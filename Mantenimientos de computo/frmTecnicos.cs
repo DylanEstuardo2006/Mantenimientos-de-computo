@@ -113,13 +113,16 @@ namespace Mantenimientos_de_computo
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
+            //En este apartado obtenemos los datos de las cajas de texto 
             string Nombre = txtNombreTecnico.Text;
             string ApellidoPaterno = txtApellidoPaterno.Text;
             string ApellidoMaterno = txtApellidoMaterno.Text;
             string NumeroTelefono = txtNumeroTelefono.Text;
             string Email = txtEmail.Text;
             string pass = txtContrasenia.Text;
+            string Estado = "1"; // <----- Constante que permite Poner el estado de el usuario como activo o negativo 
 
+            //En este if validamos con el IsNullOrEmpty para evitar que si el usuario no ingresa algun campo le salga un mensaje de faltan casillas por llenar 
             if (string.IsNullOrEmpty(Nombre) || string.IsNullOrEmpty(ApellidoPaterno) || string.IsNullOrEmpty(ApellidoMaterno) || string.IsNullOrEmpty(NumeroTelefono) || string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(pass))
             {
                 MessageBox.Show("Faltan casillas por llenar");
@@ -127,28 +130,30 @@ namespace Mantenimientos_de_computo
             }
             else
             {
+                // Segunda validación para no permitir que el usuario haga una contraseña mayor de 10 caracteres
                 if (pass.Length < 11)
-                {
-                    pass = BCrypt.Net.BCrypt.HashPassword(pass);
+                { 
+                    pass = BCrypt.Net.BCrypt.HashPassword(pass); //<--- Encrypta las contraseñas 
 
                     conexion = new clsConexion();
-                    MySqlConnection conn = conexion.getConnection();
+                    MySqlConnection conn = conexion.getConnection(); //<--- Obtiene el metodo Conexion 
 
+                    //Insertar los valores 
                     string consulta = "INSERT INTO tecnicos (Nombre_tecnico,Apellido_paterno,Apellido_materno,Telefono,Email,Contrasenia,Estado)" +
                       "VALUES (@Nombre_tecnico,@Apellido_paterno,@Apellido_materno,@Telefono,@Email,@Contrasenia,@Estado)";
 
-                    MySqlCommand command = new MySqlCommand(consulta, conn);
+                    MySqlCommand command = new MySqlCommand(consulta, conn); //<----Command 
                     command.Parameters.AddWithValue("@Nombre_tecnico", Nombre);
                     command.Parameters.AddWithValue("@Apellido_paterno", ApellidoPaterno);
                     command.Parameters.AddWithValue("@Apellido_materno", ApellidoMaterno);
                     command.Parameters.AddWithValue("@Telefono", NumeroTelefono);
                     command.Parameters.AddWithValue("@Email", Email);
                     command.Parameters.AddWithValue("@Contrasenia", pass);
-                    command.Parameters.AddWithValue("@Estado", "0"); // <--- Estado por defecto al registrar un técnico
+                    command.Parameters.AddWithValue("@Estado", Estado); // <--- Estado por defecto al registrar un técnico
                     int filasAfectadas = command.ExecuteNonQuery();
                     conn.Close();
 
-                    if (filasAfectadas > -1)
+                    if (filasAfectadas > 0) //<---- Verificación que se haya echo correctamente
                     {
                         MessageBox.Show("Registro extitoso...");
                         cargaDatos();
@@ -163,10 +168,19 @@ namespace Mantenimientos_de_computo
                     MessageBox.Show("Solo se permite maximo 10 digitos");
                 }
             }
+            // En este apartado las cajas se limpian inmediatamente de haber echo la operación 
+            txtNombreTecnico.Text = "";
+            txtApellidoPaterno.Text = "";
+            txtApellidoMaterno.Text = "";
+            txtContrasenia.Text = "";
+            txtNumeroTelefono.Text = "";
+            txtEmail.Text = "";
+            txtContrasenia.Text = "";
         }
         // Botón de actualizar los datos de los técnicos 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
+            //En este apartado obtenemos los datos de las cajas de texto 
             int IdTecnico = Convert.ToInt32(lblIDTecnico.Text);
             string Nombre = txtNombreTecnico.Text;
             string ApellidoPaterno = txtApellidoPaterno.Text;
@@ -216,6 +230,8 @@ namespace Mantenimientos_de_computo
                 {
                     MessageBox.Show("Registro editado existosamente...");
                     cargaDatos();
+
+                    
                 }
                 else
                 {
@@ -223,8 +239,14 @@ namespace Mantenimientos_de_computo
                 }
 
             }
-
-
+            // En este apartado las cajas se limpian inmediatamente de haber echo la operación 
+            txtNombreTecnico.Text = "";
+            txtApellidoPaterno.Text = "";
+            txtApellidoMaterno.Text = "";
+            txtContrasenia.Text = "";
+            txtNumeroTelefono.Text = "";
+            txtEmail.Text = "";
+            txtContrasenia.Text = "";
         }
 
        
@@ -253,7 +275,8 @@ namespace Mantenimientos_de_computo
 
             MySqlConnection con = conexion.getConnection();
         
-            string consulta = "SELECT tecnicos.Id_tecnico,tecnicos.Nombre_tecnico,tecnicos.Apellido_paterno,tecnicos.Apellido_materno,tecnicos.Telefono,tecnicos.Email,tecnicos.Contrasenia FROM tecnicos WHERE tecnicos.Nombre_tecnico LIKE @busqueda OR tecnicos.Apellido_paterno LIKE @busqueda OR tecnicos.Apellido_materno LIKE @busqueda OR tecnicos.Telefono LIKE @busqueda";
+            // Consulta y busca los tecnicos mediante su nombre, apellidos o Telefono (Falta activarlo mediante Email)
+            string consulta = "SELECT tecnicos.Id_tecnico,tecnicos.Nombre_tecnico,tecnicos.Apellido_paterno,tecnicos.Apellido_materno,tecnicos.Telefono,tecnicos.Email,tecnicos.Contrasenia,tecnicos.Estado FROM tecnicos WHERE (tecnicos.Nombre_tecnico LIKE @busqueda OR tecnicos.Apellido_paterno LIKE @busqueda OR tecnicos.Apellido_materno LIKE @busqueda OR tecnicos.Telefono LIKE @busqueda) AND tecnicos.Estado = 1";
        
         
             MySqlCommand command = new MySqlCommand(consulta, con);
@@ -264,35 +287,48 @@ namespace Mantenimientos_de_computo
 
             adapter.Fill(table);
             DgvTecnicos.DataSource = table;
-            DgvTecnicos.Columns["Id_tecnico"].Visible = false;
+            DgvTecnicos.Columns["Id_tecnico"].Visible = false; 
             con.Close();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            string Estado = "0"; //<----- Constante que permite cambiar el estado del usuario y hacerlo accesible o no 
+
+            int IdTecnico = Convert.ToInt32(lblIDTecnico.Text);
             conexion = new clsConexion();
             MySqlConnection con = conexion.getConnection();
 
             string consulta;
             MySqlCommand command;
-            consulta = "UPDATE tecnicos SET Estado=@Estado WHERE Id_tecnico = @Id_tecnico";
+            consulta = "update tecnicos set Estado=@Estado where Id_tecnico=@Id_tecnico"; //<----- En este apartado hacemos una eliminación logica y no Física, evitamos un mensaje de error 
             command = new MySqlCommand(consulta, con);
 
-            command.Parameters.AddWithValue("@Estado","0"); // <--- Cambiamos el estado a 0 para eliminar el técnico
+            command.Parameters.AddWithValue("@Estado", Estado);
+            command.Parameters.AddWithValue("@Id_tecnico", IdTecnico); 
 
             int filasAfectadas = command.ExecuteNonQuery();
-
             con.Close();
 
             if (filasAfectadas > 0)
             {
-                MessageBox.Show("Registro editado existosamente...");
+                MessageBox.Show("Se elimino exitosamente");
                 cargaDatos();
             }
             else
             {
-                MessageBox.Show("Error al Eliminar");
+                MessageBox.Show("Algo Anda mal....");
             }
+            // En este apartado las cajas se limpian inmediatamente de haber echo la operación 
+            txtNombreTecnico.Text = "";
+            txtApellidoPaterno.Text = "";
+            txtApellidoMaterno.Text = "";
+            txtContrasenia.Text = "";
+            txtNumeroTelefono.Text = "";
+            txtEmail.Text = "";
+            txtContrasenia.Text = "";
         }
+
+               
     }
 }

@@ -43,13 +43,13 @@
             this.lblApellidoMaterno = new System.Windows.Forms.Label();
             this.txtApellidoPaterno = new System.Windows.Forms.TextBox();
             this.lblResumenDiagnostico = new System.Windows.Forms.Label();
-            this.txtNombreTecnico = new System.Windows.Forms.TextBox();
             this.lblFechaDiagnostico = new System.Windows.Forms.Label();
             this.PnCaja = new System.Windows.Forms.Panel();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.lblBuscar = new System.Windows.Forms.Label();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.PnlFondo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvTecnicos)).BeginInit();
             this.PnCaja.SuspendLayout();
@@ -58,6 +58,7 @@
             // PnlFondo
             // 
             this.PnlFondo.BackColor = System.Drawing.Color.Bisque;
+            this.PnlFondo.Controls.Add(this.dateTimePicker1);
             this.PnlFondo.Controls.Add(this.DgvTecnicos);
             this.PnlFondo.Controls.Add(this.lblIDTecnico);
             this.PnlFondo.Controls.Add(this.btnVolver);
@@ -72,9 +73,9 @@
             this.PnlFondo.Controls.Add(this.lblApellidoMaterno);
             this.PnlFondo.Controls.Add(this.txtApellidoPaterno);
             this.PnlFondo.Controls.Add(this.lblResumenDiagnostico);
-            this.PnlFondo.Controls.Add(this.txtNombreTecnico);
             this.PnlFondo.Controls.Add(this.lblFechaDiagnostico);
             this.PnlFondo.Controls.Add(this.PnCaja);
+            this.PnlFondo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PnlFondo.Location = new System.Drawing.Point(0, 0);
             this.PnlFondo.Name = "PnlFondo";
             this.PnlFondo.Size = new System.Drawing.Size(1178, 718);
@@ -210,22 +211,14 @@
             this.lblResumenDiagnostico.TabIndex = 27;
             this.lblResumenDiagnostico.Text = "ID del Ejemplar:";
             // 
-            // txtNombreTecnico
-            // 
-            this.txtNombreTecnico.Location = new System.Drawing.Point(369, 321);
-            this.txtNombreTecnico.MaxLength = 20;
-            this.txtNombreTecnico.Name = "txtNombreTecnico";
-            this.txtNombreTecnico.Size = new System.Drawing.Size(249, 31);
-            this.txtNombreTecnico.TabIndex = 26;
-            // 
             // lblFechaDiagnostico
             // 
             this.lblFechaDiagnostico.AutoSize = true;
             this.lblFechaDiagnostico.Location = new System.Drawing.Point(72, 324);
             this.lblFechaDiagnostico.Name = "lblFechaDiagnostico";
-            this.lblFechaDiagnostico.Size = new System.Drawing.Size(328, 23);
+            this.lblFechaDiagnostico.Size = new System.Drawing.Size(334, 23);
             this.lblFechaDiagnostico.TabIndex = 25;
-            this.lblFechaDiagnostico.Text = "Ingrese la Fecha del Diagnóstico";
+            this.lblFechaDiagnostico.Text = "Ingrese la Fecha del Diagnóstico:";
             // 
             // PnCaja
             // 
@@ -279,6 +272,13 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(372, 324);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(246, 31);
+            this.dateTimePicker1.TabIndex = 39;
+            // 
             // frmDiagnosticos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
@@ -286,7 +286,7 @@
             this.ClientSize = new System.Drawing.Size(1179, 719);
             this.Controls.Add(this.PnlFondo);
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmDiagnosticos";
             this.Text = "frmDiagnosticos";
             this.PnlFondo.ResumeLayout(false);
@@ -315,12 +315,12 @@
         private System.Windows.Forms.Label lblApellidoMaterno;
         private System.Windows.Forms.TextBox txtApellidoPaterno;
         private System.Windows.Forms.Label lblResumenDiagnostico;
-        private System.Windows.Forms.TextBox txtNombreTecnico;
         private System.Windows.Forms.Label lblFechaDiagnostico;
         private System.Windows.Forms.Panel PnCaja;
         private System.Windows.Forms.TextBox txtBusqueda;
         private System.Windows.Forms.Label lblBuscar;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
