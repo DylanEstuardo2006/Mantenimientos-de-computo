@@ -32,9 +32,11 @@
             this.btnIngresar = new System.Windows.Forms.Button();
             this.lblContraseña = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
+            this.txtContrasenia = new System.Windows.Forms.TextBox();
+            this.PtbAudio = new System.Windows.Forms.PictureBox();
             this.PtbOjito = new System.Windows.Forms.PictureBox();
             this.PtbUsuario = new System.Windows.Forms.PictureBox();
-            this.txtContrasenia = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.PtbAudio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PtbOjito)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PtbUsuario)).BeginInit();
             this.SuspendLayout();
@@ -81,6 +83,27 @@
             this.lblUsuario.TabIndex = 8;
             this.lblUsuario.Text = "Usuario: ";
             // 
+            // txtContrasenia
+            // 
+            this.txtContrasenia.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContrasenia.Location = new System.Drawing.Point(221, 372);
+            this.txtContrasenia.Name = "txtContrasenia";
+            this.txtContrasenia.Size = new System.Drawing.Size(233, 31);
+            this.txtContrasenia.TabIndex = 10;
+            this.txtContrasenia.UseSystemPasswordChar = true;
+            // 
+            // PtbAudio
+            // 
+            this.PtbAudio.Image = global::Mantenimientos_de_computo.Properties.Resources.voice_login1;
+            this.PtbAudio.Location = new System.Drawing.Point(40, 36);
+            this.PtbAudio.Name = "PtbAudio";
+            this.PtbAudio.Size = new System.Drawing.Size(110, 98);
+            this.PtbAudio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PtbAudio.TabIndex = 11;
+            this.PtbAudio.TabStop = false;
+            this.PtbAudio.Click += new System.EventHandler(this.PtbAudio_Click);
+            this.PtbAudio.MouseEnter += new System.EventHandler(this.PtbAudio_MouseEnter);
+            // 
             // PtbOjito
             // 
             this.PtbOjito.Image = global::Mantenimientos_de_computo.Properties.Resources.ojito_;
@@ -103,21 +126,13 @@
             this.PtbUsuario.TabIndex = 6;
             this.PtbUsuario.TabStop = false;
             // 
-            // txtContrasenia
-            // 
-            this.txtContrasenia.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContrasenia.Location = new System.Drawing.Point(221, 372);
-            this.txtContrasenia.Name = "txtContrasenia";
-            this.txtContrasenia.Size = new System.Drawing.Size(233, 31);
-            this.txtContrasenia.TabIndex = 10;
-            this.txtContrasenia.UseSystemPasswordChar = true;
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(65)))), ((int)(((byte)(86)))));
             this.ClientSize = new System.Drawing.Size(658, 667);
+            this.Controls.Add(this.PtbAudio);
             this.Controls.Add(this.txtContrasenia);
             this.Controls.Add(this.PtbOjito);
             this.Controls.Add(this.lblUsuario);
@@ -130,6 +145,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.PtbAudio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PtbOjito)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PtbUsuario)).EndInit();
             this.ResumeLayout(false);
@@ -146,6 +162,7 @@
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.PictureBox PtbOjito;
         private System.Windows.Forms.TextBox txtContrasenia;
+        private System.Windows.Forms.PictureBox PtbAudio;
     }
 }
 

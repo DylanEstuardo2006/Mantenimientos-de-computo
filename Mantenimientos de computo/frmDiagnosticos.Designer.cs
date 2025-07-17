@@ -171,6 +171,7 @@
             this.btnRegistrar.TabIndex = 26;
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = false;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // lblTipoMantenimiento
             // 
@@ -201,7 +202,7 @@
             // lblFechaDiagnostico
             // 
             this.lblFechaDiagnostico.AutoSize = true;
-            this.lblFechaDiagnostico.Location = new System.Drawing.Point(122, 307);
+            this.lblFechaDiagnostico.Location = new System.Drawing.Point(119, 307);
             this.lblFechaDiagnostico.Name = "lblFechaDiagnostico";
             this.lblFechaDiagnostico.Size = new System.Drawing.Size(334, 23);
             this.lblFechaDiagnostico.TabIndex = 25;

@@ -29,13 +29,11 @@
         private void InitializeComponent()
         {
             this.PalBanner = new System.Windows.Forms.Panel();
-            this.btnDispositivos = new System.Windows.Forms.Button();
             this.btnLaboratorio = new System.Windows.Forms.Button();
             this.btnTecnicos = new System.Windows.Forms.Button();
             this.btnHistorial = new System.Windows.Forms.Button();
             this.btnMantenimiento = new System.Windows.Forms.Button();
             this.btnDiagnostico = new System.Windows.Forms.Button();
-            this.PtbLogoM = new System.Windows.Forms.PictureBox();
             this.btnDetalles = new System.Windows.Forms.Button();
             this.btnTipoDispositivo = new System.Windows.Forms.Button();
             this.btnMarca = new System.Windows.Forms.Button();
@@ -45,10 +43,14 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.PnlCuerpo = new System.Windows.Forms.Panel();
             this.lblMensajeQue = new System.Windows.Forms.Label();
+            this.PbxSonido = new System.Windows.Forms.PictureBox();
+            this.PtbLogoM = new System.Windows.Forms.PictureBox();
+            this.btnDispositivos = new System.Windows.Forms.Button();
             this.PalBanner.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PtbLogoM)).BeginInit();
             this.PalDespegableDispositivos.SuspendLayout();
             this.PnlCuerpo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PbxSonido)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PtbLogoM)).BeginInit();
             this.SuspendLayout();
             // 
             // PalBanner
@@ -65,22 +67,6 @@
             this.PalBanner.Name = "PalBanner";
             this.PalBanner.Size = new System.Drawing.Size(1106, 58);
             this.PalBanner.TabIndex = 0;
-            // 
-            // btnDispositivos
-            // 
-            this.btnDispositivos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(124)))), ((int)(((byte)(141)))));
-            this.btnDispositivos.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDispositivos.ForeColor = System.Drawing.Color.White;
-            this.btnDispositivos.Image = global::Mantenimientos_de_computo.Properties.Resources.menu2;
-            this.btnDispositivos.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDispositivos.Location = new System.Drawing.Point(941, 0);
-            this.btnDispositivos.Name = "btnDispositivos";
-            this.btnDispositivos.Size = new System.Drawing.Size(162, 54);
-            this.btnDispositivos.TabIndex = 11;
-            this.btnDispositivos.Text = "Dispositivo";
-            this.btnDispositivos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDispositivos.UseVisualStyleBackColor = false;
-            this.btnDispositivos.Click += new System.EventHandler(this.btnDispositivos_Click);
             // 
             // btnLaboratorio
             // 
@@ -144,16 +130,6 @@
             this.btnDiagnostico.Text = "Diagnostico";
             this.btnDiagnostico.UseVisualStyleBackColor = false;
             this.btnDiagnostico.Click += new System.EventHandler(this.btnDiagnostico_Click);
-            // 
-            // PtbLogoM
-            // 
-            this.PtbLogoM.Image = global::Mantenimientos_de_computo.Properties.Resources.Logo_mantenimiento;
-            this.PtbLogoM.Location = new System.Drawing.Point(372, 137);
-            this.PtbLogoM.Name = "PtbLogoM";
-            this.PtbLogoM.Size = new System.Drawing.Size(419, 305);
-            this.PtbLogoM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PtbLogoM.TabIndex = 12;
-            this.PtbLogoM.TabStop = false;
             // 
             // btnDetalles
             // 
@@ -244,6 +220,7 @@
             // 
             // PnlCuerpo
             // 
+            this.PnlCuerpo.Controls.Add(this.PbxSonido);
             this.PnlCuerpo.Controls.Add(this.lblMensajeQue);
             this.PnlCuerpo.Controls.Add(this.PalDespegableDispositivos);
             this.PnlCuerpo.Controls.Add(this.btnSalir);
@@ -263,6 +240,44 @@
             this.lblMensajeQue.TabIndex = 18;
             this.lblMensajeQue.Text = "¿Qué desea hacer el día de hoy ? ";
             // 
+            // PbxSonido
+            // 
+            this.PbxSonido.Image = global::Mantenimientos_de_computo.Properties.Resources.VOICE_d;
+            this.PbxSonido.Location = new System.Drawing.Point(38, 10);
+            this.PbxSonido.Name = "PbxSonido";
+            this.PbxSonido.Size = new System.Drawing.Size(119, 107);
+            this.PbxSonido.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PbxSonido.TabIndex = 19;
+            this.PbxSonido.TabStop = false;
+            this.PbxSonido.Click += new System.EventHandler(this.PbxSonido_Click);
+            this.PbxSonido.MouseEnter += new System.EventHandler(this.PbxSonido_MouseEnter);
+            // 
+            // PtbLogoM
+            // 
+            this.PtbLogoM.Image = global::Mantenimientos_de_computo.Properties.Resources.Logo_mantenimiento;
+            this.PtbLogoM.Location = new System.Drawing.Point(372, 137);
+            this.PtbLogoM.Name = "PtbLogoM";
+            this.PtbLogoM.Size = new System.Drawing.Size(419, 305);
+            this.PtbLogoM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PtbLogoM.TabIndex = 12;
+            this.PtbLogoM.TabStop = false;
+            // 
+            // btnDispositivos
+            // 
+            this.btnDispositivos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(124)))), ((int)(((byte)(141)))));
+            this.btnDispositivos.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDispositivos.ForeColor = System.Drawing.Color.White;
+            this.btnDispositivos.Image = global::Mantenimientos_de_computo.Properties.Resources.menu2;
+            this.btnDispositivos.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDispositivos.Location = new System.Drawing.Point(941, 0);
+            this.btnDispositivos.Name = "btnDispositivos";
+            this.btnDispositivos.Size = new System.Drawing.Size(162, 54);
+            this.btnDispositivos.TabIndex = 11;
+            this.btnDispositivos.Text = "Dispositivo";
+            this.btnDispositivos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDispositivos.UseVisualStyleBackColor = false;
+            this.btnDispositivos.Click += new System.EventHandler(this.btnDispositivos_Click);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
@@ -278,10 +293,11 @@
             this.Text = "Menu Principal";
             this.Load += new System.EventHandler(this.MenuPrincipal_Load);
             this.PalBanner.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PtbLogoM)).EndInit();
             this.PalDespegableDispositivos.ResumeLayout(false);
             this.PnlCuerpo.ResumeLayout(false);
             this.PnlCuerpo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PbxSonido)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PtbLogoM)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -305,5 +321,6 @@
         private System.Windows.Forms.Panel PnlCuerpo;
         private System.Windows.Forms.Label lblMensajeQue;
         private System.Windows.Forms.Button btnEjemplar;
+        private System.Windows.Forms.PictureBox PbxSonido;
     }
 }
