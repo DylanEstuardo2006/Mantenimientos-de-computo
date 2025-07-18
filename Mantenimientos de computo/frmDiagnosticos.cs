@@ -43,7 +43,7 @@ namespace Mantenimientos_de_computo
             {
                 //Creamos la consulta 
 
-               string consulta = "SELECT diagnostico.Estado,diagnostico.Id_diagnostico,diagnostico.Fecha_diagnostico,diagnostico.Resumen_diagnostico,tecnicos.Id_tecnico,tipomantenimiento.Id_tipomantenimiento,ejemplar.Nombre_dispositivo From diagnostico,ejemplar,tecnicos,tipomantenimiento where diagnostico.Estado = 1 AND diagnostico.Id_tecnico = tecnicos.Id_tecnico AND diagnostico.Id_tipomantenimiento = tipomantenimiento.Id_tipomantenimiento AND diagnostico.Id_ejemplar = ejemplar.Id_ejemplar";
+               string consulta = "SELECT diagnostico.Estado,diagnostico.Id_diagnostico,diagnostico.Fecha_diagnostico,diagnostico.Resumen_diagnostico,tecnicos.Nombre_tecnico,tipomantenimiento.Tipomantenimiento,ejemplar.Id_ejemplar From diagnostico,ejemplar,tecnicos,tipomantenimiento where diagnostico.Estado = 1 AND diagnostico.Id_tecnico = tecnicos.Id_tecnico AND diagnostico.Id_tipomantenimiento = tipomantenimiento.Id_tipomantenimiento AND diagnostico.Id_ejemplar = ejemplar.Id_ejemplar";
 
                 //Creamos un adaptador 
 
@@ -125,7 +125,7 @@ namespace Mantenimientos_de_computo
                 MySqlConnection conn = conexion.getConnection(); //<--- Obtiene el metodo Conexion 
 
                 //Insertar los valores 
-                string consulta = "INSERT INTO tecnicos (Fecha_diagnostico,Resumen_diagnostico,Id_tecnico,Estado)" +
+                string consulta = "INSERT INTO diagnostico (Fecha_diagnostico,Resumen_diagnostico,Id_tecnico,Id_tipomantenimiento,Id_ejemplar,Estado)" +
                   "VALUES (@Fecha_diagnostico,@Resumen_diagnostico,@Id_tecnico,@Id_tipomantenimiento,@Id_ejemplar,@Estado)";
 
                 MySqlCommand command = new MySqlCommand(consulta, conn); //<----Command 
@@ -150,6 +150,29 @@ namespace Mantenimientos_de_computo
             }
            
 
+        }
+
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DgvDiagnosticos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow fila = DgvDiagnosticos.Rows[e.RowIndex];
+                DateTime fecha = Convert.ToDateTime(fila.Cells["Fecha_diagnostico"].Value);
+                DtmFechaDiagnostico.Value = fecha;
+                txtIdEjemplar.Text = fila.Cells["Id_ejemplar"].Value?.ToString();
+                cmbTecnico.Text = fila.Cells["Nombre_tecnico"].Value?.ToString();
+                cmbTipoMantenimiento.Text = fila.Cells["Tipomantenimiento"].Value?.ToString();
+                RtbResumenDiagnostico.Text = fila.Cells["Resumen_diagnostico"].Value?.ToString();
+
+                lblIDDiagnostico.Text = fila.Cells["Id_diagnostico"].Value.ToString();
+
+            }
         }
     }
 }

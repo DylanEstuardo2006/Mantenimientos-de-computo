@@ -39,7 +39,8 @@ namespace Mantenimientos_de_computo
         }
         private void cargaDatos()
         {
-            conexion = new clsConexion();
+            conexion = new clsConexion(); //<--- Mandar a llamar la clsConexion 
+
             MySqlConnection con = conexion.getConnection();
 
             //Comprobamos que se conecto correctamente 

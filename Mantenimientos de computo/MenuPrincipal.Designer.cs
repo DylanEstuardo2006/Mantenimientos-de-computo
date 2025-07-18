@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.PalBanner = new System.Windows.Forms.Panel();
+            this.btnDispositivos = new System.Windows.Forms.Button();
             this.btnLaboratorio = new System.Windows.Forms.Button();
             this.btnTecnicos = new System.Windows.Forms.Button();
             this.btnHistorial = new System.Windows.Forms.Button();
@@ -42,10 +43,9 @@
             this.btnModelo = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.PnlCuerpo = new System.Windows.Forms.Panel();
-            this.lblMensajeQue = new System.Windows.Forms.Label();
             this.PbxSonido = new System.Windows.Forms.PictureBox();
+            this.lblMensajeQue = new System.Windows.Forms.Label();
             this.PtbLogoM = new System.Windows.Forms.PictureBox();
-            this.btnDispositivos = new System.Windows.Forms.Button();
             this.PalBanner.SuspendLayout();
             this.PalDespegableDispositivos.SuspendLayout();
             this.PnlCuerpo.SuspendLayout();
@@ -67,6 +67,22 @@
             this.PalBanner.Name = "PalBanner";
             this.PalBanner.Size = new System.Drawing.Size(1106, 58);
             this.PalBanner.TabIndex = 0;
+            // 
+            // btnDispositivos
+            // 
+            this.btnDispositivos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(124)))), ((int)(((byte)(141)))));
+            this.btnDispositivos.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDispositivos.ForeColor = System.Drawing.Color.White;
+            this.btnDispositivos.Image = global::Mantenimientos_de_computo.Properties.Resources.menu2;
+            this.btnDispositivos.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDispositivos.Location = new System.Drawing.Point(941, 0);
+            this.btnDispositivos.Name = "btnDispositivos";
+            this.btnDispositivos.Size = new System.Drawing.Size(162, 54);
+            this.btnDispositivos.TabIndex = 11;
+            this.btnDispositivos.Text = "Dispositivo";
+            this.btnDispositivos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDispositivos.UseVisualStyleBackColor = false;
+            this.btnDispositivos.Click += new System.EventHandler(this.btnDispositivos_Click);
             // 
             // btnLaboratorio
             // 
@@ -155,6 +171,7 @@
             this.btnTipoDispositivo.TabIndex = 14;
             this.btnTipoDispositivo.Text = "Tipo Dispositivo";
             this.btnTipoDispositivo.UseVisualStyleBackColor = false;
+            this.btnTipoDispositivo.Click += new System.EventHandler(this.btnTipoDispositivo_Click);
             // 
             // btnMarca
             // 
@@ -193,6 +210,7 @@
             this.btnEjemplar.TabIndex = 17;
             this.btnEjemplar.Text = "Ejemplares";
             this.btnEjemplar.UseVisualStyleBackColor = false;
+            this.btnEjemplar.Click += new System.EventHandler(this.btnEjemplar_Click);
             // 
             // btnModelo
             // 
@@ -230,6 +248,18 @@
             this.PnlCuerpo.Size = new System.Drawing.Size(1106, 524);
             this.PnlCuerpo.TabIndex = 18;
             // 
+            // PbxSonido
+            // 
+            this.PbxSonido.Image = global::Mantenimientos_de_computo.Properties.Resources.VOICE_d;
+            this.PbxSonido.Location = new System.Drawing.Point(12, 6);
+            this.PbxSonido.Name = "PbxSonido";
+            this.PbxSonido.Size = new System.Drawing.Size(103, 89);
+            this.PbxSonido.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PbxSonido.TabIndex = 19;
+            this.PbxSonido.TabStop = false;
+            this.PbxSonido.Click += new System.EventHandler(this.PbxSonido_Click);
+            this.PbxSonido.MouseEnter += new System.EventHandler(this.PbxSonido_MouseEnter);
+            // 
             // lblMensajeQue
             // 
             this.lblMensajeQue.AutoSize = true;
@@ -240,18 +270,6 @@
             this.lblMensajeQue.TabIndex = 18;
             this.lblMensajeQue.Text = "¿Qué desea hacer el día de hoy ? ";
             // 
-            // PbxSonido
-            // 
-            this.PbxSonido.Image = global::Mantenimientos_de_computo.Properties.Resources.VOICE_d;
-            this.PbxSonido.Location = new System.Drawing.Point(38, 10);
-            this.PbxSonido.Name = "PbxSonido";
-            this.PbxSonido.Size = new System.Drawing.Size(119, 107);
-            this.PbxSonido.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PbxSonido.TabIndex = 19;
-            this.PbxSonido.TabStop = false;
-            this.PbxSonido.Click += new System.EventHandler(this.PbxSonido_Click);
-            this.PbxSonido.MouseEnter += new System.EventHandler(this.PbxSonido_MouseEnter);
-            // 
             // PtbLogoM
             // 
             this.PtbLogoM.Image = global::Mantenimientos_de_computo.Properties.Resources.Logo_mantenimiento;
@@ -261,22 +279,6 @@
             this.PtbLogoM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PtbLogoM.TabIndex = 12;
             this.PtbLogoM.TabStop = false;
-            // 
-            // btnDispositivos
-            // 
-            this.btnDispositivos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(124)))), ((int)(((byte)(141)))));
-            this.btnDispositivos.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDispositivos.ForeColor = System.Drawing.Color.White;
-            this.btnDispositivos.Image = global::Mantenimientos_de_computo.Properties.Resources.menu2;
-            this.btnDispositivos.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDispositivos.Location = new System.Drawing.Point(941, 0);
-            this.btnDispositivos.Name = "btnDispositivos";
-            this.btnDispositivos.Size = new System.Drawing.Size(162, 54);
-            this.btnDispositivos.TabIndex = 11;
-            this.btnDispositivos.Text = "Dispositivo";
-            this.btnDispositivos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDispositivos.UseVisualStyleBackColor = false;
-            this.btnDispositivos.Click += new System.EventHandler(this.btnDispositivos_Click);
             // 
             // MenuPrincipal
             // 

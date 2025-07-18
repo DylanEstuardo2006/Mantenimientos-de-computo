@@ -95,7 +95,7 @@
             // lblIDTecnico
             // 
             this.lblIDTecnico.AutoSize = true;
-            this.lblIDTecnico.Location = new System.Drawing.Point(537, 292);
+            this.lblIDTecnico.Location = new System.Drawing.Point(550, 292);
             this.lblIDTecnico.Name = "lblIDTecnico";
             this.lblIDTecnico.Size = new System.Drawing.Size(112, 23);
             this.lblIDTecnico.TabIndex = 37;
