@@ -83,6 +83,7 @@
             this.btnDispositivos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDispositivos.UseVisualStyleBackColor = false;
             this.btnDispositivos.Click += new System.EventHandler(this.btnDispositivos_Click);
+            this.btnDispositivos.MouseEnter += new System.EventHandler(this.btnDispositivos_MouseEnter);
             // 
             // btnLaboratorio
             // 
@@ -108,6 +109,7 @@
             this.btnTecnicos.Text = "Técnicos";
             this.btnTecnicos.UseVisualStyleBackColor = false;
             this.btnTecnicos.Click += new System.EventHandler(this.btnTecnicos_Click);
+            this.btnTecnicos.MouseEnter += new System.EventHandler(this.btnTecnicos_MouseEnter);
             // 
             // btnHistorial
             // 
@@ -146,6 +148,7 @@
             this.btnDiagnostico.Text = "Diagnostico";
             this.btnDiagnostico.UseVisualStyleBackColor = false;
             this.btnDiagnostico.Click += new System.EventHandler(this.btnDiagnostico_Click);
+            this.btnDiagnostico.MouseEnter += new System.EventHandler(this.btnDiagnostico_MouseEnter);
             // 
             // btnDetalles
             // 
@@ -172,6 +175,7 @@
             this.btnTipoDispositivo.Text = "Tipo Dispositivo";
             this.btnTipoDispositivo.UseVisualStyleBackColor = false;
             this.btnTipoDispositivo.Click += new System.EventHandler(this.btnTipoDispositivo_Click);
+            this.btnTipoDispositivo.MouseEnter += new System.EventHandler(this.btnTipoDispositivo_MouseEnter);
             // 
             // btnMarca
             // 
@@ -235,6 +239,7 @@
             this.btnSalir.TabIndex = 17;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // PnlCuerpo
             // 
@@ -264,7 +269,7 @@
             // 
             this.lblMensajeQue.AutoSize = true;
             this.lblMensajeQue.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMensajeQue.Location = new System.Drawing.Point(378, 80);
+            this.lblMensajeQue.Location = new System.Drawing.Point(344, 83);
             this.lblMensajeQue.Name = "lblMensajeQue";
             this.lblMensajeQue.Size = new System.Drawing.Size(507, 34);
             this.lblMensajeQue.TabIndex = 18;

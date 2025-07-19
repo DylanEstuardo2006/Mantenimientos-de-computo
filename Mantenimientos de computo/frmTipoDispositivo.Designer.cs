@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             this.PnlFondo = new System.Windows.Forms.Panel();
-            this.DgvDiagnosticos = new System.Windows.Forms.DataGridView();
-            this.lblTipoDispositivo = new System.Windows.Forms.Label();
+            this.lblIngresaTipoDispositivo = new System.Windows.Forms.Label();
+            this.txtTipoDispositivo = new System.Windows.Forms.TextBox();
+            this.DgvTipoDispositivo = new System.Windows.Forms.DataGridView();
+            this.lblIDTipoDispositivo = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.PnCaja = new System.Windows.Forms.Panel();
@@ -38,10 +40,8 @@
             this.lblBuscar = new System.Windows.Forms.Label();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lblIngresaTipoDispositivo = new System.Windows.Forms.Label();
             this.PnlFondo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvDiagnosticos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvTipoDispositivo)).BeginInit();
             this.PnCaja.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,9 +49,9 @@
             // 
             this.PnlFondo.BackColor = System.Drawing.Color.Bisque;
             this.PnlFondo.Controls.Add(this.lblIngresaTipoDispositivo);
-            this.PnlFondo.Controls.Add(this.textBox1);
-            this.PnlFondo.Controls.Add(this.DgvDiagnosticos);
-            this.PnlFondo.Controls.Add(this.lblTipoDispositivo);
+            this.PnlFondo.Controls.Add(this.txtTipoDispositivo);
+            this.PnlFondo.Controls.Add(this.DgvTipoDispositivo);
+            this.PnlFondo.Controls.Add(this.lblIDTipoDispositivo);
             this.PnlFondo.Controls.Add(this.btnVolver);
             this.PnlFondo.Controls.Add(this.btnRegistrar);
             this.PnlFondo.Controls.Add(this.PnCaja);
@@ -61,26 +61,44 @@
             this.PnlFondo.Size = new System.Drawing.Size(1178, 718);
             this.PnlFondo.TabIndex = 21;
             // 
-            // DgvDiagnosticos
+            // lblIngresaTipoDispositivo
             // 
-            this.DgvDiagnosticos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvDiagnosticos.Location = new System.Drawing.Point(13, 13);
-            this.DgvDiagnosticos.Name = "DgvDiagnosticos";
-            this.DgvDiagnosticos.ReadOnly = true;
-            this.DgvDiagnosticos.RowHeadersWidth = 51;
-            this.DgvDiagnosticos.RowTemplate.Height = 24;
-            this.DgvDiagnosticos.Size = new System.Drawing.Size(1144, 259);
-            this.DgvDiagnosticos.TabIndex = 38;
+            this.lblIngresaTipoDispositivo.AutoSize = true;
+            this.lblIngresaTipoDispositivo.Location = new System.Drawing.Point(60, 441);
+            this.lblIngresaTipoDispositivo.Name = "lblIngresaTipoDispositivo";
+            this.lblIngresaTipoDispositivo.Size = new System.Drawing.Size(300, 23);
+            this.lblIngresaTipoDispositivo.TabIndex = 39;
+            this.lblIngresaTipoDispositivo.Text = "Ingresa el tipo de dispositivo: ";
+            this.lblIngresaTipoDispositivo.Visible = false;
             // 
-            // lblTipoDispositivo
+            // txtTipoDispositivo
             // 
-            this.lblTipoDispositivo.AutoSize = true;
-            this.lblTipoDispositivo.Location = new System.Drawing.Point(529, 275);
-            this.lblTipoDispositivo.Name = "lblTipoDispositivo";
-            this.lblTipoDispositivo.Size = new System.Drawing.Size(183, 23);
-            this.lblTipoDispositivo.TabIndex = 37;
-            this.lblTipoDispositivo.Text = "lblTipoDispositivo";
-            this.lblTipoDispositivo.Visible = false;
+            this.txtTipoDispositivo.Location = new System.Drawing.Point(346, 438);
+            this.txtTipoDispositivo.Name = "txtTipoDispositivo";
+            this.txtTipoDispositivo.Size = new System.Drawing.Size(249, 31);
+            this.txtTipoDispositivo.TabIndex = 26;
+            this.txtTipoDispositivo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTipoDispositivo_KeyPress);
+            // 
+            // DgvTipoDispositivo
+            // 
+            this.DgvTipoDispositivo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvTipoDispositivo.Location = new System.Drawing.Point(13, 13);
+            this.DgvTipoDispositivo.Name = "DgvTipoDispositivo";
+            this.DgvTipoDispositivo.ReadOnly = true;
+            this.DgvTipoDispositivo.RowHeadersWidth = 51;
+            this.DgvTipoDispositivo.RowTemplate.Height = 24;
+            this.DgvTipoDispositivo.Size = new System.Drawing.Size(1144, 259);
+            this.DgvTipoDispositivo.TabIndex = 38;
+            // 
+            // lblIDTipoDispositivo
+            // 
+            this.lblIDTipoDispositivo.AutoSize = true;
+            this.lblIDTipoDispositivo.Location = new System.Drawing.Point(529, 275);
+            this.lblIDTipoDispositivo.Name = "lblIDTipoDispositivo";
+            this.lblIDTipoDispositivo.Size = new System.Drawing.Size(183, 23);
+            this.lblIDTipoDispositivo.TabIndex = 37;
+            this.lblIDTipoDispositivo.Text = "lblTipoDispositivo";
+            this.lblIDTipoDispositivo.Visible = false;
             // 
             // btnVolver
             // 
@@ -105,6 +123,7 @@
             this.btnRegistrar.TabIndex = 26;
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = false;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // PnCaja
             // 
@@ -128,7 +147,7 @@
             // lblBuscar
             // 
             this.lblBuscar.AutoSize = true;
-            this.lblBuscar.Location = new System.Drawing.Point(134, 104);
+            this.lblBuscar.Location = new System.Drawing.Point(121, 104);
             this.lblBuscar.Name = "lblBuscar";
             this.lblBuscar.Size = new System.Drawing.Size(216, 23);
             this.lblBuscar.TabIndex = 24;
@@ -145,6 +164,7 @@
             this.btnActualizar.TabIndex = 22;
             this.btnActualizar.Text = "Actualizar ";
             this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnEliminar
             // 
@@ -158,23 +178,6 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(346, 438);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(249, 31);
-            this.textBox1.TabIndex = 26;
-            // 
-            // lblIngresaTipoDispositivo
-            // 
-            this.lblIngresaTipoDispositivo.AutoSize = true;
-            this.lblIngresaTipoDispositivo.Location = new System.Drawing.Point(74, 446);
-            this.lblIngresaTipoDispositivo.Name = "lblIngresaTipoDispositivo";
-            this.lblIngresaTipoDispositivo.Size = new System.Drawing.Size(300, 23);
-            this.lblIngresaTipoDispositivo.TabIndex = 39;
-            this.lblIngresaTipoDispositivo.Text = "Ingresa el tipo de dispositivo: ";
-            this.lblIngresaTipoDispositivo.Visible = false;
-            // 
             // frmTipoDispositivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -186,7 +189,7 @@
             this.Load += new System.EventHandler(this.frmTipoDispositivo_Load);
             this.PnlFondo.ResumeLayout(false);
             this.PnlFondo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvDiagnosticos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvTipoDispositivo)).EndInit();
             this.PnCaja.ResumeLayout(false);
             this.PnCaja.PerformLayout();
             this.ResumeLayout(false);
@@ -196,8 +199,8 @@
         #endregion
 
         private System.Windows.Forms.Panel PnlFondo;
-        private System.Windows.Forms.DataGridView DgvDiagnosticos;
-        private System.Windows.Forms.Label lblTipoDispositivo;
+        private System.Windows.Forms.DataGridView DgvTipoDispositivo;
+        private System.Windows.Forms.Label lblIDTipoDispositivo;
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.Panel PnCaja;
@@ -206,6 +209,6 @@
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Label lblIngresaTipoDispositivo;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTipoDispositivo;
     }
 }

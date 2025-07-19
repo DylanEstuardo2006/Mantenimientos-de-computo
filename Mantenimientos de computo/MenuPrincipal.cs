@@ -15,9 +15,11 @@ namespace Mantenimientos_de_computo
 {
     public partial class MenuPrincipal : Form
     {
-        private bool isFormOpen = false;
-        private SpeechRecognitionEngine recognizer; // <--- Creamos el objeto reconocimiento de voz para que reconozca los comandos
-        SpeechSynthesizer synthesizer = new SpeechSynthesizer(); // <---- Creamos el bjeto sintetizador de voz para que nos hable
+      
+
+        Validaciones audio  = new Validaciones(); // <--- Creamos un objeto de la clase Validaciones para usar sus metodos de validaciones
+        SpeechSynthesizer sintetizador = new SpeechSynthesizer(); // <---- Creamos el bjeto sintetizador de voz para que nos hable
+      
         public MenuPrincipal()
         {
 
@@ -25,43 +27,57 @@ namespace Mantenimientos_de_computo
            
 
         }
-
-
-       
-
-     
-      
+   
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
             this.FormBorderStyle = FormBorderStyle.FixedSingle; // <--- Con este metodo le quitamos al usuario la capacidad de mover conn el cursor el form 
             this.MaximizeBox = false; // <--- Quitamos la capacidad de hacerlo a tamaño completo la pantalla el form 
-                                      
-            recognizer.RecognizeAsync(RecognizeMode.Multiple); // 🔹 aquí sí
+           
         }
-
+        //Botón que al darle un click te muestra los apartados sobre los dispositivos
         private void btnDispositivos_Click(object sender, EventArgs e)
         {
+
             if (!PalDespegableDispositivos.Visible)
             {
-                PalDespegableDispositivos.Visible = true;
+                PalDespegableDispositivos.Visible = true; // <---- Poner los Botones (Panel) Visibles 
             }
             else
             {
-                PalDespegableDispositivos.Visible = false;
+                PalDespegableDispositivos.Visible = false; // <--- Poner los Botones (Panel) Invisinles 
+            }
+        }
+        //Botón Que cuando entra al apartado dispositivos si el audio esta activado lo muestre
+        private void btnDispositivos_MouseEnter(object sender, EventArgs e)
+        {
+            if (Audios.Accesibilidad)
+            {
+                sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
+                sintetizador.SpeakAsync("Esta sobre el Despegable Dispositivos que muestra la información de los dispositivos");
             }
         }
 
-        private void btnDetalles_Click(object sender, EventArgs e)
-        {
+        
 
-        }
-
+        // BtnTecncios click, oculta el formulario de MenuPrincipal y muestra el de Tecnicos
         private void btnTecnicos_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             frmTecnicos principal = new frmTecnicos();
             principal.Show();
         }
+        //Btn Tecnicos Click, Con este botón si un usuario activo previamente el botón de audio le saldra audios cada vez que pase 
+        //el cursor arriba de el. 
+        private void btnTecnicos_MouseEnter(object sender, EventArgs e)
+        {
+            if(Audios.Accesibilidad)
+            {
+                sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
+                sintetizador.SpeakAsync("Esta sobre el botón tecnicos");
+            }
+
+        } 
+
 
         private void btnMantenimiento_Click(object sender, EventArgs e)
         {
@@ -70,36 +86,85 @@ namespace Mantenimientos_de_computo
             principal.Show();
         }
 
+        // BtnTecncios click, oculta el formulario de MenuPrincipal y muestra el de Tecnicos
         private void btnDiagnostico_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            
+            this.Close();
             frmDiagnosticos principal = new frmDiagnosticos();
             principal.Show();
+        }
+        //Btn Diagnosticos Enter, Con este botón si un usuario activo previamente el botón de audio le saldra audios cada vez que pase 
+        //el cursor arriba de el. 
+        private void btnDiagnostico_MouseEnter(object sender, EventArgs e)
+        {
+            if (Audios.Accesibilidad)
+            {
+                sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
+                sintetizador.SpeakAsync("Esta sobre el botón Diagnosticos");
+            }
+        }
+
+        private void btnTipoDispositivo_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frmTipoDispositivo principal = new frmTipoDispositivo();
+            principal.Show();
+        }
+        private void btnTipoDispositivo_MouseEnter(object sender, EventArgs e)
+        {
+            if (Audios.Accesibilidad)
+            {
+                sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
+                sintetizador.SpeakAsync("Esta sobre el botón Tipo Dispositivo");
+            }
+
         }
 
         private void PbxSonido_MouseEnter(object sender, EventArgs e)
         {
-            synthesizer.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
-            synthesizer.SpeakAsync("Haz click para activar botón de reconocimiento de voz");
+            sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
+            if(Audios.Accesibilidad == true)
+            {
+                sintetizador.SpeakAsync("Usted tiene activado los botones con audio"); 
+
+            }
+            else if (Audios.Accesibilidad == false)
+            {
+                sintetizador.SpeakAsync("Haz click para activar los botones con audio");
+            }
+
+               
         }
 
         private void PbxSonido_Click(object sender, EventArgs e)
         {
-            recognizer.RecognizeAsync(RecognizeMode.Multiple);
-            synthesizer.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
-            synthesizer.SpeakAsync("Reconocimiento de voz activado Di abrir formulario con el nombre del formulario");
+            Audios.Accesibilidad = !Audios.Accesibilidad; // <--- Llamamos al metodo Audio de la clase Audios para activar los botones con audio
+            sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
+            if(Audios.Accesibilidad)
+            {
+                sintetizador.SpeakAsync("Usted ha desactivado los botones con audio");
+            }
+            else
+            {
+                sintetizador.SpeakAsync("Usted ha activado los botones con audio");
+            }
+           
+            
         }
 
+        private void btnDetalles_Click(object sender, EventArgs e)
+        {
+
+        }
         private void btnEjemplar_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnTipoDispositivo_Click(object sender, EventArgs e)
+        private void btnSalir_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmTipoDispositivo principal = new frmTipoDispositivo();
-            principal.Show();
+         Application.Exit(); // <--- Cierra el formulario MenuPrincipal
         }
     }
 }

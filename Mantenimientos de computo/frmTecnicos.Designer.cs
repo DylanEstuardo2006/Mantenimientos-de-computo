@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.PnlFondo = new System.Windows.Forms.Panel();
             this.DgvTecnicos = new System.Windows.Forms.DataGridView();
             this.lblIDTecnico = new System.Windows.Forms.Label();
@@ -50,6 +51,11 @@
             this.lblBuscar = new System.Windows.Forms.Label();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
+            this.TlpEliminar = new System.Windows.Forms.ToolTip(this.components);
+            this.TlpVolver = new System.Windows.Forms.ToolTip(this.components);
+            this.TlpTxtNombreTecnico = new System.Windows.Forms.ToolTip(this.components);
+            this.TlpRegistrar = new System.Windows.Forms.ToolTip(this.components);
+            this.TlpBuscar = new System.Windows.Forms.ToolTip(this.components);
             this.PnlFondo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvTecnicos)).BeginInit();
             this.PnCaja.SuspendLayout();
@@ -163,6 +169,7 @@
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = false;
             this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
+            this.btnRegistrar.MouseEnter += new System.EventHandler(this.btnRegistrar_MouseEnter);
             // 
             // txtNumeroTelefono
             // 
@@ -335,5 +342,10 @@
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Label lblIDTecnico;
         private System.Windows.Forms.DataGridView DgvTecnicos;
+        private System.Windows.Forms.ToolTip TlpEliminar;
+        private System.Windows.Forms.ToolTip TlpVolver;
+        private System.Windows.Forms.ToolTip TlpTxtNombreTecnico;
+        private System.Windows.Forms.ToolTip TlpRegistrar;
+        private System.Windows.Forms.ToolTip TlpBuscar;
     }
 }

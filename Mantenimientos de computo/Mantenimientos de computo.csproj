@@ -105,6 +105,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Audios.cs" />
     <Compile Include="clsConexion.cs" />
     <Compile Include="frmDiagnosticos.cs">
       <SubType>Form</SubType>

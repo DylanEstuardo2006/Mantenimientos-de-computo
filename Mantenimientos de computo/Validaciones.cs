@@ -7,9 +7,18 @@ using System.Windows.Forms;
 
 namespace Mantenimientos_de_computo
 {
-    public class Validaciones
+    public  class Validaciones
     {
-        public void ValidarLetras(KeyPressEventArgs e)
+        
+
+
+         public Validaciones()
+        {
+            
+        }
+
+
+        public  void ValidarLetras(KeyPressEventArgs e)
         {
 
             if (Char.IsLetter(e.KeyChar)) // Permite el uso de letras 
@@ -30,7 +39,7 @@ namespace Mantenimientos_de_computo
                 e.Handled = true;
             }
         }
-        public void ValidarNumeros(KeyPressEventArgs e)
+        public  void ValidarNumeros(KeyPressEventArgs e)
         {
             if (Char.IsNumber(e.KeyChar))
             {
@@ -53,6 +62,7 @@ namespace Mantenimientos_de_computo
                 e.Handled = true; //Bloquea si hay un separador (Util para contraseñas y Emails)
             }
         }
+        
     }
     
 }

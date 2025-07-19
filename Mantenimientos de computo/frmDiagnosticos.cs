@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +15,7 @@ namespace Mantenimientos_de_computo
 {
     public partial class frmDiagnosticos : Form
     {
+        private Validaciones Objeto = new Validaciones();
         private clsConexion conexion; // <----- Creamos la conexión privada 
         public frmDiagnosticos()
         {
@@ -31,6 +33,10 @@ namespace Mantenimientos_de_computo
             this.Hide();
             MenuPrincipal principal = new MenuPrincipal();
             principal.Show();
+        }
+        private void txtIdEjemplar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Objeto.ValidarNumeros(e); // <--- Validamos que solo se ingresen numeros en el textbox de Id Ejemplar
         }
         private void cargaDatos()
         {
@@ -105,6 +111,8 @@ namespace Mantenimientos_de_computo
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
+            
+               
             DateTime FechaSeleccionada = DtmFechaDiagnostico.Value;
             string IdEjemplar = txtIdEjemplar.Text;
             int IdTecnico = Convert.ToInt32(cmbTecnico.SelectedValue); // <--- Obtenemos el Id del tecnico seleccionado
@@ -113,48 +121,82 @@ namespace Mantenimientos_de_computo
             string Estado = "1"; // <----- Constante que permite Poner el estado de el usuario como activo o negativo 
 
             //En este if validamos con el IsNullOrEmpty para evitar que si el usuario no ingresa algun campo le salga un mensaje de faltan casillas por llenar 
-
-            if (FechaSeleccionada == DateTimePicker.MinimumDateTime || FechaSeleccionada < new DateTime(1900, 1, 1) || FechaSeleccionada > DateTime.Now.AddYears(100) || string.IsNullOrEmpty(IdEjemplar) || cmbTecnico.SelectedIndex == -1 || cmbTipoMantenimiento.SelectedIndex == -1)
-            {
-                MessageBox.Show("Faltan casillas por llenar");
-
-            }
-            else
-            {
-                conexion = new clsConexion();
-                MySqlConnection conn = conexion.getConnection(); //<--- Obtiene el metodo Conexion 
-
-                //Insertar los valores 
-                string consulta = "INSERT INTO diagnostico (Fecha_diagnostico,Resumen_diagnostico,Id_tecnico,Id_tipomantenimiento,Id_ejemplar,Estado)" +
-                  "VALUES (@Fecha_diagnostico,@Resumen_diagnostico,@Id_tecnico,@Id_tipomantenimiento,@Id_ejemplar,@Estado)";
-
-                MySqlCommand command = new MySqlCommand(consulta, conn); //<----Command 
-                command.Parameters.AddWithValue("@Fecha_diagnostico", FechaSeleccionada );
-                command.Parameters.AddWithValue("@Resumen_diagnostico", ResumenDiagnostico);
-                command.Parameters.AddWithValue("@Id_tecnico", IdTecnico);
-                command.Parameters.AddWithValue("@Id_tipomantenimiento", IdTipoMantenimiento);
-                command.Parameters.AddWithValue("@Id_ejemplar", IdEjemplar);
-                command.Parameters.AddWithValue("@Estado", Estado); // <--- Estado por defecto al registrar un técnico
-                int filasAfectadas = command.ExecuteNonQuery();
-                conn.Close();
-
-                if (filasAfectadas > 0) //<---- Verificación que se haya echo correctamente
+          
+                if (FechaSeleccionada == DateTimePicker.MinimumDateTime || FechaSeleccionada < new DateTime(1900, 1, 1) || FechaSeleccionada > DateTime.Now.AddYears(100) || string.IsNullOrEmpty(IdEjemplar) || cmbTecnico.SelectedIndex == -1 || cmbTipoMantenimiento.SelectedIndex == -1)
                 {
-                    MessageBox.Show("Registro extitoso...");
-                    cargaDatos();
+                    MessageBox.Show("Faltan casillas por llenar");
+
                 }
                 else
                 {
-                    MessageBox.Show("Algo anda mal...");
-                }
-            }
-           
+                    conexion = new clsConexion();
+                    MySqlConnection conn = conexion.getConnection(); //<--- Obtiene el metodo Conexion 
 
+                    //Insertar los valores 
+                    string consulta = "INSERT INTO diagnostico (Fecha_diagnostico,Resumen_diagnostico,Id_tecnico,Id_tipomantenimiento,Id_ejemplar,Estado)" +
+                      "VALUES (@Fecha_diagnostico,@Resumen_diagnostico,@Id_tecnico,@Id_tipomantenimiento,@Id_ejemplar,@Estado)";
+
+                    MySqlCommand command = new MySqlCommand(consulta, conn); //<----Command 
+                    command.Parameters.AddWithValue("@Fecha_diagnostico", FechaSeleccionada);
+                    command.Parameters.AddWithValue("@Resumen_diagnostico", ResumenDiagnostico);
+                    command.Parameters.AddWithValue("@Id_tecnico", IdTecnico);
+                    command.Parameters.AddWithValue("@Id_tipomantenimiento", IdTipoMantenimiento);
+                    command.Parameters.AddWithValue("@Id_ejemplar", IdEjemplar);
+                    command.Parameters.AddWithValue("@Estado", Estado); // <--- Estado por defecto al registrar un técnico
+                    try
+                    {
+                        int filasAfectadas = command.ExecuteNonQuery();
+                        conn.Close();
+
+                         if (filasAfectadas > 0) //<---- Verificación que se haya echo correctamente
+                         {
+                          MessageBox.Show("Registro extitoso...");
+                          cargaDatos();
+                         }
+                         else
+                         {
+                        MessageBox.Show("Algo anda mal...");
+                         }
+
+                    }
+                  catch
+                    {
+                    MessageBox.Show("Error al registrar el diagnóstico. El Id del ejemplar no coincide con ninguno en la base de datos.");
+                    }
+              
+
+                cmbTecnico.SelectedIndex = -1; // <--- Limpiamos el combobox de Tecnicos    
+                cmbTipoMantenimiento.SelectedIndex = -1; // <--- Limpiamos el combobox de Tipos de Mantenimiento
+                RtbResumenDiagnostico.Text = ""; // <--- Limpiamos el richtextbox de Resumen Diagnostico
+                txtIdEjemplar.Text = ""; // <--- Limpiamos el textbox de Id Ejemplar
+
+                }
+            
+ 
         }
 
         private void txtBusqueda_TextChanged(object sender, EventArgs e)
         {
 
+            string filtro = txtBusqueda.Text;
+            conexion = new clsConexion();
+
+            MySqlConnection con = conexion.getConnection();
+
+            // Consulta y busca los tecnicos mediante su nombre, apellidos o Telefono (Falta activarlo mediante Email)
+            string consulta = "SELECT diagnostico.Fecha_diagnostico,diagnostico.Id_ejemplar FROM diagnostico WHERE (diagnostico.Fecha_diagnostico LIKE @busqueda OR diagnostico.Id_ejemplar LIKE @busqueda) AND diagnostico.Estado = 1";
+
+
+            MySqlCommand command = new MySqlCommand(consulta, con);
+            command.Parameters.AddWithValue("@busqueda", "%" + filtro + "%");
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+            DataTable table = new DataTable();
+
+            adapter.Fill(table);
+            DgvDiagnosticos.DataSource = table;
+            DgvDiagnosticos.Columns["Id_diagnostico"].Visible = false;
+            con.Close();
         }
 
         private void DgvDiagnosticos_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -174,6 +216,140 @@ namespace Mantenimientos_de_computo
 
             }
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(lblIDDiagnostico.Text))
+                {
+                    MessageBox.Show("Porfavor seleccione un diagnostico de la tabla para Eliminar sus datos");
+                    return; // <--- Si no hay un tecnico seleccionado, se sale del metodo
+                }
+                string Estado = "0"; //<----- Constante que permite cambiar el estado del usuario y hacerlo accesible o no 
+                string NombreTecnico = cmbTecnico.Text; // <--- Obtenemos el nombre del tecnico seleccionado para mostrarlo en el mensaje de confirmación
+                int IdDiagnostico = Convert.ToInt32(lblIDDiagnostico.Text);
+                int IdEjemplar = Convert.ToInt32(txtIdEjemplar.Text); // <--- Obtenemos el Id del ejemplar para mostrarlo en el mensaje de confirmación
+                DialogResult result = MessageBox.Show("En verdad quieres eliminar el diagnostico de " + NombreTecnico + "del ejemplar con el id" + IdEjemplar  + "?"
+                   , "Eliminar", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+                conexion = new clsConexion();
+                MySqlConnection con = conexion.getConnection();
+              
+
+
+                string consulta;
+                MySqlCommand command;
+                consulta = "update diagnostico set Estado=@Estado where Id_diagnostico=@Id_diagnostico"; //<----- En este apartado hacemos una eliminación logica y no Física, evitamos un mensaje de error 
+                command = new MySqlCommand(consulta, con);
+
+                command.Parameters.AddWithValue("@Estado", Estado);
+                command.Parameters.AddWithValue("@Id_diagnostico", IdDiagnostico);
+
+                int filasAfectadas = command.ExecuteNonQuery();
+                con.Close();
+
+                if (filasAfectadas > 0)
+                {
+                    MessageBox.Show("Se elimino exitosamente");
+                    cargaDatos();
+                }
+                else
+                {
+                    MessageBox.Show("Algo Anda mal....");
+                }
+                // En este apartado las cajas se limpian inmediatamente de haber echo la operación 
+                
+            }
+            catch
+            {
+                MessageBox.Show("Error al eliminar, porfavor seleccione alguno de los datos que aparecen en la tabla");
+            }
+            cmbTecnico.SelectedIndex = -1; // <--- Limpiamos el combobox de Tecnicos    
+            cmbTipoMantenimiento.SelectedIndex = -1; // <--- Limpiamos el combobox de Tipos de Mantenimiento
+            RtbResumenDiagnostico.Text = ""; // <--- Limpiamos el richtextbox de Resumen Diagnostico
+            txtIdEjemplar.Text = ""; // <--- Limpiamos el textbox de Id Ejemplar
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(lblIDDiagnostico.Text))
+                {
+                    MessageBox.Show("Porfavor seleccione un tecnico de la tabla para actualizar sus datos");
+                    return; // <--- Si no hay un tecnico seleccionado, se sale del metodo
+                }
+                //En este apartado obtenemos los datos de las cajas de texto 
+                int IdDiagnostico = Convert.ToInt32(lblIDDiagnostico.Text);
+                DateTime FechaSeleccionada = DtmFechaDiagnostico.Value;
+                string IdEjemplar = txtIdEjemplar.Text;
+                int IdTecnico = Convert.ToInt32(cmbTecnico.SelectedValue); // <--- Obtenemos el Id del tecnico seleccionado
+                int IdTipoMantenimiento = Convert.ToInt32(cmbTipoMantenimiento.SelectedValue); // <--- Obtenemos el Id del tipo de mantenimiento seleccionado   
+                string ResumenDiagnostico = RtbResumenDiagnostico.Text;
+                
+
+
+                conexion = new clsConexion();
+                MySqlConnection con = conexion.getConnection();
+
+                string consulta;
+                MySqlCommand command;
+
+                if (FechaSeleccionada == DateTimePicker.MinimumDateTime || FechaSeleccionada < new DateTime(1900, 1, 1) || FechaSeleccionada > DateTime.Now.AddYears(100) || string.IsNullOrEmpty(IdEjemplar) || cmbTecnico.SelectedIndex == -1 || cmbTipoMantenimiento.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Faltan casillas por llenar");
+
+                }
+                else
+                {
+
+                   consulta = "Update diagnostico set Fecha_diagnostico=@Fecha_diagnostico,Resumen_diagnostico=@Resumen_diagnostico,Id_tecnico=@Id_tecnico,Id_tipomantenimiento=@Id_tipomantenimiento,Id_ejemplar= @Id_ejemplar where Id_diagnostico=@Id_diagnostico";
+                   command = new MySqlCommand(consulta, con);
+
+                    command.Parameters.AddWithValue("@Fecha_diagnostico", FechaSeleccionada);
+                    command.Parameters.AddWithValue("@Resumen_diagnostico", ResumenDiagnostico);
+                    command.Parameters.AddWithValue("@Id_tecnico", IdTecnico);
+                    command.Parameters.AddWithValue("@Id_tipomantenimiento", IdTipoMantenimiento);
+                    command.Parameters.AddWithValue("@Id_ejemplar", IdEjemplar);
+                    command.Parameters.AddWithValue("@Id_diagnostico", IdDiagnostico);
+
+
+
+
+                    int filasAfectadas = command.ExecuteNonQuery();
+                    con.Close();
+
+                    if (filasAfectadas > 0)
+                    {
+                        MessageBox.Show("Registro editado existosamente...");
+                        cargaDatos();
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al actualizar...");
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Error al actualizar, porfavor seleccione alguno de los datos que aparecen en la tabla");
+            }
+
+            // En este apartado las cajas se limpian inmediatamente de haber echo la operación 
+           cmbTecnico.SelectedIndex = -1; // <--- Limpiamos el combobox de Tecnicos    
+            cmbTipoMantenimiento.SelectedIndex = -1; // <--- Limpiamos el combobox de Tipos de Mantenimiento
+            RtbResumenDiagnostico.Text = ""; // <--- Limpiamos el richtextbox de Resumen Diagnostico
+            txtIdEjemplar.Text = ""; // <--- Limpiamos el textbox de Id Ejemplar
+        }
+
+
     }
 }
 

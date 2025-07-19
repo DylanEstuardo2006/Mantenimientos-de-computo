@@ -89,6 +89,7 @@
             // RtbResumenDiagnostico
             // 
             this.RtbResumenDiagnostico.Location = new System.Drawing.Point(46, 511);
+            this.RtbResumenDiagnostico.MaxLength = 300;
             this.RtbResumenDiagnostico.Name = "RtbResumenDiagnostico";
             this.RtbResumenDiagnostico.Size = new System.Drawing.Size(595, 110);
             this.RtbResumenDiagnostico.TabIndex = 42;
@@ -186,10 +187,11 @@
             // txtIdEjemplar
             // 
             this.txtIdEjemplar.Location = new System.Drawing.Point(395, 338);
-            this.txtIdEjemplar.MaxLength = 20;
+            this.txtIdEjemplar.MaxLength = 10;
             this.txtIdEjemplar.Name = "txtIdEjemplar";
             this.txtIdEjemplar.Size = new System.Drawing.Size(249, 31);
             this.txtIdEjemplar.TabIndex = 28;
+            this.txtIdEjemplar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIdEjemplar_KeyPress);
             // 
             // lblIdEjemplar
             // 
@@ -249,6 +251,7 @@
             this.btnActualizar.TabIndex = 22;
             this.btnActualizar.Text = "Actualizar ";
             this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnEliminar
             // 
@@ -261,6 +264,7 @@
             this.btnEliminar.TabIndex = 21;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // frmDiagnosticos
             // 
@@ -271,6 +275,7 @@
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmDiagnosticos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Diagnosticos";
             this.Load += new System.EventHandler(this.frmDiagnosticos_Load);
             this.PnlFondo.ResumeLayout(false);
