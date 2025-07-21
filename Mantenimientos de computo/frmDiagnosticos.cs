@@ -128,7 +128,7 @@ namespace Mantenimientos_de_computo
           
                 if (FechaSeleccionada == DateTimePicker.MinimumDateTime || FechaSeleccionada < new DateTime(1900, 1, 1) || FechaSeleccionada > DateTime.Now.AddYears(100) || string.IsNullOrEmpty(IdEjemplar) || cmbTecnico.SelectedIndex == -1 || cmbTipoMantenimiento.SelectedIndex == -1)
                 {
-                    MessageBox.Show("Faltan casillas por llenar");
+                    MessageBox.Show("Faltan casillas por llenar o la Fecha es incoherente");
 
                 }
                 else

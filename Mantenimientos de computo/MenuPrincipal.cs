@@ -123,6 +123,14 @@ namespace Mantenimientos_de_computo
                 sintetizador.SpeakAsync("Esta sobre el botón Modelo");
             }
         }
+        private void btnDetalles_MouseEnter(object sender, EventArgs e)
+        {
+            if (Audios.Accesibilidad)
+            {
+                sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
+                sintetizador.SpeakAsync("Esta sobre el botón Detalles");
+            }
+        }
 
 
 
@@ -183,6 +191,7 @@ namespace Mantenimientos_de_computo
             frmDetalles principal = new frmDetalles(); // <--- Creamos una instancia del form frmTipoDispositivo  
             principal.Show();
         }
+
         private void btnEjemplar_Click(object sender, EventArgs e)
         {
 

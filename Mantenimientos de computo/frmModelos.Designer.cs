@@ -206,7 +206,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1180, 721);
+            this.ClientSize = new System.Drawing.Size(1179, 719);
             this.Controls.Add(this.PnlFondo);
             this.Name = "frmModelos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

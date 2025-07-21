@@ -156,6 +156,7 @@
             this.txtIdDiagnostico.Name = "txtIdDiagnostico";
             this.txtIdDiagnostico.Size = new System.Drawing.Size(249, 31);
             this.txtIdDiagnostico.TabIndex = 26;
+            this.txtIdDiagnostico.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIdDiagnostico_KeyPress);
             // 
             // lblIdDiagnostico
             // 

@@ -83,6 +83,7 @@
             this.DgvDispositivo.RowTemplate.Height = 24;
             this.DgvDispositivo.Size = new System.Drawing.Size(1144, 259);
             this.DgvDispositivo.TabIndex = 38;
+            this.DgvDispositivo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvDispositivo_CellClick);
             // 
             // lblIdDispositivo
             // 
@@ -112,12 +113,13 @@
             this.btnRegistrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(124)))), ((int)(((byte)(141)))));
             this.btnRegistrar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrar.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrar.Location = new System.Drawing.Point(395, 641);
+            this.btnRegistrar.Location = new System.Drawing.Point(402, 556);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(162, 54);
             this.btnRegistrar.TabIndex = 26;
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = false;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // txtIdModelo
             // 
@@ -126,6 +128,7 @@
             this.txtIdModelo.Name = "txtIdModelo";
             this.txtIdModelo.Size = new System.Drawing.Size(249, 31);
             this.txtIdModelo.TabIndex = 28;
+            this.txtIdModelo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIdModelo_KeyPress);
             // 
             // lblIdModelo
             // 
@@ -154,6 +157,7 @@
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(249, 31);
             this.txtBusqueda.TabIndex = 25;
+            this.txtBusqueda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBusqueda_KeyPress);
             // 
             // lblBuscar
             // 
@@ -175,6 +179,7 @@
             this.btnActualizar.TabIndex = 22;
             this.btnActualizar.Text = "Actualizar ";
             this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnEliminar
             // 
@@ -187,6 +192,7 @@
             this.btnEliminar.TabIndex = 21;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // lblTipoDispositvo
             // 
@@ -206,6 +212,7 @@
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmDetalles";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmDetalles";
             this.Load += new System.EventHandler(this.frmDetalles_Load);
             this.PnlFondo.ResumeLayout(false);

@@ -167,6 +167,7 @@
             this.btnDetalles.Text = "Dispositivo";
             this.btnDetalles.UseVisualStyleBackColor = false;
             this.btnDetalles.Click += new System.EventHandler(this.btnDetalles_Click);
+            this.btnDetalles.MouseEnter += new System.EventHandler(this.btnDetalles_MouseEnter);
             // 
             // btnTipoDispositivo
             // 

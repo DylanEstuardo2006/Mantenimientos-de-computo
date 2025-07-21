@@ -14,6 +14,7 @@ namespace Mantenimientos_de_computo
     public partial class frmMantenimiento : Form
     {
         private clsConexion conexion;
+        Validaciones Objeto = new Validaciones(); // <--- Creamos un objeto de la clase Validaciones para usar sus metodos de validaciones
         public frmMantenimiento()
         {
             InitializeComponent();
@@ -71,6 +72,10 @@ namespace Mantenimientos_de_computo
             this.Hide();
             MenuPrincipal principal = new MenuPrincipal();
             principal.Show();
+        }
+        private void txtIdDiagnostico_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Objeto.ValidarNumeros(e);
         }
 
         private void btnRegistrar_Click(object sender, EventArgs e)
@@ -292,6 +297,8 @@ namespace Mantenimientos_de_computo
             DgvMantenimiento.Columns["Id_mantenimiento"].Visible = false;
             con.Close();
         }
+
+    
     }
 }
 
