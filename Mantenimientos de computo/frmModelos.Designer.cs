@@ -1,6 +1,6 @@
 ﻿namespace Mantenimientos_de_computo
 {
-    partial class frmTipoDispositivo
+    partial class frmModelos
     {
         /// <summary>
         /// Required designer variable.
@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             this.PnlFondo = new System.Windows.Forms.Panel();
-            this.lblIngresaTipoDispositivo = new System.Windows.Forms.Label();
-            this.txtTipoDispositivo = new System.Windows.Forms.TextBox();
-            this.DgvTipoDispositivo = new System.Windows.Forms.DataGridView();
-            this.lblIDTipoDispositivo = new System.Windows.Forms.Label();
+            this.cmbMarcas = new System.Windows.Forms.ComboBox();
+            this.LblIngresMarca = new System.Windows.Forms.Label();
+            this.lblIngresaNuevoModelo = new System.Windows.Forms.Label();
+            this.txtModelos = new System.Windows.Forms.TextBox();
+            this.DgvModelos = new System.Windows.Forms.DataGridView();
+            this.lblIDModelos = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.PnCaja = new System.Windows.Forms.Panel();
@@ -41,64 +43,83 @@
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.PnlFondo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvTipoDispositivo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvModelos)).BeginInit();
             this.PnCaja.SuspendLayout();
             this.SuspendLayout();
             // 
             // PnlFondo
             // 
             this.PnlFondo.BackColor = System.Drawing.Color.Bisque;
-            this.PnlFondo.Controls.Add(this.lblIngresaTipoDispositivo);
-            this.PnlFondo.Controls.Add(this.txtTipoDispositivo);
-            this.PnlFondo.Controls.Add(this.DgvTipoDispositivo);
-            this.PnlFondo.Controls.Add(this.lblIDTipoDispositivo);
+            this.PnlFondo.Controls.Add(this.cmbMarcas);
+            this.PnlFondo.Controls.Add(this.LblIngresMarca);
+            this.PnlFondo.Controls.Add(this.lblIngresaNuevoModelo);
+            this.PnlFondo.Controls.Add(this.txtModelos);
+            this.PnlFondo.Controls.Add(this.DgvModelos);
+            this.PnlFondo.Controls.Add(this.lblIDModelos);
             this.PnlFondo.Controls.Add(this.btnVolver);
             this.PnlFondo.Controls.Add(this.btnRegistrar);
             this.PnlFondo.Controls.Add(this.PnCaja);
             this.PnlFondo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PnlFondo.Location = new System.Drawing.Point(1, 2);
+            this.PnlFondo.Location = new System.Drawing.Point(0, 2);
             this.PnlFondo.Name = "PnlFondo";
             this.PnlFondo.Size = new System.Drawing.Size(1178, 718);
-            this.PnlFondo.TabIndex = 21;
+            this.PnlFondo.TabIndex = 23;
             // 
-            // lblIngresaTipoDispositivo
+            // cmbMarcas
             // 
-            this.lblIngresaTipoDispositivo.AutoSize = true;
-            this.lblIngresaTipoDispositivo.Location = new System.Drawing.Point(60, 441);
-            this.lblIngresaTipoDispositivo.Name = "lblIngresaTipoDispositivo";
-            this.lblIngresaTipoDispositivo.Size = new System.Drawing.Size(300, 23);
-            this.lblIngresaTipoDispositivo.TabIndex = 39;
-            this.lblIngresaTipoDispositivo.Text = "Ingresa el tipo de dispositivo: ";
+            this.cmbMarcas.FormattingEnabled = true;
+            this.cmbMarcas.Location = new System.Drawing.Point(392, 414);
+            this.cmbMarcas.Name = "cmbMarcas";
+            this.cmbMarcas.Size = new System.Drawing.Size(249, 31);
+            this.cmbMarcas.TabIndex = 42;
+            this.cmbMarcas.SelectedIndexChanged += new System.EventHandler(this.cmbMarcas_SelectedIndexChanged);
             // 
-            // txtTipoDispositivo
+            // LblIngresMarca
             // 
-            this.txtTipoDispositivo.Location = new System.Drawing.Point(408, 441);
-            this.txtTipoDispositivo.Name = "txtTipoDispositivo";
-            this.txtTipoDispositivo.Size = new System.Drawing.Size(249, 31);
-            this.txtTipoDispositivo.TabIndex = 26;
-            this.txtTipoDispositivo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTipoDispositivo_KeyPress);
+            this.LblIngresMarca.AutoSize = true;
+            this.LblIngresMarca.Location = new System.Drawing.Point(199, 422);
+            this.LblIngresMarca.Name = "LblIngresMarca";
+            this.LblIngresMarca.Size = new System.Drawing.Size(176, 23);
+            this.LblIngresMarca.TabIndex = 40;
+            this.LblIngresMarca.Text = "Escoje la marca: ";
             // 
-            // DgvTipoDispositivo
+            // lblIngresaNuevoModelo
             // 
-            this.DgvTipoDispositivo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvTipoDispositivo.Location = new System.Drawing.Point(13, 13);
-            this.DgvTipoDispositivo.Name = "DgvTipoDispositivo";
-            this.DgvTipoDispositivo.ReadOnly = true;
-            this.DgvTipoDispositivo.RowHeadersWidth = 51;
-            this.DgvTipoDispositivo.RowTemplate.Height = 24;
-            this.DgvTipoDispositivo.Size = new System.Drawing.Size(1144, 259);
-            this.DgvTipoDispositivo.TabIndex = 38;
-            this.DgvTipoDispositivo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvTipoDispositivo_CellClick);
+            this.lblIngresaNuevoModelo.AutoSize = true;
+            this.lblIngresaNuevoModelo.Location = new System.Drawing.Point(111, 354);
+            this.lblIngresaNuevoModelo.Name = "lblIngresaNuevoModelo";
+            this.lblIngresaNuevoModelo.Size = new System.Drawing.Size(257, 23);
+            this.lblIngresaNuevoModelo.TabIndex = 39;
+            this.lblIngresaNuevoModelo.Text = "Ingresa el Nuevo modelo:";
             // 
-            // lblIDTipoDispositivo
+            // txtModelos
             // 
-            this.lblIDTipoDispositivo.AutoSize = true;
-            this.lblIDTipoDispositivo.Location = new System.Drawing.Point(529, 275);
-            this.lblIDTipoDispositivo.Name = "lblIDTipoDispositivo";
-            this.lblIDTipoDispositivo.Size = new System.Drawing.Size(183, 23);
-            this.lblIDTipoDispositivo.TabIndex = 37;
-            this.lblIDTipoDispositivo.Text = "lblTipoDispositivo";
-            this.lblIDTipoDispositivo.Visible = false;
+            this.txtModelos.Location = new System.Drawing.Point(392, 346);
+            this.txtModelos.Name = "txtModelos";
+            this.txtModelos.Size = new System.Drawing.Size(249, 31);
+            this.txtModelos.TabIndex = 26;
+            // 
+            // DgvModelos
+            // 
+            this.DgvModelos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvModelos.Location = new System.Drawing.Point(13, 13);
+            this.DgvModelos.Name = "DgvModelos";
+            this.DgvModelos.ReadOnly = true;
+            this.DgvModelos.RowHeadersWidth = 51;
+            this.DgvModelos.RowTemplate.Height = 24;
+            this.DgvModelos.Size = new System.Drawing.Size(1144, 259);
+            this.DgvModelos.TabIndex = 38;
+            this.DgvModelos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvMarcas_CellClick);
+            // 
+            // lblIDModelos
+            // 
+            this.lblIDModelos.AutoSize = true;
+            this.lblIDModelos.Location = new System.Drawing.Point(529, 275);
+            this.lblIDModelos.Name = "lblIDModelos";
+            this.lblIDModelos.Size = new System.Drawing.Size(141, 23);
+            this.lblIDModelos.TabIndex = 37;
+            this.lblIDModelos.Text = "LblIdModelos";
+            this.lblIDModelos.Visible = false;
             // 
             // btnVolver
             // 
@@ -181,19 +202,19 @@
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // frmTipoDispositivo
+            // frmModelos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1179, 721);
+            this.ClientSize = new System.Drawing.Size(1180, 721);
             this.Controls.Add(this.PnlFondo);
-            this.Name = "frmTipoDispositivo";
+            this.Name = "frmModelos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmTipoDispositivo";
-            this.Load += new System.EventHandler(this.frmTipoDispositivo_Load);
+            this.Text = "frmModelos";
+            this.Load += new System.EventHandler(this.frmModelos_Load);
             this.PnlFondo.ResumeLayout(false);
             this.PnlFondo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvTipoDispositivo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvModelos)).EndInit();
             this.PnCaja.ResumeLayout(false);
             this.PnCaja.PerformLayout();
             this.ResumeLayout(false);
@@ -203,8 +224,11 @@
         #endregion
 
         private System.Windows.Forms.Panel PnlFondo;
-        private System.Windows.Forms.DataGridView DgvTipoDispositivo;
-        private System.Windows.Forms.Label lblIDTipoDispositivo;
+        private System.Windows.Forms.Label LblIngresMarca;
+        private System.Windows.Forms.Label lblIngresaNuevoModelo;
+        private System.Windows.Forms.TextBox txtModelos;
+        private System.Windows.Forms.DataGridView DgvModelos;
+        private System.Windows.Forms.Label lblIDModelos;
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.Panel PnCaja;
@@ -212,7 +236,6 @@
         private System.Windows.Forms.Label lblBuscar;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Label lblIngresaTipoDispositivo;
-        private System.Windows.Forms.TextBox txtTipoDispositivo;
+        private System.Windows.Forms.ComboBox cmbMarcas;
     }
 }

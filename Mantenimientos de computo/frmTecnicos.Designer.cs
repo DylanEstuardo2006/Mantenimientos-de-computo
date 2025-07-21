@@ -56,6 +56,11 @@
             this.TlpTxtNombreTecnico = new System.Windows.Forms.ToolTip(this.components);
             this.TlpRegistrar = new System.Windows.Forms.ToolTip(this.components);
             this.TlpBuscar = new System.Windows.Forms.ToolTip(this.components);
+            this.TlpApellidoPaterno = new System.Windows.Forms.ToolTip(this.components);
+            this.TlpApellidoMaterno = new System.Windows.Forms.ToolTip(this.components);
+            this.TlpTelefono = new System.Windows.Forms.ToolTip(this.components);
+            this.TlpEmail = new System.Windows.Forms.ToolTip(this.components);
+            this.TlpContrasenia = new System.Windows.Forms.ToolTip(this.components);
             this.PnlFondo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvTecnicos)).BeginInit();
             this.PnCaja.SuspendLayout();
@@ -120,6 +125,7 @@
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = false;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            this.btnVolver.MouseEnter += new System.EventHandler(this.btnVolver_MouseEnter);
             // 
             // txtContrasenia
             // 
@@ -284,6 +290,7 @@
             this.btnActualizar.Text = "Actualizar ";
             this.btnActualizar.UseVisualStyleBackColor = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            this.btnActualizar.MouseEnter += new System.EventHandler(this.btnActualizar_MouseEnter);
             // 
             // btnEliminar
             // 
@@ -347,5 +354,10 @@
         private System.Windows.Forms.ToolTip TlpTxtNombreTecnico;
         private System.Windows.Forms.ToolTip TlpRegistrar;
         private System.Windows.Forms.ToolTip TlpBuscar;
+        private System.Windows.Forms.ToolTip TlpApellidoPaterno;
+        private System.Windows.Forms.ToolTip TlpApellidoMaterno;
+        private System.Windows.Forms.ToolTip TlpTelefono;
+        private System.Windows.Forms.ToolTip TlpEmail;
+        private System.Windows.Forms.ToolTip TlpContrasenia;
     }
 }

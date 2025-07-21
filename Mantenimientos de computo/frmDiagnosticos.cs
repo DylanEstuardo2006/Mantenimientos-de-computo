@@ -27,6 +27,10 @@ namespace Mantenimientos_de_computo
             this.FormBorderStyle = FormBorderStyle.FixedSingle; // <--- Con este metodo le quitamos al usuario la capacidad de mover conn el cursor el form 
             this.MaximizeBox = false; // <--- Quitamos la capacidad de hacerlo a tamaño completo la pantalla el form 
             cargaDatos();   // <--- Cargamos los datos 
+            DgvDiagnosticos.EnableHeadersVisualStyles = false; // Necesario para que se apliquen los estilos personalizados
+            DgvDiagnosticos.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(47, 65, 86);
+            DgvDiagnosticos.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+        
         }
         private void btnVolver_Click(object sender, EventArgs e) //
         {
@@ -64,7 +68,7 @@ namespace Mantenimientos_de_computo
 
                 DgvDiagnosticos.DataSource = dataTable; 
 
-                DgvDiagnosticos.Columns["Id_diagnostico"].Visible = false;
+                DgvDiagnosticos.Columns["Id_diagnostico"].Visible = true;
                 DgvDiagnosticos.Columns["Estado"].Visible = false; // <--- Ocultamos la columna de Estado por seguridad   
                 DgvDiagnosticos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -129,11 +133,23 @@ namespace Mantenimientos_de_computo
                 }
                 else
                 {
-                    conexion = new clsConexion();
-                    MySqlConnection conn = conexion.getConnection(); //<--- Obtiene el metodo Conexion 
+               conexion = new clsConexion();
+               MySqlConnection conn = conexion.getConnection(); //<--- Obtiene el metodo Conexion 
 
-                    //Insertar los valores 
-                    string consulta = "INSERT INTO diagnostico (Fecha_diagnostico,Resumen_diagnostico,Id_tecnico,Id_tipomantenimiento,Id_ejemplar,Estado)" +
+                string consultaValidacion = "SELECT COUNT(*) FROM ejemplar WHERE Id_ejemplar = @Id_ejemplar AND Estado = 1";
+                MySqlCommand validarCmd = new MySqlCommand(consultaValidacion, conn);
+                validarCmd.Parameters.AddWithValue("@Id_ejemplar", IdEjemplar);
+
+                int existe = Convert.ToInt32(validarCmd.ExecuteScalar());
+
+                if (existe == 0)
+                {
+                    MessageBox.Show("El ID del Ejemplar no existe. No existe en la base de datos");
+                    conn.Close();
+                    return;
+                }
+                //Insertar los valores 
+                string consulta = "INSERT INTO diagnostico (Fecha_diagnostico,Resumen_diagnostico,Id_tecnico,Id_tipomantenimiento,Id_ejemplar,Estado)" +
                       "VALUES (@Fecha_diagnostico,@Resumen_diagnostico,@Id_tecnico,@Id_tipomantenimiento,@Id_ejemplar,@Estado)";
 
                     MySqlCommand command = new MySqlCommand(consulta, conn); //<----Command 
@@ -195,7 +211,7 @@ namespace Mantenimientos_de_computo
 
             adapter.Fill(table);
             DgvDiagnosticos.DataSource = table;
-            DgvDiagnosticos.Columns["Id_diagnostico"].Visible = false;
+            DgvDiagnosticos.Columns["Id_diagnostico"].Visible = true;
             con.Close();
         }
 

@@ -53,49 +53,10 @@ namespace Mantenimientos_de_computo
             if (Audios.Accesibilidad)
             {
                 sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
-                sintetizador.SpeakAsync("Esta sobre el Despegable Dispositivos que muestra la información de los dispositivos");
+                sintetizador.SpeakAsync("Esta sobre el Despegable Detalles que muestra el despegable con los formularios de los dispositivos");
             }
         }
 
-        
-
-        // BtnTecncios click, oculta el formulario de MenuPrincipal y muestra el de Tecnicos
-        private void btnTecnicos_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            frmTecnicos principal = new frmTecnicos();
-            principal.Show();
-        }
-        //Btn Tecnicos Click, Con este botón si un usuario activo previamente el botón de audio le saldra audios cada vez que pase 
-        //el cursor arriba de el. 
-        private void btnTecnicos_MouseEnter(object sender, EventArgs e)
-        {
-            if(Audios.Accesibilidad)
-            {
-                sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
-                sintetizador.SpeakAsync("Esta sobre el botón tecnicos");
-            }
-
-        } 
-
-
-        private void btnMantenimiento_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            frmTecnicos principal = new frmTecnicos();
-            principal.Show();
-        }
-
-        // BtnTecncios click, oculta el formulario de MenuPrincipal y muestra el de Tecnicos
-        private void btnDiagnostico_Click(object sender, EventArgs e)
-        {
-            
-            this.Close();
-            frmDiagnosticos principal = new frmDiagnosticos();
-            principal.Show();
-        }
-        //Btn Diagnosticos Enter, Con este botón si un usuario activo previamente el botón de audio le saldra audios cada vez que pase 
-        //el cursor arriba de el. 
         private void btnDiagnostico_MouseEnter(object sender, EventArgs e)
         {
             if (Audios.Accesibilidad)
@@ -104,12 +65,13 @@ namespace Mantenimientos_de_computo
                 sintetizador.SpeakAsync("Esta sobre el botón Diagnosticos");
             }
         }
-
-        private void btnTipoDispositivo_Click(object sender, EventArgs e)
+        private void btnTecnicos_MouseEnter(object sender, EventArgs e)
         {
-            this.Close();
-            frmTipoDispositivo principal = new frmTipoDispositivo();
-            principal.Show();
+            if(Audios.Accesibilidad)
+            {
+                sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
+                sintetizador.SpeakAsync("Esta sobre el botón tecnicos");
+            }
         }
         private void btnTipoDispositivo_MouseEnter(object sender, EventArgs e)
         {
@@ -118,8 +80,114 @@ namespace Mantenimientos_de_computo
                 sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
                 sintetizador.SpeakAsync("Esta sobre el botón Tipo Dispositivo");
             }
+        }
+
+        private void btnMarca_MouseEnter(object sender, EventArgs e)
+        {
+            if (Audios.Accesibilidad)
+            {
+                sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
+                sintetizador.SpeakAsync("Esta sobre el botón de Marcas");
+            }
+        }
+        private void btnMantenimiento_MouseEnter(object sender, EventArgs e)
+        {
+            if (Audios.Accesibilidad)
+            {
+                sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
+                sintetizador.SpeakAsync("Esta sobre el botón Mantenimiento");
+            }
+        }
+        private void btnLaboratorio_MouseEnter(object sender, EventArgs e)
+        {
+            if (Audios.Accesibilidad)
+            {
+                sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
+                sintetizador.SpeakAsync("Esta sobre el botón de Laboratorio");
+            }
+        }
+
+        private void btnHistorial_MouseEnter(object sender, EventArgs e)
+        {
+            if (Audios.Accesibilidad)
+            {
+                sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
+                sintetizador.SpeakAsync("Esta sobre el botón Historial");
+            }
+        }
+        private void btnModelo_MouseEnter(object sender, EventArgs e)
+        {
+            if (Audios.Accesibilidad)
+            {
+                sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
+                sintetizador.SpeakAsync("Esta sobre el botón Modelo");
+            }
+        }
+
+
+
+        private void btnTecnicos_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frmTecnicos principal = new frmTecnicos();
+            principal.Show();
+        }
+        private void btnMantenimiento_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmMantenimiento principal = new frmMantenimiento();
+            principal.Show();
+        }
+        private void btnMarca_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frmMarcas principal = new frmMarcas();
+            principal.Show(); // <--- Cierra el formulario MenuPrincipal y abre el formulario frmMarcas
+        }
+        // BtnTecncios click, oculta el formulario de MenuPrincipal y muestra el de Tecnicos
+        private void btnDiagnostico_Click(object sender, EventArgs e)
+        {
+            
+            this.Close();
+            frmDiagnosticos principal = new frmDiagnosticos();
+            principal.Show();
+        }
+       
+        private void btnTipoDispositivo_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frmTipoDispositivo principal = new frmTipoDispositivo();
+            principal.Show();
+        }
+        private void btnModelo_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frmModelos principal = new frmModelos();
+            principal.Show(); // <--- Cierra el formulario MenuPrincipal y abre el formulario frmModelos
+        }
+        private void btnLaboratorio_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frmLaboratorios principal = new frmLaboratorios();
+            principal.Show();
+        }
+        private void btnHistorial_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frmHistorial principal = new frmHistorial();
+            principal.Show(); // <--- Cierra el formulario MenuPrincipal y abre el formulario frmHistorial
+        }
+        private void btnDetalles_Click(object sender, EventArgs e)
+        {
+            this.Close(); // <--- Cierra el formulario MenuPrincipal
+            frmDetalles principal = new frmDetalles(); // <--- Creamos una instancia del form frmTipoDispositivo  
+            principal.Show();
+        }
+        private void btnEjemplar_Click(object sender, EventArgs e)
+        {
 
         }
+
 
         private void PbxSonido_MouseEnter(object sender, EventArgs e)
         {
@@ -141,30 +209,23 @@ namespace Mantenimientos_de_computo
         {
             Audios.Accesibilidad = !Audios.Accesibilidad; // <--- Llamamos al metodo Audio de la clase Audios para activar los botones con audio
             sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
+           
             if(Audios.Accesibilidad)
             {
-                sintetizador.SpeakAsync("Usted ha desactivado los botones con audio");
+                sintetizador.SpeakAsync("Usted ha activado los botones con audio");
+                
             }
             else
             {
-                sintetizador.SpeakAsync("Usted ha activado los botones con audio");
+                sintetizador.SpeakAsync("Usted ha desactivado los botones con audio");
             }
-           
-            
+             
         }
-
-        private void btnDetalles_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void btnEjemplar_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
          Application.Exit(); // <--- Cierra el formulario MenuPrincipal
         }
+
+       
     }
 }

@@ -79,7 +79,7 @@
             this.btnDispositivos.Name = "btnDispositivos";
             this.btnDispositivos.Size = new System.Drawing.Size(162, 54);
             this.btnDispositivos.TabIndex = 11;
-            this.btnDispositivos.Text = "Dispositivo";
+            this.btnDispositivos.Text = "Detalles";
             this.btnDispositivos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDispositivos.UseVisualStyleBackColor = false;
             this.btnDispositivos.Click += new System.EventHandler(this.btnDispositivos_Click);
@@ -96,6 +96,8 @@
             this.btnLaboratorio.TabIndex = 10;
             this.btnLaboratorio.Text = "Laboratorio";
             this.btnLaboratorio.UseVisualStyleBackColor = false;
+            this.btnLaboratorio.Click += new System.EventHandler(this.btnLaboratorio_Click);
+            this.btnLaboratorio.MouseEnter += new System.EventHandler(this.btnLaboratorio_MouseEnter);
             // 
             // btnTecnicos
             // 
@@ -122,6 +124,8 @@
             this.btnHistorial.TabIndex = 8;
             this.btnHistorial.Text = "Historial";
             this.btnHistorial.UseVisualStyleBackColor = false;
+            this.btnHistorial.Click += new System.EventHandler(this.btnHistorial_Click);
+            this.btnHistorial.MouseEnter += new System.EventHandler(this.btnHistorial_MouseEnter);
             // 
             // btnMantenimiento
             // 
@@ -135,6 +139,7 @@
             this.btnMantenimiento.Text = "Mantenimiento";
             this.btnMantenimiento.UseVisualStyleBackColor = false;
             this.btnMantenimiento.Click += new System.EventHandler(this.btnMantenimiento_Click);
+            this.btnMantenimiento.MouseEnter += new System.EventHandler(this.btnMantenimiento_MouseEnter);
             // 
             // btnDiagnostico
             // 
@@ -159,7 +164,7 @@
             this.btnDetalles.Name = "btnDetalles";
             this.btnDetalles.Size = new System.Drawing.Size(162, 54);
             this.btnDetalles.TabIndex = 12;
-            this.btnDetalles.Text = "Detalles ";
+            this.btnDetalles.Text = "Dispositivo";
             this.btnDetalles.UseVisualStyleBackColor = false;
             this.btnDetalles.Click += new System.EventHandler(this.btnDetalles_Click);
             // 
@@ -188,6 +193,8 @@
             this.btnMarca.TabIndex = 15;
             this.btnMarca.Text = "Marca";
             this.btnMarca.UseVisualStyleBackColor = false;
+            this.btnMarca.Click += new System.EventHandler(this.btnMarca_Click);
+            this.btnMarca.MouseEnter += new System.EventHandler(this.btnMarca_MouseEnter);
             // 
             // PalDespegableDispositivos
             // 
@@ -227,6 +234,8 @@
             this.btnModelo.TabIndex = 16;
             this.btnModelo.Text = "Modelo";
             this.btnModelo.UseVisualStyleBackColor = false;
+            this.btnModelo.Click += new System.EventHandler(this.btnModelo_Click);
+            this.btnModelo.MouseEnter += new System.EventHandler(this.btnModelo_MouseEnter);
             // 
             // btnSalir
             // 

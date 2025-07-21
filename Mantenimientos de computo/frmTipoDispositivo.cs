@@ -26,6 +26,10 @@ namespace Mantenimientos_de_computo
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             cargarDatos();
+            DgvTipoDispositivo.EnableHeadersVisualStyles = false; // Necesario para que se apliquen los estilos personalizados
+            DgvTipoDispositivo.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(47, 65, 86);
+            DgvTipoDispositivo.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            DgvTipoDispositivo.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold); // Fuente opcional
         }
         private void cargarDatos()
         {
@@ -38,7 +42,7 @@ namespace Mantenimientos_de_computo
             {
                 //Creamos la consulta 
 
-                string consulta = "SELECT tipodispositivo.Id_tipodispositivo,tipodispositivo.Tipodispositivo FROM tipodispositivo where Estado = 1";
+                string consulta = "SELECT tipodispositivo.Id_tipodispositivo,tipodispositivo.Tipodispositivo,tipodispositivo.Estado FROM tipodispositivo where Estado = 1";
 
                 //Creamos un adaptador 
 
@@ -53,7 +57,7 @@ namespace Mantenimientos_de_computo
 
                 DgvTipoDispositivo.DataSource = dataTable;
 
-                DgvTipoDispositivo.Columns["Id_tipodispositivo"].Visible = false;
+                DgvTipoDispositivo.Columns["Id_tipodispositivo"].Visible = false; // <--- Ocultamos la columna de ID por seguridad
                 DgvTipoDispositivo.Columns["Estado"].Visible = false; // <--- Ocultamos la columna de Estado por seguridad   
                 DgvTipoDispositivo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
@@ -117,8 +121,8 @@ namespace Mantenimientos_de_computo
                 return; // <--- Si no hay un tecnico seleccionado, se sale del metodo
             }
             //En este apartado obtenemos los datos de las cajas de texto 
-            int IdTecnico = Convert.ToInt32(lblIDTipoDispositivo.Text);
-            string TipoDispositivo = lblIDTipoDispositivo.Text;
+            int IdTipoDispositivo = Convert.ToInt32(lblIDTipoDispositivo.Text);
+            string TipoDispositivo = txtTipoDispositivo.Text;
 
             conexion = new clsConexion();
             MySqlConnection con = conexion.getConnection(); //<--- Obtiene el metodo Conexion
@@ -133,10 +137,10 @@ namespace Mantenimientos_de_computo
             else
             {
                 //Actualizamos los datos del tecnico 
-                consulta = "UPDATE tipodispositivo SET Tipodispositivo = @Tipodispositivo WHERE Id_tipodispositivo = @Id_tipodispositivo";
+                consulta = "UPDATE tipodispositivo SET Tipodispositivo =@Tipodispositivo WHERE Id_tipodispositivo = @Id_tipodispositivo";
                 command = new MySqlCommand(consulta, con);
                 command.Parameters.AddWithValue("@Tipodispositivo", TipoDispositivo);
-                command.Parameters.AddWithValue("@Id_tipodispositivo", IdTecnico);
+                command.Parameters.AddWithValue("@Id_tipodispositivo", IdTipoDispositivo);
                 int filasAfectadas = command.ExecuteNonQuery();
                 con.Close();
                 if (filasAfectadas > 0) //<--- Verificación que se haya echo correctamente
@@ -155,48 +159,61 @@ namespace Mantenimientos_de_computo
             if (e.RowIndex >= 0) // <--- Verificamos que la fila seleccionada sea valida
             {
                 DataGridViewRow row = DgvTipoDispositivo.Rows[e.RowIndex]; // <--- Obtenemos la fila seleccionada
+              
                 lblIDTipoDispositivo.Text = row.Cells["Id_tipodispositivo"].Value.ToString(); // <--- Obtenemos el ID del tecnico seleccionado
                 txtTipoDispositivo.Text = row.Cells["Tipodispositivo"].Value.ToString(); // <--- Obtenemos el nombre del tecnico seleccionado
             }
         }
         private void txtBusqueda_TextChanged(object sender, EventArgs e)
         {
-            string filtro = txtBusqueda.Text; // <--- Obtenemos el texto de la caja de busqueda
+           string Filtro = txtBusqueda.Text;    
             conexion = new clsConexion();
+
             MySqlConnection con = conexion.getConnection(); // <--- Obtiene el metodo Conexion
-            if (con != null)
-            {
-                string consulta = "SELECT tipodispositivo.Id_tipodispositivo,tipodispositivo.Tipodispositivo FROM tipodispositivo WHERE Estado = 1 AND Tipodispositivo LIKE @Busqueda"; // <--- Consulta para buscar por nombre
-                MySqlCommand command = new MySqlCommand(consulta, con);
-                command.Parameters.AddWithValue("@Busqueda", "%" + txtBusqueda.Text + "%"); // <--- Agrega el parametro de busqueda
-                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-                DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
-                DgvTipoDispositivo.DataSource = dataTable;
-                DgvTipoDispositivo.Columns["Id_tipodispositivo"].Visible = false; // <--- Ocultamos la columna de ID por seguridad
-                DgvTipoDispositivo.Columns["Estado"].Visible = false; // <--- Ocultamos la columna de Estado por seguridad
-                DgvTipoDispositivo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            }
-            else
-            {
-                MessageBox.Show("Error al conectar");
-            }
+
+            string consulta = "SELECT tipodispositivo.Id_tipodispositivo,tipodispositivo.Tipodispositivo From tipodispositivo Where (tipodispositivo.Tipodispositivo LIKE @busqueda) AND tipodispositivo.Estado = 1";
+          
+            MySqlCommand command = new MySqlCommand(consulta, con);
+            command.Parameters.AddWithValue("@busqueda", "%" + Filtro + "%");
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+            DataTable table = new DataTable();
+
+            adapter.Fill(table);
+
+            DgvTipoDispositivo.DataSource = table; // <--- Asignamos el datatable al souce del datagrid
+            DgvTipoDispositivo.Columns["Id_tipodispositivo"].Visible = false; // <--- Ocultamos la columna de ID por seguridad
+            con.Close(); // <--- Cerramos la conexion
+
         }
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            string Estado = "0"; // <--- Constante que permite Poner el estado de el tecnico como eliminado
+           
             if (string.IsNullOrWhiteSpace(lblIDTipoDispositivo.Text)) // <--- Verificamos que se haya seleccionado un tecnico
             {
                 MessageBox.Show("Porfavor seleccione un tecnico de la tabla para eliminarlo");
                 return; // <--- Si no hay un tecnico seleccionado, se sale del metodo
             }
-            int IdTecnico = Convert.ToInt32(lblIDTipoDispositivo.Text); // <--- Obtenemos el ID del tecnico seleccionado
+            int IdTipoDispositivo = Convert.ToInt32(lblIDTipoDispositivo.Text); // <--- Obtenemos el ID del tecnico seleccionado
+            string TipoDispositivo = txtTipoDispositivo.Text;
+            string Estado = "0"; // <--- Constante que permite Poner el estado de el tecnico como eliminado
+            
+            DialogResult result = MessageBox.Show("En verdad quieres eliminar el registro de : " + TipoDispositivo + "?"
+                    , "Eliminar", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
             conexion = new clsConexion();
             MySqlConnection con = conexion.getConnection(); // <--- Obtiene el metodo Conexion
-            string consulta = "UPDATE tipodispositivo SET Estado=@Estado WHERE Id_tipodispositivo = @Id_tipodispositivo"; // <--- Consulta para eliminar el tecnico
+           
+            string consulta = "update tipodispositivo set Estado=@Estado WHERE Id_tipodispositivo =@Id_tipodispositivo"; // <--- Consulta para eliminar el tecnico
             MySqlCommand command = new MySqlCommand(consulta, con);
+
             command.Parameters.AddWithValue("@Estado", Estado); // <--- Cambiamos el estado del tecnico a 0 para eliminarlo
-            command.Parameters.AddWithValue("@Id_tipodispositivo", IdTecnico);
+            command.Parameters.AddWithValue("@Id_tipodispositivo", IdTipoDispositivo);
             int filasAfectadas = command.ExecuteNonQuery();
             con.Close();
             if (filasAfectadas > 0) // <--- Verificación que se haya echo correctamente
@@ -212,6 +229,12 @@ namespace Mantenimientos_de_computo
             }
         }
 
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close(); // <--- Cierra el formulario actual y vuelve al formulario anterior
+            MenuPrincipal principal = new MenuPrincipal(); // <--- Crea una nueva instancia del formulario MenuPrincipal
+            principal.Show(); // <--- Muestra el formulario MenuPrincipal
+        }
     }
 }
 

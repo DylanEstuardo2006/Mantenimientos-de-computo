@@ -31,7 +31,11 @@ namespace Mantenimientos_de_computo
             TlpRegistrar.SetToolTip(btnRegistrar, "Este boton permite registrar nuevos técnicos");
             TlpTxtNombreTecnico.SetToolTip(txtNombreTecnico, "En esta caja de texto se ingresa los nombre de los nuevos tecnicos ");
             TlpBuscar.SetToolTip(txtBusqueda, "Escribe en la caja de texto y mostrara los datos que coincidan");
-            
+            TlpApellidoPaterno.SetToolTip(txtApellidoPaterno, "En esta caja de texto se ingresa el apellido paterno del tecnico");
+            TlpApellidoMaterno.SetToolTip(txtApellidoMaterno, "En esta caja de texto se ingresa el apellido materno del tecnico");
+            TlpTelefono.SetToolTip(txtNumeroTelefono, "En esta caja de texto se ingresa el numero de telefono del tecnico");
+            TlpEmail.SetToolTip(txtEmail, "En esta caja de texto se ingresa el email del tecnico");
+            TlpContrasenia.SetToolTip(txtContrasenia, "En esta caja de texto se ingresa la contraseña del tecnico, maximo 10 caracteres");
         }
 
         private void frmTecnicos_Load(object sender, EventArgs e)
@@ -39,8 +43,11 @@ namespace Mantenimientos_de_computo
             this.FormBorderStyle = FormBorderStyle.FixedSingle; // <--- Con este metodo le quitamos al usuario la capacidad de mover conn el cursor el form 
             this.MaximizeBox = false; // <--- Quitamos la capacidad de hacerlo a tamaño completo la pantalla el form 
             cargaDatos();   // <--- Cargamos los datos 
+            DgvTecnicos.EnableHeadersVisualStyles = false; // Necesario para que se apliquen los estilos personalizados
+            DgvTecnicos.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(47,65,86);
+            DgvTecnicos.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            DgvTecnicos.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold); // Fuente opcional
         }
-
         private void btnVolver_Click(object sender, EventArgs e) //
         {
             this.Hide();
@@ -135,9 +142,26 @@ namespace Mantenimientos_de_computo
             if (Audios.Accesibilidad)
             {
                 sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
-                sintetizador.SpeakAsync("Esta sobre el Eliminar, que permite eliminar un registro nuevo");
+                sintetizador.SpeakAsync("Esta sobre el botón Eliminar, que permite eliminar un registro nuevo");
             }
         }
+        private void btnActualizar_MouseEnter(object sender, EventArgs e)
+        {
+            if (Audios.Accesibilidad)
+            {
+                sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
+                sintetizador.SpeakAsync("Esta sobre el botón Actualizar, que permite actualizar un registro nuevo");
+            }
+        }
+        private void btnVolver_MouseEnter(object sender, EventArgs e)
+        {
+            if (Audios.Accesibilidad)
+            {
+                sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
+                sintetizador.SpeakAsync("Esta sobre el botón Volver, permite actualizar volver al menú principal");
+            }
+        }
+
 
         // Registro de usuarios 
 
@@ -414,6 +438,6 @@ namespace Mantenimientos_de_computo
           
         }
 
-       
+        
     }
 }
