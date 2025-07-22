@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlFondo = new System.Windows.Forms.Panel();
+            this.cmbDispositivo = new System.Windows.Forms.ComboBox();
             this.LblEscojeLaboratorio = new System.Windows.Forms.Label();
             this.txtNombreInventario = new System.Windows.Forms.TextBox();
             this.lblNombreInventario = new System.Windows.Forms.Label();
@@ -40,12 +41,11 @@
             this.txtNumeroInventario = new System.Windows.Forms.TextBox();
             this.lblNoInventario = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.lblIdDispositivo = new System.Windows.Forms.Label();
-            this.cmbDispositivo = new System.Windows.Forms.ComboBox();
-            this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.pnlFondo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvEjemplares)).BeginInit();
             this.panel2.SuspendLayout();
@@ -73,6 +73,14 @@
             this.pnlFondo.Size = new System.Drawing.Size(1178, 718);
             this.pnlFondo.TabIndex = 22;
             // 
+            // cmbDispositivo
+            // 
+            this.cmbDispositivo.FormattingEnabled = true;
+            this.cmbDispositivo.Location = new System.Drawing.Point(392, 380);
+            this.cmbDispositivo.Name = "cmbDispositivo";
+            this.cmbDispositivo.Size = new System.Drawing.Size(249, 31);
+            this.cmbDispositivo.TabIndex = 47;
+            // 
             // LblEscojeLaboratorio
             // 
             this.LblEscojeLaboratorio.AutoSize = true;
@@ -85,7 +93,7 @@
             // txtNombreInventario
             // 
             this.txtNombreInventario.Location = new System.Drawing.Point(392, 491);
-            this.txtNombreInventario.MaxLength = 10;
+            this.txtNombreInventario.MaxLength = 20;
             this.txtNombreInventario.Name = "txtNombreInventario";
             this.txtNombreInventario.Size = new System.Drawing.Size(249, 31);
             this.txtNombreInventario.TabIndex = 45;
@@ -160,7 +168,7 @@
             // txtNumeroInventario
             // 
             this.txtNumeroInventario.Location = new System.Drawing.Point(392, 430);
-            this.txtNumeroInventario.MaxLength = 10;
+            this.txtNumeroInventario.MaxLength = 20;
             this.txtNumeroInventario.Name = "txtNumeroInventario";
             this.txtNumeroInventario.Size = new System.Drawing.Size(249, 31);
             this.txtNumeroInventario.TabIndex = 28;
@@ -186,6 +194,15 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(431, 318);
             this.panel2.TabIndex = 20;
+            // 
+            // txtBusqueda
+            // 
+            this.txtBusqueda.Location = new System.Drawing.Point(114, 155);
+            this.txtBusqueda.MaxLength = 10;
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(249, 31);
+            this.txtBusqueda.TabIndex = 48;
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
             // 
             // label3
             // 
@@ -230,23 +247,6 @@
             this.lblIdDispositivo.Size = new System.Drawing.Size(225, 23);
             this.lblIdDispositivo.TabIndex = 43;
             this.lblIdDispositivo.Text = "Ingrese el Dispositivo:";
-            // 
-            // cmbDispositivo
-            // 
-            this.cmbDispositivo.FormattingEnabled = true;
-            this.cmbDispositivo.Location = new System.Drawing.Point(392, 380);
-            this.cmbDispositivo.Name = "cmbDispositivo";
-            this.cmbDispositivo.Size = new System.Drawing.Size(249, 31);
-            this.cmbDispositivo.TabIndex = 47;
-            // 
-            // txtBusqueda
-            // 
-            this.txtBusqueda.Location = new System.Drawing.Point(114, 155);
-            this.txtBusqueda.MaxLength = 10;
-            this.txtBusqueda.Name = "txtBusqueda";
-            this.txtBusqueda.Size = new System.Drawing.Size(249, 31);
-            this.txtBusqueda.TabIndex = 48;
-            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
             // 
             // frmEjemplares
             // 

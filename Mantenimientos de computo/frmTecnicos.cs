@@ -195,7 +195,7 @@ namespace Mantenimientos_de_computo
                 conexion = new clsConexion();
                 MySqlConnection conn = conexion.getConnection();
 
-                string consultaVerificar = "SELECT COUNT(*) FROM tenicos WHERE Email = @Email OR Telefono = @Telefono";
+                string consultaVerificar = "SELECT COUNT(*) FROM tecnicos WHERE Email = @Email OR Telefono = @Telefono";
                 MySqlCommand verificar = new MySqlCommand(consultaVerificar,conn);
 
                 verificar.Parameters.AddWithValue("@Email", Email);

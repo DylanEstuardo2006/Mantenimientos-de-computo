@@ -280,7 +280,7 @@
             // 
             this.lblMensajeQue.AutoSize = true;
             this.lblMensajeQue.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMensajeQue.Location = new System.Drawing.Point(344, 83);
+            this.lblMensajeQue.Location = new System.Drawing.Point(375, 83);
             this.lblMensajeQue.Name = "lblMensajeQue";
             this.lblMensajeQue.Size = new System.Drawing.Size(507, 34);
             this.lblMensajeQue.TabIndex = 18;
