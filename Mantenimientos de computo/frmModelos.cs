@@ -28,7 +28,7 @@ namespace Mantenimientos_de_computo
             DgvModelos.EnableHeadersVisualStyles = false; // Necesario para que se apliquen los estilos personalizados
             DgvModelos.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(47, 65, 86);
             DgvModelos.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            DgvModelos.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold); // Fuente opcional
+      
 
             cargaDatos();
             CargarMarcas();

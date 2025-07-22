@@ -131,6 +131,14 @@ namespace Mantenimientos_de_computo
                 sintetizador.SpeakAsync("Esta sobre el botón Detalles");
             }
         }
+        private void btnEjemplar_MouseEnter(object sender, EventArgs e)
+        {
+            if (Audios.Accesibilidad)
+            {
+                sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
+                sintetizador.SpeakAsync("Esta sobre el botón Ejemplar");
+            }
+        }
 
 
 
@@ -194,7 +202,9 @@ namespace Mantenimientos_de_computo
 
         private void btnEjemplar_Click(object sender, EventArgs e)
         {
-
+            this.Close();
+            frmEjemplares principal = new frmEjemplares();
+            principal.Show();
         }
 
 
@@ -235,6 +245,6 @@ namespace Mantenimientos_de_computo
          Application.Exit(); // <--- Cierra el formulario MenuPrincipal
         }
 
-       
+     
     }
 }

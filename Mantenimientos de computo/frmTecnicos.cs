@@ -139,10 +139,11 @@ namespace Mantenimientos_de_computo
         }
         private void btnEliminar_MouseEnter(object sender, EventArgs e)
         {
+
             if (Audios.Accesibilidad)
             {
                 sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
-                sintetizador.SpeakAsync("Esta sobre el botón Eliminar, que permite eliminar un registro nuevo");
+                sintetizador.SpeakAsync("Esta sobre el botón Eliminar");
             }
         }
         private void btnActualizar_MouseEnter(object sender, EventArgs e)
@@ -399,7 +400,7 @@ namespace Mantenimientos_de_computo
                     return;
                 }
                 conexion = new clsConexion();
-            MySqlConnection con = conexion.getConnection();
+                MySqlConnection con = conexion.getConnection();
 
           
                 string consulta;

@@ -223,6 +223,7 @@
             this.btnEjemplar.Text = "Ejemplares";
             this.btnEjemplar.UseVisualStyleBackColor = false;
             this.btnEjemplar.Click += new System.EventHandler(this.btnEjemplar_Click);
+            this.btnEjemplar.MouseEnter += new System.EventHandler(this.btnEjemplar_MouseEnter);
             // 
             // btnModelo
             // 

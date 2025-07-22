@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.PnlFondo = new System.Windows.Forms.Panel();
+            this.cmbEjemplar = new System.Windows.Forms.ComboBox();
             this.lblTecnico = new System.Windows.Forms.Label();
             this.RtbResumenDiagnostico = new System.Windows.Forms.RichTextBox();
             this.cmbTipoMantenimiento = new System.Windows.Forms.ComboBox();
@@ -40,8 +41,7 @@
             this.lblResumenDiagnostico = new System.Windows.Forms.Label();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.lblTipoMantenimiento = new System.Windows.Forms.Label();
-            this.txtIdEjemplar = new System.Windows.Forms.TextBox();
-            this.lblIdEjemplar = new System.Windows.Forms.Label();
+            this.lblEjemplar = new System.Windows.Forms.Label();
             this.lblFechaDiagnostico = new System.Windows.Forms.Label();
             this.PnCaja = new System.Windows.Forms.Panel();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
@@ -56,6 +56,7 @@
             // PnlFondo
             // 
             this.PnlFondo.BackColor = System.Drawing.Color.Bisque;
+            this.PnlFondo.Controls.Add(this.cmbEjemplar);
             this.PnlFondo.Controls.Add(this.lblTecnico);
             this.PnlFondo.Controls.Add(this.RtbResumenDiagnostico);
             this.PnlFondo.Controls.Add(this.cmbTipoMantenimiento);
@@ -67,8 +68,7 @@
             this.PnlFondo.Controls.Add(this.lblResumenDiagnostico);
             this.PnlFondo.Controls.Add(this.btnRegistrar);
             this.PnlFondo.Controls.Add(this.lblTipoMantenimiento);
-            this.PnlFondo.Controls.Add(this.txtIdEjemplar);
-            this.PnlFondo.Controls.Add(this.lblIdEjemplar);
+            this.PnlFondo.Controls.Add(this.lblEjemplar);
             this.PnlFondo.Controls.Add(this.lblFechaDiagnostico);
             this.PnlFondo.Controls.Add(this.PnCaja);
             this.PnlFondo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -77,10 +77,18 @@
             this.PnlFondo.Size = new System.Drawing.Size(1178, 718);
             this.PnlFondo.TabIndex = 20;
             // 
+            // cmbEjemplar
+            // 
+            this.cmbEjemplar.FormattingEnabled = true;
+            this.cmbEjemplar.Location = new System.Drawing.Point(395, 343);
+            this.cmbEjemplar.Name = "cmbEjemplar";
+            this.cmbEjemplar.Size = new System.Drawing.Size(249, 31);
+            this.cmbEjemplar.TabIndex = 44;
+            // 
             // lblTecnico
             // 
             this.lblTecnico.AutoSize = true;
-            this.lblTecnico.Location = new System.Drawing.Point(311, 383);
+            this.lblTecnico.Location = new System.Drawing.Point(311, 393);
             this.lblTecnico.Name = "lblTecnico";
             this.lblTecnico.Size = new System.Drawing.Size(94, 23);
             this.lblTecnico.TabIndex = 43;
@@ -106,7 +114,7 @@
             // cmbTecnico
             // 
             this.cmbTecnico.FormattingEnabled = true;
-            this.cmbTecnico.Location = new System.Drawing.Point(395, 380);
+            this.cmbTecnico.Location = new System.Drawing.Point(395, 388);
             this.cmbTecnico.Name = "cmbTecnico";
             this.cmbTecnico.Size = new System.Drawing.Size(249, 31);
             this.cmbTecnico.TabIndex = 40;
@@ -184,23 +192,14 @@
             this.lblTipoMantenimiento.TabIndex = 31;
             this.lblTipoMantenimiento.Text = "Tipo de Mantenimiento: ";
             // 
-            // txtIdEjemplar
+            // lblEjemplar
             // 
-            this.txtIdEjemplar.Location = new System.Drawing.Point(395, 338);
-            this.txtIdEjemplar.MaxLength = 10;
-            this.txtIdEjemplar.Name = "txtIdEjemplar";
-            this.txtIdEjemplar.Size = new System.Drawing.Size(249, 31);
-            this.txtIdEjemplar.TabIndex = 28;
-            this.txtIdEjemplar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIdEjemplar_KeyPress);
-            // 
-            // lblIdEjemplar
-            // 
-            this.lblIdEjemplar.AutoSize = true;
-            this.lblIdEjemplar.Location = new System.Drawing.Point(265, 346);
-            this.lblIdEjemplar.Name = "lblIdEjemplar";
-            this.lblIdEjemplar.Size = new System.Drawing.Size(164, 23);
-            this.lblIdEjemplar.TabIndex = 27;
-            this.lblIdEjemplar.Text = "ID del Ejemplar:";
+            this.lblEjemplar.AutoSize = true;
+            this.lblEjemplar.Location = new System.Drawing.Point(302, 351);
+            this.lblEjemplar.Name = "lblEjemplar";
+            this.lblEjemplar.Size = new System.Drawing.Size(103, 23);
+            this.lblEjemplar.TabIndex = 27;
+            this.lblEjemplar.Text = "Ejemplar:";
             // 
             // lblFechaDiagnostico
             // 
@@ -296,8 +295,7 @@
         private System.Windows.Forms.Label lblResumenDiagnostico;
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.Label lblTipoMantenimiento;
-        private System.Windows.Forms.TextBox txtIdEjemplar;
-        private System.Windows.Forms.Label lblIdEjemplar;
+        private System.Windows.Forms.Label lblEjemplar;
         private System.Windows.Forms.Label lblFechaDiagnostico;
         private System.Windows.Forms.Panel PnCaja;
         private System.Windows.Forms.TextBox txtBusqueda;
@@ -309,5 +307,6 @@
         private System.Windows.Forms.RichTextBox RtbResumenDiagnostico;
         private System.Windows.Forms.ComboBox cmbTipoMantenimiento;
         private System.Windows.Forms.Label lblTecnico;
+        private System.Windows.Forms.ComboBox cmbEjemplar;
     }
 }

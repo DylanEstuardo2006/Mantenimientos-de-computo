@@ -50,10 +50,7 @@ namespace Mantenimientos_de_computo
 
             if (con != null)
             {
-                string consulta = "SELECT dispositivo.Estado, dispositivo.Id_dispositivo, tipodispositivo.Tipodispositivo, dispositivo.Id_modelo, modelos.modelo " +
-   "FROM dispositivo, tipodispositivo, modelos " +
-   "WHERE dispositivo.Estado = 1 AND dispositivo.Id_tipodispositivo = tipodispositivo.Id_tipodispositivo AND dispositivo.Id_modelo = modelos.Id_modelo";
-
+                string consulta = "SELECT dispositivo.Id_dispositivo,dispositivo.Estado,dispositivo.Id_tipodisposito,dispositivo.Id_modelo,tipodispositivo.Tipodispositivo as Tipo_Dispositivo,modelos.modelo as Modelo_Dispositivo FROM dispositivo INNER JOIN tipodispositivo ON dispositivo.Id_tipodispositivo = tipodispositivo.Id_tipodispositivo INNER JOIN modelos ON dispositivo.Id_modelo = modelos.Id_modelo"; 
                 //Creamos un adaptador 
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(consulta, con);
@@ -68,6 +65,8 @@ namespace Mantenimientos_de_computo
                 DgvDispositivo.DataSource = dataTable;
                // <--- Cambiamos el nombre de la columna Tipodispositivo a Tipo de Dispositivo
                 DgvDispositivo.Columns["Id_dispositivo"].Visible = true;
+                DgvDispositivo.Columns["Id_tipodispositivo"].Visible = false;
+                DgvDispositivo.Columns["Id_modelo"].Visible = false;
                 DgvDispositivo.Columns["Estado"].Visible = false; // <--- Ocultamos la columna de Estado por seguridad   
                 DgvDispositivo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -139,33 +138,7 @@ namespace Mantenimientos_de_computo
         }
         private void txtBusqueda_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string filtro = txtBusqueda.Text;
-            conexion = new clsConexion();
-            MySqlConnection con = conexion.getConnection();
-
-            // Consulta que busca por ID o TipoDispositivo
-            string consulta = @"SELECT dispositivo.Id_dispositivo , tipodispositivo.Tipodispositivo,dispositivo.Id_modelo, modelos.modelo
-FROM dispositivo 
-INNER JOIN tipodispositivo ON dispositivo.Id_tipodispositivo = tipodispositivo.Id_tipodispositivo 
-INNER JOIN modelos ON dispositivo.Id_modelo = modelos.Id_modelo
-WHERE (dispositivo.Id_dispositivo LIKE @busqueda OR tipodispositivo.Tipodispositivo LIKE @busqueda OR modelos.modelo LIKE @busqueda)
-AND dispositivo.Estado = 1";
-
-
-            MySqlCommand command = new MySqlCommand(consulta, con);
-            command.Parameters.AddWithValue("@busqueda", "%" + filtro + "%");
-
-            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-            DataTable table = new DataTable();
-            adapter.Fill(table);
-
-            DgvDispositivo.DataSource = table;
-
-            // Asegúrate de que las columnas existan antes de modificar su visibilidad
-
-            if (DgvDispositivo.Columns.Contains("Id_dispositivo"))
-                DgvDispositivo.Columns["Id_dispositivo"].Visible = true;
-                con.Close();
+           
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -287,6 +260,11 @@ AND dispositivo.Estado = 1";
                 lblIdDispositivo.Text = fila.Cells["Id_Dispositivo"].Value.ToString();
 
             }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }

@@ -106,6 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Audios.cs" />
+    <Compile Include="clsCombobox.cs" />
     <Compile Include="clsConexion.cs" />
     <Compile Include="frmDetalles.cs">
       <SubType>Form</SubType>
@@ -118,6 +119,12 @@
     </Compile>
     <Compile Include="frmDiagnosticos.Designer.cs">
       <DependentUpon>frmDiagnosticos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEjemplares.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEjemplares.Designer.cs">
+      <DependentUpon>frmEjemplares.cs</DependentUpon>
     </Compile>
     <Compile Include="frmHistorial.cs">
       <SubType>Form</SubType>
@@ -181,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDiagnosticos.resx">
       <DependentUpon>frmDiagnosticos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEjemplares.resx">
+      <DependentUpon>frmEjemplares.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmHistorial.resx">
       <DependentUpon>frmHistorial.cs</DependentUpon>
