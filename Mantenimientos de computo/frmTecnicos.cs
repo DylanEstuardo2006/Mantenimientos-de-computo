@@ -192,13 +192,28 @@ namespace Mantenimientos_de_computo
             }
             else
             {
+                conexion = new clsConexion();
+                MySqlConnection conn = conexion.getConnection();
+
+                string consultaVerificar = "SELECT COUNT(*) FROM tenicos WHERE Email = @Email OR Telefono = @Telefono";
+                MySqlCommand verificar = new MySqlCommand(consultaVerificar,conn);
+
+                verificar.Parameters.AddWithValue("@Email", Email);
+                verificar.Parameters.AddWithValue("@Telefono", NumeroTelefono);
+
+                int Existe = Convert.ToInt32(verificar.ExecuteScalar());
+                if(Existe > 0)
+                {
+                    MessageBox.Show("El correo o el teléfono ya han sido registrados. Porfavor ingrese otros");
+                    conn.Close();
+                    return;
+                }
                 // Segunda validación para no permitir que el usuario haga una contraseña mayor de 10 caracteres
                 if (pass.Length < 11)
                 { 
                     pass = BCrypt.Net.BCrypt.HashPassword(pass); //<--- Encrypta las contraseñas 
 
-                    conexion = new clsConexion();
-                    MySqlConnection conn = conexion.getConnection(); //<--- Obtiene el metodo Conexion 
+                   //<--- Obtiene el metodo Conexion 
 
                     //Insertar los valores 
                     string consulta = "INSERT INTO tecnicos (Nombre_tecnico,Apellido_paterno,Apellido_materno,Telefono,Email,Contrasenia,Estado)" +
@@ -277,6 +292,19 @@ namespace Mantenimientos_de_computo
                 else
                 {
 
+                    string consultaVerificar = "SELECT COUNT(*) FROM tenicos WHERE Email = @Email OR Telefono = @Telefono";
+                    MySqlCommand verificar = new MySqlCommand(consultaVerificar, con);
+
+                    verificar.Parameters.AddWithValue("@Email", Email);
+                    verificar.Parameters.AddWithValue("@Telefono", NumeroTelefono);
+
+                    int Existe = Convert.ToInt32(verificar.ExecuteScalar());
+                    if (Existe > 0)
+                    {
+                        MessageBox.Show("El correo o el teléfono ya han sido registrados. Porfavor ingrese otros");
+                        con.Close();
+                        return;
+                    }
                     if (!string.IsNullOrEmpty(pass))
                     {
                         consulta = "Update tecnicos set Nombre_tecnico=@Nombre_tecnico, Contrasenia=@Contrasenia,Apellido_paterno=@Apellido_paterno,Apellido_materno=@Apellido_materno,Telefono=@Telefono,Email=@Email where Id_tecnico =@Id_tecnico";

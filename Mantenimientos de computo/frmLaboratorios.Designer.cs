@@ -111,7 +111,7 @@
             // 
             // txtNombreLaboratorio
             // 
-            this.txtNombreLaboratorio.Location = new System.Drawing.Point(383, 438);
+            this.txtNombreLaboratorio.Location = new System.Drawing.Point(410, 438);
             this.txtNombreLaboratorio.MaxLength = 20;
             this.txtNombreLaboratorio.Name = "txtNombreLaboratorio";
             this.txtNombreLaboratorio.Size = new System.Drawing.Size(249, 31);

@@ -229,8 +229,8 @@ namespace Mantenimientos_de_computo
                 DataGridViewRow fila = DgvDiagnosticos.Rows[e.RowIndex];
                 DateTime fecha = Convert.ToDateTime(fila.Cells["Fecha_diagnostico"].Value);
                 DtmFechaDiagnostico.Value = fecha;
-                cmbEjemplar.Text = fila.Cells["Nombre_Ejemplar"].Value?.ToString();
-                cmbTecnico.Text = fila.Cells["Nombre_tecnico"].Value?.ToString();
+                cmbEjemplar.SelectedValue = fila.Cells["Id_ejemplar"].Value;
+                cmbTecnico.Text = fila.Cells["Id_tecnico"].Value?.ToString();
                 cmbTipoMantenimiento.Text = fila.Cells["Tipo_Mantenimiento"].Value?.ToString();
                 RtbResumenDiagnostico.Text = fila.Cells["Resumen_diagnostico"].Value?.ToString();
 

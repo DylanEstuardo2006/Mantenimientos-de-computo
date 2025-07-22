@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.pnlFondo = new System.Windows.Forms.Panel();
+            this.LblEscojeLaboratorio = new System.Windows.Forms.Label();
+            this.txtNombreInventario = new System.Windows.Forms.TextBox();
+            this.lblNombreInventario = new System.Windows.Forms.Label();
             this.cmbLaboratorio = new System.Windows.Forms.ComboBox();
             this.DgvEjemplares = new System.Windows.Forms.DataGridView();
             this.lblIdEjemplar = new System.Windows.Forms.Label();
@@ -37,15 +40,12 @@
             this.txtNumeroInventario = new System.Windows.Forms.TextBox();
             this.lblNoInventario = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.lblIdDispositivo = new System.Windows.Forms.Label();
-            this.lblNombreInventario = new System.Windows.Forms.Label();
-            this.txtNombreInventario = new System.Windows.Forms.TextBox();
-            this.LblEscojeLaboratorio = new System.Windows.Forms.Label();
-            this.txtIdDispositivo = new System.Windows.Forms.TextBox();
+            this.cmbDispositivo = new System.Windows.Forms.ComboBox();
+            this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.pnlFondo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvEjemplares)).BeginInit();
             this.panel2.SuspendLayout();
@@ -54,7 +54,7 @@
             // pnlFondo
             // 
             this.pnlFondo.BackColor = System.Drawing.Color.Bisque;
-            this.pnlFondo.Controls.Add(this.txtIdDispositivo);
+            this.pnlFondo.Controls.Add(this.cmbDispositivo);
             this.pnlFondo.Controls.Add(this.LblEscojeLaboratorio);
             this.pnlFondo.Controls.Add(this.txtNombreInventario);
             this.pnlFondo.Controls.Add(this.lblNombreInventario);
@@ -72,6 +72,33 @@
             this.pnlFondo.Name = "pnlFondo";
             this.pnlFondo.Size = new System.Drawing.Size(1178, 718);
             this.pnlFondo.TabIndex = 22;
+            // 
+            // LblEscojeLaboratorio
+            // 
+            this.LblEscojeLaboratorio.AutoSize = true;
+            this.LblEscojeLaboratorio.Location = new System.Drawing.Point(53, 341);
+            this.LblEscojeLaboratorio.Name = "LblEscojeLaboratorio";
+            this.LblEscojeLaboratorio.Size = new System.Drawing.Size(350, 23);
+            this.LblEscojeLaboratorio.TabIndex = 46;
+            this.LblEscojeLaboratorio.Text = "Escoje el Laboratorio del Ejemplar:";
+            // 
+            // txtNombreInventario
+            // 
+            this.txtNombreInventario.Location = new System.Drawing.Point(392, 491);
+            this.txtNombreInventario.MaxLength = 10;
+            this.txtNombreInventario.Name = "txtNombreInventario";
+            this.txtNombreInventario.Size = new System.Drawing.Size(249, 31);
+            this.txtNombreInventario.TabIndex = 45;
+            this.txtNombreInventario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombreInventario_KeyPress);
+            // 
+            // lblNombreInventario
+            // 
+            this.lblNombreInventario.AutoSize = true;
+            this.lblNombreInventario.Location = new System.Drawing.Point(75, 499);
+            this.lblNombreInventario.Name = "lblNombreInventario";
+            this.lblNombreInventario.Size = new System.Drawing.Size(324, 23);
+            this.lblNombreInventario.TabIndex = 44;
+            this.lblNombreInventario.Text = "Ingresa el Nombre del Ejemplar:";
             // 
             // cmbLaboratorio
             // 
@@ -92,6 +119,7 @@
             this.DgvEjemplares.RowTemplate.Height = 24;
             this.DgvEjemplares.Size = new System.Drawing.Size(1144, 259);
             this.DgvEjemplares.TabIndex = 38;
+            this.DgvEjemplares.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvEjemplares_CellClick);
             // 
             // lblIdEjemplar
             // 
@@ -121,7 +149,7 @@
             this.btnRegistrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(124)))), ((int)(((byte)(141)))));
             this.btnRegistrar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrar.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrar.Location = new System.Drawing.Point(392, 579);
+            this.btnRegistrar.Location = new System.Drawing.Point(392, 600);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(162, 54);
             this.btnRegistrar.TabIndex = 26;
@@ -131,7 +159,7 @@
             // 
             // txtNumeroInventario
             // 
-            this.txtNumeroInventario.Location = new System.Drawing.Point(392, 383);
+            this.txtNumeroInventario.Location = new System.Drawing.Point(392, 430);
             this.txtNumeroInventario.MaxLength = 10;
             this.txtNumeroInventario.Name = "txtNumeroInventario";
             this.txtNumeroInventario.Size = new System.Drawing.Size(249, 31);
@@ -141,7 +169,7 @@
             // lblNoInventario
             // 
             this.lblNoInventario.AutoSize = true;
-            this.lblNoInventario.Location = new System.Drawing.Point(13, 391);
+            this.lblNoInventario.Location = new System.Drawing.Point(75, 438);
             this.lblNoInventario.Name = "lblNoInventario";
             this.lblNoInventario.Size = new System.Drawing.Size(328, 23);
             this.lblNoInventario.TabIndex = 27;
@@ -150,7 +178,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(217)))), ((int)(((byte)(230)))));
-            this.panel2.Controls.Add(this.textBox2);
+            this.panel2.Controls.Add(this.txtBusqueda);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.btnActualizar);
             this.panel2.Controls.Add(this.btnEliminar);
@@ -158,13 +186,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(431, 318);
             this.panel2.TabIndex = 20;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(101, 146);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(249, 31);
-            this.textBox2.TabIndex = 25;
             // 
             // label3
             // 
@@ -186,6 +207,7 @@
             this.btnActualizar.TabIndex = 22;
             this.btnActualizar.Text = "Actualizar ";
             this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnEliminar
             // 
@@ -198,51 +220,33 @@
             this.btnEliminar.TabIndex = 21;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // lblIdDispositivo
             // 
             this.lblIdDispositivo.AutoSize = true;
-            this.lblIdDispositivo.Location = new System.Drawing.Point(116, 507);
+            this.lblIdDispositivo.Location = new System.Drawing.Point(179, 383);
             this.lblIdDispositivo.Name = "lblIdDispositivo";
             this.lblIdDispositivo.Size = new System.Drawing.Size(225, 23);
             this.lblIdDispositivo.TabIndex = 43;
             this.lblIdDispositivo.Text = "Ingrese el Dispositivo:";
             // 
-            // lblNombreInventario
+            // cmbDispositivo
             // 
-            this.lblNombreInventario.AutoSize = true;
-            this.lblNombreInventario.Location = new System.Drawing.Point(12, 446);
-            this.lblNombreInventario.Name = "lblNombreInventario";
-            this.lblNombreInventario.Size = new System.Drawing.Size(329, 23);
-            this.lblNombreInventario.TabIndex = 44;
-            this.lblNombreInventario.Text = "Ingresa el Nombre de inventario:";
+            this.cmbDispositivo.FormattingEnabled = true;
+            this.cmbDispositivo.Location = new System.Drawing.Point(392, 380);
+            this.cmbDispositivo.Name = "cmbDispositivo";
+            this.cmbDispositivo.Size = new System.Drawing.Size(249, 31);
+            this.cmbDispositivo.TabIndex = 47;
             // 
-            // txtNombreInventario
+            // txtBusqueda
             // 
-            this.txtNombreInventario.Location = new System.Drawing.Point(392, 438);
-            this.txtNombreInventario.MaxLength = 10;
-            this.txtNombreInventario.Name = "txtNombreInventario";
-            this.txtNombreInventario.Size = new System.Drawing.Size(249, 31);
-            this.txtNombreInventario.TabIndex = 45;
-            this.txtNombreInventario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombreInventario_KeyPress);
-            // 
-            // LblEscojeLaboratorio
-            // 
-            this.LblEscojeLaboratorio.AutoSize = true;
-            this.LblEscojeLaboratorio.Location = new System.Drawing.Point(13, 341);
-            this.LblEscojeLaboratorio.Name = "LblEscojeLaboratorio";
-            this.LblEscojeLaboratorio.Size = new System.Drawing.Size(350, 23);
-            this.LblEscojeLaboratorio.TabIndex = 46;
-            this.LblEscojeLaboratorio.Text = "Escoje el Laboratorio del Ejemplar:";
-            // 
-            // txtIdDispositivo
-            // 
-            this.txtIdDispositivo.Location = new System.Drawing.Point(392, 499);
-            this.txtIdDispositivo.MaxLength = 10;
-            this.txtIdDispositivo.Name = "txtIdDispositivo";
-            this.txtIdDispositivo.Size = new System.Drawing.Size(249, 31);
-            this.txtIdDispositivo.TabIndex = 47;
-            this.txtIdDispositivo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIdDiagnostico_KeyPress);
+            this.txtBusqueda.Location = new System.Drawing.Point(114, 155);
+            this.txtBusqueda.MaxLength = 10;
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(249, 31);
+            this.txtBusqueda.TabIndex = 48;
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
             // 
             // frmEjemplares
             // 
@@ -251,8 +255,9 @@
             this.ClientSize = new System.Drawing.Size(1179, 719);
             this.Controls.Add(this.pnlFondo);
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmEjemplares";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmEjemplares";
             this.Load += new System.EventHandler(this.frmEjemplares_Load);
             this.pnlFondo.ResumeLayout(false);
@@ -275,7 +280,6 @@
         private System.Windows.Forms.TextBox txtNumeroInventario;
         private System.Windows.Forms.Label lblNoInventario;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnEliminar;
@@ -283,6 +287,7 @@
         private System.Windows.Forms.TextBox txtNombreInventario;
         private System.Windows.Forms.Label lblNombreInventario;
         private System.Windows.Forms.Label LblEscojeLaboratorio;
-        private System.Windows.Forms.TextBox txtIdDispositivo;
+        private System.Windows.Forms.ComboBox cmbDispositivo;
+        private System.Windows.Forms.TextBox txtBusqueda;
     }
 }

@@ -128,7 +128,7 @@ namespace Mantenimientos_de_computo
             if (Audios.Accesibilidad)
             {
                 sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
-                sintetizador.SpeakAsync("Esta sobre el botón Detalles");
+                sintetizador.SpeakAsync("Esta sobre el botón Dispositivos");
             }
         }
         private void btnEjemplar_MouseEnter(object sender, EventArgs e)
@@ -196,7 +196,7 @@ namespace Mantenimientos_de_computo
         private void btnDetalles_Click(object sender, EventArgs e)
         {
             this.Close(); // <--- Cierra el formulario MenuPrincipal
-            frmDetalles principal = new frmDetalles(); // <--- Creamos una instancia del form frmTipoDispositivo  
+            frmDispositivos principal = new frmDispositivos(); // <--- Creamos una instancia del form frmTipoDispositivo  
             principal.Show();
         }
 
