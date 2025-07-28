@@ -343,5 +343,10 @@ namespace Mantenimientos_de_computo
             MenuPrincipal principal = new MenuPrincipal();
             principal.Show();
         }
+
+        private void LblIngresMarca_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -245,6 +245,11 @@ namespace Mantenimientos_de_computo
          Application.Exit(); // <--- Cierra el formulario MenuPrincipal
         }
 
-     
+        private void btnMapadeSitio_Click(object sender, EventArgs e)
+        {
+            this.Close(); // <--- Cierra el formulario MenuPrincipal
+            frmMapaNavegacion principal = new frmMapaNavegacion(); // <--- Creamos una instancia del form frmMapaDeSitio  
+            principal.Show(); // <--- Muestra el formulario Mapa de Sitio
+        }
     }
 }

@@ -95,7 +95,7 @@
             this.PtbOjito.Image = global::Mantenimientos_de_computo.Properties.Resources.ojito_;
             this.PtbOjito.Location = new System.Drawing.Point(479, 365);
             this.PtbOjito.Name = "PtbOjito";
-            this.PtbOjito.Size = new System.Drawing.Size(55, 43);
+            this.PtbOjito.Size = new System.Drawing.Size(55, 44);
             this.PtbOjito.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PtbOjito.TabIndex = 9;
             this.PtbOjito.TabStop = false;

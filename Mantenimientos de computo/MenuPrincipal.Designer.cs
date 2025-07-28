@@ -46,6 +46,7 @@
             this.PbxSonido = new System.Windows.Forms.PictureBox();
             this.lblMensajeQue = new System.Windows.Forms.Label();
             this.PtbLogoM = new System.Windows.Forms.PictureBox();
+            this.btnMapadeSitio = new System.Windows.Forms.Button();
             this.PalBanner.SuspendLayout();
             this.PalDespegableDispositivos.SuspendLayout();
             this.PnlCuerpo.SuspendLayout();
@@ -254,6 +255,7 @@
             // 
             // PnlCuerpo
             // 
+            this.PnlCuerpo.Controls.Add(this.btnMapadeSitio);
             this.PnlCuerpo.Controls.Add(this.PbxSonido);
             this.PnlCuerpo.Controls.Add(this.lblMensajeQue);
             this.PnlCuerpo.Controls.Add(this.PalDespegableDispositivos);
@@ -295,6 +297,19 @@
             this.PtbLogoM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PtbLogoM.TabIndex = 12;
             this.PtbLogoM.TabStop = false;
+            // 
+            // btnMapadeSitio
+            // 
+            this.btnMapadeSitio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(124)))), ((int)(((byte)(141)))));
+            this.btnMapadeSitio.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMapadeSitio.ForeColor = System.Drawing.Color.White;
+            this.btnMapadeSitio.Location = new System.Drawing.Point(918, 447);
+            this.btnMapadeSitio.Name = "btnMapadeSitio";
+            this.btnMapadeSitio.Size = new System.Drawing.Size(162, 54);
+            this.btnMapadeSitio.TabIndex = 12;
+            this.btnMapadeSitio.Text = "Mapa de Sitio";
+            this.btnMapadeSitio.UseVisualStyleBackColor = false;
+            this.btnMapadeSitio.Click += new System.EventHandler(this.btnMapadeSitio_Click);
             // 
             // MenuPrincipal
             // 
@@ -340,5 +355,6 @@
         private System.Windows.Forms.Label lblMensajeQue;
         private System.Windows.Forms.Button btnEjemplar;
         private System.Windows.Forms.PictureBox PbxSonido;
+        private System.Windows.Forms.Button btnMapadeSitio;
     }
 }

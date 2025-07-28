@@ -153,7 +153,10 @@ namespace Mantenimientos_de_computo
                     MessageBox.Show("Algo anda mal...");
                 }
             }
-
+            cmbDispositivo.SelectedIndex = -1;
+            cmbLaboratorio.SelectedIndex = -1;
+            txtNombreInventario.Text= "";
+            txtNumeroInventario.Text = "";
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -295,6 +298,10 @@ namespace Mantenimientos_de_computo
                     MessageBox.Show("Algo anda mal...");
                 }
             }
+            cmbDispositivo.SelectedIndex = -1;
+            cmbLaboratorio.SelectedIndex = -1;
+            txtNombreInventario.Text = "";
+            txtNumeroInventario.Text = "";
         }
     }
 }

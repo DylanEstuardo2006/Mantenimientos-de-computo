@@ -147,5 +147,145 @@ namespace Mantenimientos_de_computo
             }
 
         }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(lblIdDispositivo.Text))
+            {
+                MessageBox.Show("Porfavor seleccione un tecnico de la tabla para actualizar sus datos");
+                return; // <--- Si no hay un tecnico seleccionado, se sale del metodo
+            }
+            //En este apartado obtenemos los datos de las cajas de texto 
+            int IdDispositivo = Convert.ToInt32(lblIdDispositivo.Text);
+
+            int IdModelo = Convert.ToInt32(cmbModelo.SelectedValue);
+            int IdTipoDispositivo = Convert.ToInt32(cmbTipoDispositivo.SelectedValue); // <--- Obtenemos el Id del tecnico seleccionado   
+
+            conexion = new clsConexion();
+            MySqlConnection con = conexion.getConnection();
+
+            string consulta;
+            MySqlCommand command;
+
+            if (cmbModelo.SelectedIndex == -1 || cmbTipoDispositivo.SelectedIndex == -1)
+            {
+                MessageBox.Show("Faltan casillas por llenar");
+
+            }
+            else
+            {
+
+                consulta = "UPDATE dispositivo SET Id_tipodispositivo=@Id_tipodispositivo,Id_modelo=@Id_modelo WHERE Id_dispositivo=@Id_dispositivo";
+                command = new MySqlCommand(consulta, con);
+
+
+                command.Parameters.AddWithValue("@Id_tipodispositivo", IdTipoDispositivo);
+                command.Parameters.AddWithValue("@Id_modelo", IdModelo);
+                command.Parameters.AddWithValue("@Id_dispositivo", IdDispositivo);
+
+                int filasAfectadas = command.ExecuteNonQuery();
+                con.Close();
+
+                if (filasAfectadas > 0)
+                {
+                    MessageBox.Show("Registro editado existosamente...");
+                    cargaDatos();
+
+
+                }
+                else
+                {
+                    MessageBox.Show("Error al actualizar...");
+                }
+                // En este apartado las cajas se limpian inmediatamente de haber echo la operación 
+                cmbModelo.SelectedIndex = -1; // <--- Limpiamos el combobox de Tecnicos    
+                cmbTipoDispositivo.SelectedIndex = -1; // <--- Limpiamos el combobox de Tipos de Mantenimiento
+             
+            }
+        }
+
+
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            string filtro = txtBusqueda.Text;
+            conexion = new clsConexion();
+
+            MySqlConnection con = conexion.getConnection();
+
+            string consulta = "SELECT dispositivo.Id_dispositivo AS ID_Dispositivo,tipodispositivo.Tipodispositivo AS Tipo_Dispositivo,modelos.modelo AS Modelo FROM dispositivo INNER JOIN tipodispositivo ON dispositivo.Id_tipodispositivo = tipodispositivo.Id_tipodispositivo INNER JOIN modelos ON dispositivo.Id_modelo = modelos.Id_modelo WHERE dispositivo.Estado = 1 AND (dispositivo.Id_dispositivo LIKE @busqueda OR tipodispositivo.Tipodispositivo LIKE @busqueda OR modelos.modelo LIKE @busqueda)";
+
+            MySqlCommand command = new MySqlCommand(consulta, con);
+            command.Parameters.AddWithValue("@busqueda", "%" + filtro + "%");
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+            DataTable table = new DataTable();
+
+            adapter.Fill(table);
+            DgvDispositivos.DataSource = table;
+            DgvDispositivos.Columns["Id_dispositivo"].Visible = true;
+            con.Close();
+
+        }
+
+        private void DgvDispositivos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow fila = DgvDispositivos.Rows[e.RowIndex];
+                cmbModelo.SelectedValue = fila.Cells["Id_modelo"].Value;
+                cmbTipoDispositivo.SelectedValue = fila.Cells["Id_tipodispositivo"].Value;     
+                lblIdDispositivo.Text = fila.Cells["Id_dispositivo"].Value.ToString();
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+            if (string.IsNullOrWhiteSpace(lblIdDispositivo.Text))
+            {
+                MessageBox.Show("No se ha escogido ningun valor a eliminar");
+                return;
+            }
+            string Estado = "0";
+            int IdDispositivo = Convert.ToInt32(lblIdDispositivo.Text);
+
+            DialogResult result = MessageBox.Show("En verdad quieres eliminar el registro con el Id:" + IdDispositivo + "?"
+                  , "Eliminar", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+            conexion = new clsConexion();
+            MySqlConnection con = conexion.getConnection();
+
+
+
+            string consulta;
+            MySqlCommand command;
+            consulta = "UPDATE dispositivo SET Estado=@Estado WHERE Id_dispositivo=@Id_dispositivo"; //<----- En este apartado hacemos una eliminación logica y no Física, evitamos un mensaje de error 
+            command = new MySqlCommand(consulta, con);
+
+
+            command.Parameters.AddWithValue("@Estado", Estado);
+            command.Parameters.AddWithValue("@Id_dispositivo", IdDispositivo);
+
+            int filasAfectadas = command.ExecuteNonQuery();
+            con.Close();
+
+            if (filasAfectadas > 0)
+            {
+                MessageBox.Show("Se elimino exitosamente");
+                cargaDatos();
+            }
+            else
+            {
+                MessageBox.Show("Algo Anda mal....");
+            }
+            // En este apartado las cajas se limpian inmediatamente de haber echo la operación 
+            cmbTipoDispositivo.SelectedIndex = -1;
+            cmbModelo.SelectedIndex = -1; 
+        }
     }
 }

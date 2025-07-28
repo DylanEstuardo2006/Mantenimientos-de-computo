@@ -68,11 +68,11 @@
             // lblcmbTipoDispositivo
             // 
             this.lblcmbTipoDispositivo.AutoSize = true;
-            this.lblcmbTipoDispositivo.Location = new System.Drawing.Point(99, 346);
+            this.lblcmbTipoDispositivo.Location = new System.Drawing.Point(131, 363);
             this.lblcmbTipoDispositivo.Name = "lblcmbTipoDispositivo";
-            this.lblcmbTipoDispositivo.Size = new System.Drawing.Size(263, 23);
+            this.lblcmbTipoDispositivo.Size = new System.Drawing.Size(246, 23);
             this.lblcmbTipoDispositivo.TabIndex = 48;
-            this.lblcmbTipoDispositivo.Text = "Escoja el Tipo Dispositivo:";
+            this.lblcmbTipoDispositivo.Text = "Elige el Tipo Dispositivo:";
             // 
             // cmbModelo
             // 
@@ -85,7 +85,7 @@
             // cmbTipoDispositivo
             // 
             this.cmbTipoDispositivo.FormattingEnabled = true;
-            this.cmbTipoDispositivo.Location = new System.Drawing.Point(392, 338);
+            this.cmbTipoDispositivo.Location = new System.Drawing.Point(392, 355);
             this.cmbTipoDispositivo.Name = "cmbTipoDispositivo";
             this.cmbTipoDispositivo.Size = new System.Drawing.Size(249, 31);
             this.cmbTipoDispositivo.TabIndex = 40;
@@ -101,6 +101,7 @@
             this.DgvDispositivos.RowTemplate.Height = 24;
             this.DgvDispositivos.Size = new System.Drawing.Size(1144, 259);
             this.DgvDispositivos.TabIndex = 38;
+            this.DgvDispositivos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvDispositivos_CellClick);
             // 
             // lblIdDispositivo
             // 
@@ -157,6 +158,7 @@
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(249, 31);
             this.txtBusqueda.TabIndex = 48;
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
             // 
             // label3
             // 
@@ -178,6 +180,7 @@
             this.btnActualizar.TabIndex = 22;
             this.btnActualizar.Text = "Actualizar ";
             this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnEliminar
             // 
@@ -190,15 +193,16 @@
             this.btnEliminar.TabIndex = 21;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // lblCmbModelo
             // 
             this.lblCmbModelo.AutoSize = true;
-            this.lblCmbModelo.Location = new System.Drawing.Point(183, 455);
+            this.lblCmbModelo.Location = new System.Drawing.Point(215, 455);
             this.lblCmbModelo.Name = "lblCmbModelo";
-            this.lblCmbModelo.Size = new System.Drawing.Size(179, 23);
+            this.lblCmbModelo.Size = new System.Drawing.Size(162, 23);
             this.lblCmbModelo.TabIndex = 43;
-            this.lblCmbModelo.Text = "Escoja el Modelo:";
+            this.lblCmbModelo.Text = "Elige el Modelo:";
             // 
             // frmDispositivos
             // 

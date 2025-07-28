@@ -57,7 +57,7 @@ namespace Mantenimientos_de_computo
 
                 DgvMantenimiento.DataSource = dataTable;
 
-                DgvMantenimiento.Columns["Id_mantenimiento"].Visible = false;
+                DgvMantenimiento.Columns["Id_mantenimiento"].Visible = true;
                 DgvMantenimiento.Columns["Estado"].Visible = false; // <--- Ocultamos la columna de Estado por seguridad   
                 DgvMantenimiento.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
@@ -112,6 +112,23 @@ namespace Mantenimientos_de_computo
                     conn.Close();
                     return;
                 }
+
+                string validarUsoId= "SELECT COUNT(*) FROM mantenimiento WHERE Id_diagnostico = @Id_diagnostico AND Estado = 1";
+                MySqlCommand validar = new MySqlCommand(validarUsoId, conn);
+                validar.Parameters.AddWithValue("@Id_diagnostico", IdDiagnostico);
+
+                
+
+                int existeId = Convert.ToInt32(validar.ExecuteScalar());
+
+                if (existeId > 0)
+                {
+                    MessageBox.Show("El ID de diagnóstico ya ha sido registrado . Verifica el valor.");
+                    conn.Close();
+                    return;
+                }
+
+
                 //Insertar los valores 
                 string consulta = "INSERT INTO mantenimiento (Fecha_inicio,Fecha_fin,Id_diagnostico,Estado)" +
                       "VALUES (@Fecha_inicio,@Fecha_fin,@Id_diagnostico,@Estado)";
@@ -195,9 +212,23 @@ namespace Mantenimientos_de_computo
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow fila = DgvMantenimiento.Rows[e.RowIndex];
-                DateTime FechaInicial = Convert.ToDateTime(fila.Cells["Fecha_inicio"].Value);
-                DtmFechaInicial.Value = FechaInicial;
+
+                object valor = fila.Cells["Fecha_inicio"].Value;
+
+                if (valor != null && valor != DBNull.Value)
+                {
+                    DateTime FechaInicial = Convert.ToDateTime(valor);
+                    DtmFechaInicial.Value = FechaInicial;
+                }
+                else
+                {
+                    // Por si no hay fecha en la base de datos
+                    DtmFechaInicial.Value = DateTime.Now;
+                }
+
+
                 DateTime FechaFinal = Convert.ToDateTime(fila.Cells["Fecha_fin"].Value);
+             
                 DtmFechaFinal.Value = FechaFinal;
                 txtIdDiagnostico.Text = fila.Cells["Id_diagnostico"].Value.ToString();
                 lblIDMantenimiento.Text = fila.Cells["Id_mantenimiento"].Value.ToString();
@@ -283,7 +314,7 @@ namespace Mantenimientos_de_computo
             MySqlConnection con = conexion.getConnection();
 
             // Consulta y busca los tecnicos mediante su nombre, apellidos o Telefono (Falta activarlo mediante Email)
-            string consulta = "SELECT mantenimiento.Id_mantenimiento,mantenimiento.Fecha_inicio,mantenimiento.Fecha_fin,mantenimiento.Id_diagnostico FROM mantenimiento WHERE (mantenimiento.Fecha_inicio LIKE @busqueda OR mantenimiento.Fecha_fin LIKE @busqueda OR mantenimiento.Id_diagnostico LIKE @busqueda) AND mantenimiento.Estado = 1";
+            string consulta = "SELECT mantenimiento.Id_mantenimiento,mantenimiento.Fecha_inicio,mantenimiento.Fecha_fin,mantenimiento.Id_diagnostico FROM mantenimiento WHERE (mantenimiento.Id_mantenimiento LIKE @busqueda OR mantenimiento.Fecha_inicio LIKE @busqueda OR mantenimiento.Fecha_fin LIKE @busqueda OR mantenimiento.Id_diagnostico LIKE @busqueda) AND mantenimiento.Estado = 1";
 
 
             MySqlCommand command = new MySqlCommand(consulta, con);
@@ -294,7 +325,7 @@ namespace Mantenimientos_de_computo
 
             adapter.Fill(table);
             DgvMantenimiento.DataSource = table;
-            DgvMantenimiento.Columns["Id_mantenimiento"].Visible = false;
+            DgvMantenimiento.Columns["Id_mantenimiento"].Visible = true;
             con.Close();
         }
 

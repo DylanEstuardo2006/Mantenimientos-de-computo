@@ -79,9 +79,10 @@
             this.LblIngresMarca.AutoSize = true;
             this.LblIngresMarca.Location = new System.Drawing.Point(199, 422);
             this.LblIngresMarca.Name = "LblIngresMarca";
-            this.LblIngresMarca.Size = new System.Drawing.Size(176, 23);
+            this.LblIngresMarca.Size = new System.Drawing.Size(159, 23);
             this.LblIngresMarca.TabIndex = 40;
-            this.LblIngresMarca.Text = "Escoje la marca: ";
+            this.LblIngresMarca.Text = "Elige la marca: ";
+            this.LblIngresMarca.Click += new System.EventHandler(this.LblIngresMarca_Click);
             // 
             // lblIngresaNuevoModelo
             // 

@@ -144,6 +144,12 @@
     <Compile Include="frmMantenimiento.Designer.cs">
       <DependentUpon>frmMantenimiento.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMapaNavegacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMapaNavegacion.Designer.cs">
+      <DependentUpon>frmMapaNavegacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMarcas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMantenimiento.resx">
       <DependentUpon>frmMantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMapaNavegacion.resx">
+      <DependentUpon>frmMapaNavegacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMarcas.resx">
       <DependentUpon>frmMarcas.cs</DependentUpon>

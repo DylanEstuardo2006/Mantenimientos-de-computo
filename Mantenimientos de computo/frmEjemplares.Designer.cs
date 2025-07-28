@@ -84,11 +84,11 @@
             // LblEscojeLaboratorio
             // 
             this.LblEscojeLaboratorio.AutoSize = true;
-            this.LblEscojeLaboratorio.Location = new System.Drawing.Point(53, 341);
+            this.LblEscojeLaboratorio.Location = new System.Drawing.Point(74, 346);
             this.LblEscojeLaboratorio.Name = "LblEscojeLaboratorio";
-            this.LblEscojeLaboratorio.Size = new System.Drawing.Size(350, 23);
+            this.LblEscojeLaboratorio.Size = new System.Drawing.Size(333, 23);
             this.LblEscojeLaboratorio.TabIndex = 46;
-            this.LblEscojeLaboratorio.Text = "Escoje el Laboratorio del Ejemplar:";
+            this.LblEscojeLaboratorio.Text = "Elige el Laboratorio del Ejemplar:";
             // 
             // txtNombreInventario
             // 

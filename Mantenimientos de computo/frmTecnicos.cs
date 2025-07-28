@@ -262,9 +262,10 @@ namespace Mantenimientos_de_computo
         // Botón de actualizar los datos de los técnicos 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
+
             try
             {
-                if(string.IsNullOrWhiteSpace(lblIDTecnico.Text))
+                if (string.IsNullOrWhiteSpace(lblIDTecnico.Text))
                 {
                     MessageBox.Show("Porfavor seleccione un tecnico de la tabla para actualizar sus datos");
                     return; // <--- Si no hay un tecnico seleccionado, se sale del metodo
@@ -279,6 +280,11 @@ namespace Mantenimientos_de_computo
                 string pass = txtContrasenia.Text;
 
 
+                string passwordHash = "";
+                if (!string.IsNullOrEmpty(pass))
+                {
+                    passwordHash = BCrypt.Net.BCrypt.HashPassword(pass);
+                }
                 conexion = new clsConexion();
                 MySqlConnection con = conexion.getConnection();
 
@@ -292,24 +298,11 @@ namespace Mantenimientos_de_computo
                 else
                 {
 
-                    string consultaVerificar = "SELECT COUNT(*) FROM tenicos WHERE Email = @Email OR Telefono = @Telefono";
-                    MySqlCommand verificar = new MySqlCommand(consultaVerificar, con);
-
-                    verificar.Parameters.AddWithValue("@Email", Email);
-                    verificar.Parameters.AddWithValue("@Telefono", NumeroTelefono);
-
-                    int Existe = Convert.ToInt32(verificar.ExecuteScalar());
-                    if (Existe > 0)
-                    {
-                        MessageBox.Show("El correo o el teléfono ya han sido registrados. Porfavor ingrese otros");
-                        con.Close();
-                        return;
-                    }
                     if (!string.IsNullOrEmpty(pass))
                     {
                         consulta = "Update tecnicos set Nombre_tecnico=@Nombre_tecnico, Contrasenia=@Contrasenia,Apellido_paterno=@Apellido_paterno,Apellido_materno=@Apellido_materno,Telefono=@Telefono,Email=@Email where Id_tecnico =@Id_tecnico";
                         command = new MySqlCommand(consulta, con);
-                        command.Parameters.AddWithValue("@Contrasenia", pass);
+                        command.Parameters.AddWithValue("@Contrasenia", passwordHash);
                     }
                     else
                     {
@@ -344,10 +337,8 @@ namespace Mantenimientos_de_computo
             }
             catch
             {
-                
                 MessageBox.Show("Error al actualizar, porfavor seleccione alguno de los datos que aparecen en la tabla");
             }
-
             // En este apartado las cajas se limpian inmediatamente de haber echo la operación 
             txtNombreTecnico.Text = "";
             txtApellidoPaterno.Text = "";
@@ -356,7 +347,7 @@ namespace Mantenimientos_de_computo
             txtNumeroTelefono.Text = "";
             txtEmail.Text = "";
             txtContrasenia.Text = "";
-        }
+            }
           
         
 
@@ -464,9 +455,6 @@ namespace Mantenimientos_de_computo
             {
                      MessageBox.Show("Error al eliminar, porfavor seleccione alguno de los datos que aparecen en la tabla");
             }
-          
         }
-
-        
     }
 }
