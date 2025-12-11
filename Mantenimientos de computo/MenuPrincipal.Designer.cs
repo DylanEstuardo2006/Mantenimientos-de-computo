@@ -29,69 +29,42 @@
         private void InitializeComponent()
         {
             this.PalBanner = new System.Windows.Forms.Panel();
-            this.btnDispositivos = new System.Windows.Forms.Button();
             this.btnLaboratorio = new System.Windows.Forms.Button();
-            this.btnTecnicos = new System.Windows.Forms.Button();
-            this.btnHistorial = new System.Windows.Forms.Button();
-            this.btnMantenimiento = new System.Windows.Forms.Button();
-            this.btnDiagnostico = new System.Windows.Forms.Button();
-            this.btnDetalles = new System.Windows.Forms.Button();
-            this.btnTipoDispositivo = new System.Windows.Forms.Button();
-            this.btnMarca = new System.Windows.Forms.Button();
-            this.PalDespegableDispositivos = new System.Windows.Forms.Panel();
-            this.btnEjemplar = new System.Windows.Forms.Button();
             this.btnModelo = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.PnlCuerpo = new System.Windows.Forms.Panel();
-            this.PbxSonido = new System.Windows.Forms.PictureBox();
+            this.btnTipoDispositivo = new System.Windows.Forms.Button();
+            this.btnTecnicos = new System.Windows.Forms.Button();
+            this.btnDetalles = new System.Windows.Forms.Button();
+            this.btnMarca = new System.Windows.Forms.Button();
             this.lblMensajeQue = new System.Windows.Forms.Label();
+            this.PbxSonido = new System.Windows.Forms.PictureBox();
             this.PtbLogoM = new System.Windows.Forms.PictureBox();
-            this.btnMapadeSitio = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.PalBanner.SuspendLayout();
-            this.PalDespegableDispositivos.SuspendLayout();
-            this.PnlCuerpo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbxSonido)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PtbLogoM)).BeginInit();
             this.SuspendLayout();
             // 
             // PalBanner
             // 
-            this.PalBanner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(65)))), ((int)(((byte)(86)))));
-            this.PalBanner.Controls.Add(this.btnDispositivos);
+            this.PalBanner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(136)))), ((int)(((byte)(62)))));
             this.PalBanner.Controls.Add(this.btnLaboratorio);
+            this.PalBanner.Controls.Add(this.btnModelo);
+            this.PalBanner.Controls.Add(this.btnTipoDispositivo);
             this.PalBanner.Controls.Add(this.btnTecnicos);
-            this.PalBanner.Controls.Add(this.btnHistorial);
-            this.PalBanner.Controls.Add(this.btnMantenimiento);
-            this.PalBanner.Controls.Add(this.btnDiagnostico);
+            this.PalBanner.Controls.Add(this.btnDetalles);
+            this.PalBanner.Controls.Add(this.btnMarca);
             this.PalBanner.Dock = System.Windows.Forms.DockStyle.Top;
             this.PalBanner.Location = new System.Drawing.Point(0, 0);
             this.PalBanner.Name = "PalBanner";
-            this.PalBanner.Size = new System.Drawing.Size(1106, 58);
+            this.PalBanner.Size = new System.Drawing.Size(1225, 70);
             this.PalBanner.TabIndex = 0;
-            // 
-            // btnDispositivos
-            // 
-            this.btnDispositivos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(124)))), ((int)(((byte)(141)))));
-            this.btnDispositivos.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDispositivos.ForeColor = System.Drawing.Color.White;
-            this.btnDispositivos.Image = global::Mantenimientos_de_computo.Properties.Resources.menu2;
-            this.btnDispositivos.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDispositivos.Location = new System.Drawing.Point(941, 0);
-            this.btnDispositivos.Name = "btnDispositivos";
-            this.btnDispositivos.Size = new System.Drawing.Size(162, 54);
-            this.btnDispositivos.TabIndex = 11;
-            this.btnDispositivos.Text = "Detalles";
-            this.btnDispositivos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDispositivos.UseVisualStyleBackColor = false;
-            this.btnDispositivos.Click += new System.EventHandler(this.btnDispositivos_Click);
-            this.btnDispositivos.MouseEnter += new System.EventHandler(this.btnDispositivos_MouseEnter);
             // 
             // btnLaboratorio
             // 
-            this.btnLaboratorio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(124)))), ((int)(((byte)(141)))));
+            this.btnLaboratorio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(136)))), ((int)(((byte)(62)))));
             this.btnLaboratorio.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLaboratorio.ForeColor = System.Drawing.Color.White;
-            this.btnLaboratorio.Location = new System.Drawing.Point(773, 1);
+            this.btnLaboratorio.Location = new System.Drawing.Point(1060, 12);
             this.btnLaboratorio.Name = "btnLaboratorio";
             this.btnLaboratorio.Size = new System.Drawing.Size(162, 54);
             this.btnLaboratorio.TabIndex = 10;
@@ -100,138 +73,12 @@
             this.btnLaboratorio.Click += new System.EventHandler(this.btnLaboratorio_Click);
             this.btnLaboratorio.MouseEnter += new System.EventHandler(this.btnLaboratorio_MouseEnter);
             // 
-            // btnTecnicos
-            // 
-            this.btnTecnicos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(124)))), ((int)(((byte)(141)))));
-            this.btnTecnicos.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTecnicos.ForeColor = System.Drawing.Color.White;
-            this.btnTecnicos.Location = new System.Drawing.Point(605, 1);
-            this.btnTecnicos.Name = "btnTecnicos";
-            this.btnTecnicos.Size = new System.Drawing.Size(162, 54);
-            this.btnTecnicos.TabIndex = 9;
-            this.btnTecnicos.Text = "Técnicos";
-            this.btnTecnicos.UseVisualStyleBackColor = false;
-            this.btnTecnicos.Click += new System.EventHandler(this.btnTecnicos_Click);
-            this.btnTecnicos.MouseEnter += new System.EventHandler(this.btnTecnicos_MouseEnter);
-            // 
-            // btnHistorial
-            // 
-            this.btnHistorial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(124)))), ((int)(((byte)(141)))));
-            this.btnHistorial.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHistorial.ForeColor = System.Drawing.Color.White;
-            this.btnHistorial.Location = new System.Drawing.Point(437, 0);
-            this.btnHistorial.Name = "btnHistorial";
-            this.btnHistorial.Size = new System.Drawing.Size(162, 54);
-            this.btnHistorial.TabIndex = 8;
-            this.btnHistorial.Text = "Historial";
-            this.btnHistorial.UseVisualStyleBackColor = false;
-            this.btnHistorial.Click += new System.EventHandler(this.btnHistorial_Click);
-            this.btnHistorial.MouseEnter += new System.EventHandler(this.btnHistorial_MouseEnter);
-            // 
-            // btnMantenimiento
-            // 
-            this.btnMantenimiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(124)))), ((int)(((byte)(141)))));
-            this.btnMantenimiento.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMantenimiento.ForeColor = System.Drawing.Color.White;
-            this.btnMantenimiento.Location = new System.Drawing.Point(269, 0);
-            this.btnMantenimiento.Name = "btnMantenimiento";
-            this.btnMantenimiento.Size = new System.Drawing.Size(162, 54);
-            this.btnMantenimiento.TabIndex = 7;
-            this.btnMantenimiento.Text = "Mantenimiento";
-            this.btnMantenimiento.UseVisualStyleBackColor = false;
-            this.btnMantenimiento.Click += new System.EventHandler(this.btnMantenimiento_Click);
-            this.btnMantenimiento.MouseEnter += new System.EventHandler(this.btnMantenimiento_MouseEnter);
-            // 
-            // btnDiagnostico
-            // 
-            this.btnDiagnostico.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(124)))), ((int)(((byte)(141)))));
-            this.btnDiagnostico.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDiagnostico.ForeColor = System.Drawing.Color.White;
-            this.btnDiagnostico.Location = new System.Drawing.Point(101, 0);
-            this.btnDiagnostico.Name = "btnDiagnostico";
-            this.btnDiagnostico.Size = new System.Drawing.Size(162, 54);
-            this.btnDiagnostico.TabIndex = 6;
-            this.btnDiagnostico.Text = "Diagnostico";
-            this.btnDiagnostico.UseVisualStyleBackColor = false;
-            this.btnDiagnostico.Click += new System.EventHandler(this.btnDiagnostico_Click);
-            this.btnDiagnostico.MouseEnter += new System.EventHandler(this.btnDiagnostico_MouseEnter);
-            // 
-            // btnDetalles
-            // 
-            this.btnDetalles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(124)))), ((int)(((byte)(141)))));
-            this.btnDetalles.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDetalles.ForeColor = System.Drawing.Color.White;
-            this.btnDetalles.Location = new System.Drawing.Point(0, 0);
-            this.btnDetalles.Name = "btnDetalles";
-            this.btnDetalles.Size = new System.Drawing.Size(162, 54);
-            this.btnDetalles.TabIndex = 12;
-            this.btnDetalles.Text = "Dispositivo";
-            this.btnDetalles.UseVisualStyleBackColor = false;
-            this.btnDetalles.Click += new System.EventHandler(this.btnDetalles_Click);
-            this.btnDetalles.MouseEnter += new System.EventHandler(this.btnDetalles_MouseEnter);
-            // 
-            // btnTipoDispositivo
-            // 
-            this.btnTipoDispositivo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(124)))), ((int)(((byte)(141)))));
-            this.btnTipoDispositivo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTipoDispositivo.ForeColor = System.Drawing.Color.White;
-            this.btnTipoDispositivo.Location = new System.Drawing.Point(0, 60);
-            this.btnTipoDispositivo.Name = "btnTipoDispositivo";
-            this.btnTipoDispositivo.Size = new System.Drawing.Size(162, 54);
-            this.btnTipoDispositivo.TabIndex = 14;
-            this.btnTipoDispositivo.Text = "Tipo Dispositivo";
-            this.btnTipoDispositivo.UseVisualStyleBackColor = false;
-            this.btnTipoDispositivo.Click += new System.EventHandler(this.btnTipoDispositivo_Click);
-            this.btnTipoDispositivo.MouseEnter += new System.EventHandler(this.btnTipoDispositivo_MouseEnter);
-            // 
-            // btnMarca
-            // 
-            this.btnMarca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(124)))), ((int)(((byte)(141)))));
-            this.btnMarca.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMarca.ForeColor = System.Drawing.Color.White;
-            this.btnMarca.Location = new System.Drawing.Point(0, 120);
-            this.btnMarca.Name = "btnMarca";
-            this.btnMarca.Size = new System.Drawing.Size(162, 54);
-            this.btnMarca.TabIndex = 15;
-            this.btnMarca.Text = "Marca";
-            this.btnMarca.UseVisualStyleBackColor = false;
-            this.btnMarca.Click += new System.EventHandler(this.btnMarca_Click);
-            this.btnMarca.MouseEnter += new System.EventHandler(this.btnMarca_MouseEnter);
-            // 
-            // PalDespegableDispositivos
-            // 
-            this.PalDespegableDispositivos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(65)))), ((int)(((byte)(86)))));
-            this.PalDespegableDispositivos.Controls.Add(this.btnEjemplar);
-            this.PalDespegableDispositivos.Controls.Add(this.btnModelo);
-            this.PalDespegableDispositivos.Controls.Add(this.btnDetalles);
-            this.PalDespegableDispositivos.Controls.Add(this.btnTipoDispositivo);
-            this.PalDespegableDispositivos.Controls.Add(this.btnMarca);
-            this.PalDespegableDispositivos.Location = new System.Drawing.Point(941, 3);
-            this.PalDespegableDispositivos.Name = "PalDespegableDispositivos";
-            this.PalDespegableDispositivos.Size = new System.Drawing.Size(162, 292);
-            this.PalDespegableDispositivos.TabIndex = 16;
-            this.PalDespegableDispositivos.Visible = false;
-            // 
-            // btnEjemplar
-            // 
-            this.btnEjemplar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(124)))), ((int)(((byte)(141)))));
-            this.btnEjemplar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEjemplar.ForeColor = System.Drawing.Color.White;
-            this.btnEjemplar.Location = new System.Drawing.Point(0, 238);
-            this.btnEjemplar.Name = "btnEjemplar";
-            this.btnEjemplar.Size = new System.Drawing.Size(162, 54);
-            this.btnEjemplar.TabIndex = 17;
-            this.btnEjemplar.Text = "Ejemplares";
-            this.btnEjemplar.UseVisualStyleBackColor = false;
-            this.btnEjemplar.Click += new System.EventHandler(this.btnEjemplar_Click);
-            this.btnEjemplar.MouseEnter += new System.EventHandler(this.btnEjemplar_MouseEnter);
-            // 
             // btnModelo
             // 
-            this.btnModelo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(124)))), ((int)(((byte)(141)))));
+            this.btnModelo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(136)))), ((int)(((byte)(62)))));
             this.btnModelo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModelo.ForeColor = System.Drawing.Color.White;
-            this.btnModelo.Location = new System.Drawing.Point(0, 178);
+            this.btnModelo.Location = new System.Drawing.Point(690, 12);
             this.btnModelo.Name = "btnModelo";
             this.btnModelo.Size = new System.Drawing.Size(162, 54);
             this.btnModelo.TabIndex = 16;
@@ -240,36 +87,76 @@
             this.btnModelo.Click += new System.EventHandler(this.btnModelo_Click);
             this.btnModelo.MouseEnter += new System.EventHandler(this.btnModelo_MouseEnter);
             // 
-            // btnSalir
+            // btnTipoDispositivo
             // 
-            this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnSalir.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.ForeColor = System.Drawing.Color.White;
-            this.btnSalir.Location = new System.Drawing.Point(12, 461);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(162, 54);
-            this.btnSalir.TabIndex = 17;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = false;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            this.btnTipoDispositivo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(136)))), ((int)(((byte)(62)))));
+            this.btnTipoDispositivo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTipoDispositivo.ForeColor = System.Drawing.Color.White;
+            this.btnTipoDispositivo.Location = new System.Drawing.Point(858, 12);
+            this.btnTipoDispositivo.Name = "btnTipoDispositivo";
+            this.btnTipoDispositivo.Size = new System.Drawing.Size(196, 54);
+            this.btnTipoDispositivo.TabIndex = 14;
+            this.btnTipoDispositivo.Text = "Tipo Dispositivo";
+            this.btnTipoDispositivo.UseVisualStyleBackColor = false;
+            this.btnTipoDispositivo.Click += new System.EventHandler(this.btnTipoDispositivo_Click);
+            this.btnTipoDispositivo.MouseEnter += new System.EventHandler(this.btnTipoDispositivo_MouseEnter);
             // 
-            // PnlCuerpo
+            // btnTecnicos
             // 
-            this.PnlCuerpo.Controls.Add(this.btnMapadeSitio);
-            this.PnlCuerpo.Controls.Add(this.PbxSonido);
-            this.PnlCuerpo.Controls.Add(this.lblMensajeQue);
-            this.PnlCuerpo.Controls.Add(this.PalDespegableDispositivos);
-            this.PnlCuerpo.Controls.Add(this.btnSalir);
-            this.PnlCuerpo.Controls.Add(this.PtbLogoM);
-            this.PnlCuerpo.Location = new System.Drawing.Point(0, 54);
-            this.PnlCuerpo.Name = "PnlCuerpo";
-            this.PnlCuerpo.Size = new System.Drawing.Size(1106, 524);
-            this.PnlCuerpo.TabIndex = 18;
+            this.btnTecnicos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(136)))), ((int)(((byte)(62)))));
+            this.btnTecnicos.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTecnicos.ForeColor = System.Drawing.Color.White;
+            this.btnTecnicos.Location = new System.Drawing.Point(186, 12);
+            this.btnTecnicos.Name = "btnTecnicos";
+            this.btnTecnicos.Size = new System.Drawing.Size(162, 54);
+            this.btnTecnicos.TabIndex = 9;
+            this.btnTecnicos.Text = "Usuarios";
+            this.btnTecnicos.UseVisualStyleBackColor = false;
+            this.btnTecnicos.Click += new System.EventHandler(this.btnTecnicos_Click);
+            this.btnTecnicos.MouseEnter += new System.EventHandler(this.btnTecnicos_MouseEnter);
+            // 
+            // btnDetalles
+            // 
+            this.btnDetalles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(136)))), ((int)(((byte)(62)))));
+            this.btnDetalles.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetalles.ForeColor = System.Drawing.Color.White;
+            this.btnDetalles.Location = new System.Drawing.Point(354, 12);
+            this.btnDetalles.Name = "btnDetalles";
+            this.btnDetalles.Size = new System.Drawing.Size(162, 54);
+            this.btnDetalles.TabIndex = 12;
+            this.btnDetalles.Text = "Dispositivo";
+            this.btnDetalles.UseVisualStyleBackColor = false;
+            this.btnDetalles.Click += new System.EventHandler(this.btnDetalles_Click);
+            this.btnDetalles.MouseEnter += new System.EventHandler(this.btnDetalles_MouseEnter);
+            // 
+            // btnMarca
+            // 
+            this.btnMarca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(136)))), ((int)(((byte)(62)))));
+            this.btnMarca.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarca.ForeColor = System.Drawing.Color.White;
+            this.btnMarca.Location = new System.Drawing.Point(522, 12);
+            this.btnMarca.Name = "btnMarca";
+            this.btnMarca.Size = new System.Drawing.Size(162, 54);
+            this.btnMarca.TabIndex = 15;
+            this.btnMarca.Text = "Marca";
+            this.btnMarca.UseVisualStyleBackColor = false;
+            this.btnMarca.Click += new System.EventHandler(this.btnMarca_Click);
+            this.btnMarca.MouseEnter += new System.EventHandler(this.btnMarca_MouseEnter);
+            // 
+            // lblMensajeQue
+            // 
+            this.lblMensajeQue.AutoSize = true;
+            this.lblMensajeQue.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMensajeQue.Location = new System.Drawing.Point(373, 180);
+            this.lblMensajeQue.Name = "lblMensajeQue";
+            this.lblMensajeQue.Size = new System.Drawing.Size(507, 34);
+            this.lblMensajeQue.TabIndex = 18;
+            this.lblMensajeQue.Text = "¿Qué desea hacer el día de hoy ? ";
             // 
             // PbxSonido
             // 
-            this.PbxSonido.Image = global::Mantenimientos_de_computo.Properties.Resources.VOICE_d;
-            this.PbxSonido.Location = new System.Drawing.Point(12, 6);
+            this.PbxSonido.Image = global::Mantenimientos_de_computo.Properties.Resources.microfonoMenu;
+            this.PbxSonido.Location = new System.Drawing.Point(29, 92);
             this.PbxSonido.Name = "PbxSonido";
             this.PbxSonido.Size = new System.Drawing.Size(103, 89);
             this.PbxSonido.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -278,46 +165,39 @@
             this.PbxSonido.Click += new System.EventHandler(this.PbxSonido_Click);
             this.PbxSonido.MouseEnter += new System.EventHandler(this.PbxSonido_MouseEnter);
             // 
-            // lblMensajeQue
-            // 
-            this.lblMensajeQue.AutoSize = true;
-            this.lblMensajeQue.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMensajeQue.Location = new System.Drawing.Point(375, 83);
-            this.lblMensajeQue.Name = "lblMensajeQue";
-            this.lblMensajeQue.Size = new System.Drawing.Size(507, 34);
-            this.lblMensajeQue.TabIndex = 18;
-            this.lblMensajeQue.Text = "¿Qué desea hacer el día de hoy ? ";
-            // 
             // PtbLogoM
             // 
-            this.PtbLogoM.Image = global::Mantenimientos_de_computo.Properties.Resources.Logo_mantenimiento;
-            this.PtbLogoM.Location = new System.Drawing.Point(372, 137);
+            this.PtbLogoM.Image = global::Mantenimientos_de_computo.Properties.Resources.imagenLogoLogin;
+            this.PtbLogoM.Location = new System.Drawing.Point(406, 239);
             this.PtbLogoM.Name = "PtbLogoM";
             this.PtbLogoM.Size = new System.Drawing.Size(419, 305);
             this.PtbLogoM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PtbLogoM.TabIndex = 12;
             this.PtbLogoM.TabStop = false;
             // 
-            // btnMapadeSitio
+            // btnSalir
             // 
-            this.btnMapadeSitio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(124)))), ((int)(((byte)(141)))));
-            this.btnMapadeSitio.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMapadeSitio.ForeColor = System.Drawing.Color.White;
-            this.btnMapadeSitio.Location = new System.Drawing.Point(918, 447);
-            this.btnMapadeSitio.Name = "btnMapadeSitio";
-            this.btnMapadeSitio.Size = new System.Drawing.Size(162, 54);
-            this.btnMapadeSitio.TabIndex = 12;
-            this.btnMapadeSitio.Text = "Mapa de Sitio";
-            this.btnMapadeSitio.UseVisualStyleBackColor = false;
-            this.btnMapadeSitio.Click += new System.EventHandler(this.btnMapadeSitio_Click);
+            this.btnSalir.BackColor = System.Drawing.Color.Brown;
+            this.btnSalir.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.ForeColor = System.Drawing.Color.White;
+            this.btnSalir.Location = new System.Drawing.Point(12, 560);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(233, 54);
+            this.btnSalir.TabIndex = 17;
+            this.btnSalir.Text = "Salir de la Aplicación ";
+            this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Bisque;
-            this.ClientSize = new System.Drawing.Size(1106, 578);
-            this.Controls.Add(this.PnlCuerpo);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1225, 626);
+            this.Controls.Add(this.btnSalir);
+            this.Controls.Add(this.lblMensajeQue);
+            this.Controls.Add(this.PbxSonido);
+            this.Controls.Add(this.PtbLogoM);
             this.Controls.Add(this.PalBanner);
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -326,12 +206,10 @@
             this.Text = "Menu Principal";
             this.Load += new System.EventHandler(this.MenuPrincipal_Load);
             this.PalBanner.ResumeLayout(false);
-            this.PalDespegableDispositivos.ResumeLayout(false);
-            this.PnlCuerpo.ResumeLayout(false);
-            this.PnlCuerpo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbxSonido)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PtbLogoM)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -340,21 +218,13 @@
         private System.Windows.Forms.Panel PalBanner;
         private System.Windows.Forms.Button btnLaboratorio;
         private System.Windows.Forms.Button btnTecnicos;
-        private System.Windows.Forms.Button btnHistorial;
-        private System.Windows.Forms.Button btnMantenimiento;
-        private System.Windows.Forms.Button btnDiagnostico;
-        private System.Windows.Forms.Button btnDispositivos;
         private System.Windows.Forms.PictureBox PtbLogoM;
         private System.Windows.Forms.Button btnDetalles;
         private System.Windows.Forms.Button btnTipoDispositivo;
         private System.Windows.Forms.Button btnMarca;
-        private System.Windows.Forms.Panel PalDespegableDispositivos;
-        private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnModelo;
-        private System.Windows.Forms.Panel PnlCuerpo;
         private System.Windows.Forms.Label lblMensajeQue;
-        private System.Windows.Forms.Button btnEjemplar;
         private System.Windows.Forms.PictureBox PbxSonido;
-        private System.Windows.Forms.Button btnMapadeSitio;
+        private System.Windows.Forms.Button btnSalir;
     }
 }

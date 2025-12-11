@@ -25,13 +25,13 @@ namespace Mantenimientos_de_computo
             this.FormBorderStyle = FormBorderStyle.FixedSingle; // <--- Con este metodo le quitamos al usuario la capacidad de mover conn el cursor el form 
             this.MaximizeBox = false; // <--- Quitamos la capacidad de hacerlo a tamaño completo la pantalla el form 
             cmbMarcas.DropDownStyle = ComboBoxStyle.DropDownList;
-            DgvModelos.EnableHeadersVisualStyles = false; // Necesario para que se apliquen los estilos personalizados
-            DgvModelos.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(47, 65, 86);
-            DgvModelos.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvModelos.EnableHeadersVisualStyles = false; // Necesario para que se apliquen los estilos personalizados
+            dgvModelos.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(47, 65, 86);
+            dgvModelos.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
       
 
             cargaDatos();
-            CargarMarcas();
+ 
         }
         private void cargaDatos()
         {
@@ -44,8 +44,7 @@ namespace Mantenimientos_de_computo
             {
                 //Creamos la consulta 
 
-                string consulta = " SELECT m.Id_modelo,m.modelo, m.Estado, mar.Marca FROM modelos AS m INNER JOIN marca AS mar ON m.Id_marca = mar.Id_marca WHERE m.Estado = 1;";
-
+                string consulta = " SELECT modelos.idModelo,modelos.modelos,marca.marcas,marca.idMarcas FROM modelos,marca WHERE modelos.idMarca = marca.idMarcas";
                 //Creamos un adaptador 
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(consulta, con);
@@ -54,50 +53,26 @@ namespace Mantenimientos_de_computo
 
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
-
                 //Asignamos el datatable al souce del datagrid 
 
-                DgvModelos.DataSource = dataTable;
+                dgvModelos.DataSource = dataTable;
+                dgvModelos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-                DgvModelos.Columns["Id_modelo"].Visible = true;
-                DgvModelos.Columns["Estado"].Visible = false; // <--- Ocultamos la columna de Estado por seguridad   
-                DgvModelos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                string marcas = "SELECT marca.idMarcas,marca.marcas FROM marca";
+
+                MySqlDataAdapter marcasAdapter = new MySqlDataAdapter(marcas, con);
+
+                DataTable marcarCombo = new DataTable();
+                marcasAdapter.Fill(marcarCombo);
+                
+                cmbMarcas.DataSource = marcarCombo;
+                cmbMarcas.DisplayMember = "marcas";
+                cmbMarcas.ValueMember = "idMarcas";
+                cmbMarcas.SelectedIndex = -1;
             }
             else
             {
                 MessageBox.Show("Error al conectar");
-            }
-        }
-        private void CargarMarcas()
-        {
-            try
-            {
-                conexion = new clsConexion();
-                MySqlConnection con = conexion.getConnection();
-
-                if (con != null)
-                {
-                    string consulta = "SELECT Id_marca, Marca FROM marca WHERE Estado = 1";
-                    MySqlDataAdapter adaptador = new MySqlDataAdapter(consulta, con);
-                    DataTable tabla = new DataTable();
-                    adaptador.Fill(tabla);
-
-                    // Enlaza al ComboBox
-                    cmbMarcas.DataSource = tabla;
-                    cmbMarcas.DisplayMember = "Marca";
-                    cmbMarcas.ValueMember = "Id_marca";
-                    cmbMarcas.SelectedIndex = -1; // No seleccionar nada al inicio
-
-                    con.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Error al conectar con la base de datos.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar marcas: " + ex.Message);
             }
         }
 
@@ -106,14 +81,14 @@ namespace Mantenimientos_de_computo
             try
             {
                 // Validar que se haya seleccionado un modelo
-                if (string.IsNullOrWhiteSpace(lblIDModelos.Text))
+                if (string.IsNullOrWhiteSpace(lblIdModelo.Text))
                 {
                     MessageBox.Show("Seleccione un modelo antes de actualizar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 // Validar que se haya ingresado el nombre del modelo
-                if (string.IsNullOrWhiteSpace(txtModelos.Text))
+                if (string.IsNullOrWhiteSpace(txtModelo.Text))
                 {
                     MessageBox.Show("Ingrese el nombre del modelo.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -127,8 +102,8 @@ namespace Mantenimientos_de_computo
                 }
 
                 // Obtener los datos
-                int IdModelo = Convert.ToInt32(lblIDModelos.Text);
-                string nombreModelo = txtModelos.Text.Trim();
+                int IdModelo = Convert.ToInt32(lblIdModelo.Text);
+                string nombreModelo = txtModelo.Text.Trim();
                 int idMarca = Convert.ToInt32(cmbMarcas.SelectedValue);
 
                 // Inicializar conexión
@@ -139,12 +114,12 @@ namespace Mantenimientos_de_computo
                 {
                     // Consulta SQL para actualizar
                     string consulta = @"UPDATE modelos 
-                                SET modelo = @modelo, Id_marca = @Id_Marca 
-                                WHERE Id_modelo = @idModelo";
+                                SET modelos = @modelos, idMarca = @idMarca
+                                WHERE idModelo = @idModelo";
 
                     MySqlCommand command = new MySqlCommand(consulta, con);
-                    command.Parameters.AddWithValue("@modelo", nombreModelo);
-                    command.Parameters.AddWithValue("@Id_Marca", idMarca);
+                    command.Parameters.AddWithValue("@modelos", nombreModelo);
+                    command.Parameters.AddWithValue("@idMarca", idMarca);
                     command.Parameters.AddWithValue("@idModelo", IdModelo);
 
                     // Ejecutar consulta
@@ -162,9 +137,9 @@ namespace Mantenimientos_de_computo
                     }
 
                     // Limpiar campos
-                    txtModelos.Clear();
+                    txtModelo.Clear();
                     cmbMarcas.SelectedIndex = -1;
-                    lblIDModelos.Text = "";
+                    lblIdModelo.Text = "";
                 }
                 else
                 {
@@ -181,14 +156,14 @@ namespace Mantenimientos_de_computo
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = DgvModelos.Rows[e.RowIndex];
+                DataGridViewRow row = dgvModelos.Rows[e.RowIndex];
 
                 // Asignar marca al ComboBox
-                cmbMarcas.Text = row.Cells["marca"].Value?.ToString();
+                cmbMarcas.Text = row.Cells["marcas"].Value?.ToString();
                 // Asignar modelo al TextBox
-                txtModelos.Text = row.Cells["modelo"].Value?.ToString();
+                txtModelo.Text = row.Cells["modelos"].Value?.ToString();
                 // Asignar ID del modelo al Label oculto
-                lblIDModelos.Text = row.Cells["Id_modelo"].Value.ToString();
+                lblIdModelo.Text = row.Cells["idModelo"].Value.ToString();
             }
         }
 
@@ -200,23 +175,23 @@ namespace Mantenimientos_de_computo
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             // Validar que se haya seleccionado una marca y que el modelo no esté vacío
-            if (cmbMarcas.SelectedIndex == -1 || string.IsNullOrWhiteSpace(txtModelos.Text))
+            if (cmbMarcas.SelectedIndex == -1 || string.IsNullOrWhiteSpace(txtModelo.Text))
             {
                 MessageBox.Show("Debe seleccionar una marca y escribir un modelo.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            string modelo = txtModelos.Text.Trim();
+            string modelo = txtModelo.Text.Trim();
             int idMarca = Convert.ToInt32(cmbMarcas.SelectedValue);
 
             try
             {
                 using (MySqlConnection conn = conexion.getConnection())
                 {
-                    string query = "INSERT INTO modelos (modelo, Id_marca, Estado) VALUES (@modelo, @idMarca, 1)";
+                    string query = "INSERT INTO modelos (modelos,idMarca) VALUES (@modelos, @idMarca)";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
 
-                    cmd.Parameters.AddWithValue("@modelo", modelo);
+                    cmd.Parameters.AddWithValue("@modelos", modelo);
                     cmd.Parameters.AddWithValue("@idMarca", idMarca);
 
                     int resultado = cmd.ExecuteNonQuery();
@@ -224,7 +199,7 @@ namespace Mantenimientos_de_computo
                     if (resultado > 0)
                     {
                         MessageBox.Show("Modelo registrado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtModelos.Clear();
+                        txtModelo.Clear();
                         cmbMarcas.SelectedIndex = -1;
                         // Si tienes un DataGridView, puedes recargarlo aquí (opcional)
                         // cargarModelos();
@@ -248,7 +223,7 @@ namespace Mantenimientos_de_computo
             {
 
                 // Validación básica
-                if (string.IsNullOrWhiteSpace(lblIDModelos.Text))
+                if (string.IsNullOrWhiteSpace(lblIdModelo.Text))
                 {
                     MessageBox.Show("Seleccione un modelo antes de eliminar.");
                     return;
@@ -256,13 +231,13 @@ namespace Mantenimientos_de_computo
                 }
                 else
                 {
-                    MessageBox.Show("ID a eliminar: " + lblIDModelos.Text);
+                    MessageBox.Show("ID a eliminar: " + lblIdModelo.Text);
 
 
                 }
 
-                string Estado = "0"; // Estado 0 = Eliminación lógica (inactivo)
-                int IdModelo = Convert.ToInt32(lblIDModelos.Text);
+               
+                int IdModelo = Convert.ToInt32(lblIdModelo.Text);
 
                 // Inicializamos conexión
                 conexion = new clsConexion();
@@ -271,12 +246,11 @@ namespace Mantenimientos_de_computo
                 if (con != null)
                 {
                     // Consulta para eliminación lógica
-                    string consulta = "UPDATE modelos SET Estado = @Estado WHERE Id_modelo = @Id_modelo";
+                    string consulta = "DELETE FROM modelos WHERE idModelos = @idModelos";
                     MySqlCommand command = new MySqlCommand(consulta, con);
 
                     // Asignamos parámetros
-                    command.Parameters.AddWithValue("@Estado", Estado);
-                    command.Parameters.AddWithValue("@Id_modelo", IdModelo);
+                    command.Parameters.AddWithValue("@idModelos", IdModelo);
 
                     // Ejecutamos la consulta
                     int filasAfectadas = command.ExecuteNonQuery();
@@ -294,9 +268,9 @@ namespace Mantenimientos_de_computo
                     }
 
                     // Limpiar campos
-                    txtModelos.Text = "";
+                    txtModelo.Text = "";
                     cmbMarcas.SelectedIndex = -1;
-                    lblIDModelos.Text = "";
+                    lblIdModelo.Text = "";
                 }
                 else
                 {
@@ -311,17 +285,19 @@ namespace Mantenimientos_de_computo
 
         private void txtBusqueda_TextChanged(object sender, EventArgs e)
         {
-            string filtro = txtBusqueda.Text;
+            string filtro = txtBuscar.Text;
             conexion = new clsConexion();
             MySqlConnection con = conexion.getConnection();
 
             // Consulta para buscar por nombre de modelo o marca
             string consulta = @"
-             SELECT m.Id_modelo, m.modelo, ma.marca AS Marca, m.Estado 
-             FROM modelos m 
-             INNER JOIN marca ma ON m.Id_marca = ma.Id_marca 
-             WHERE (m.modelo LIKE @busqueda OR ma.marca LIKE @busqueda) 
-             AND m.Estado = 1";
+     SELECT modelos.idModelo,
+           modelos.modelos,
+           marca.marcas
+    FROM modelos
+    INNER JOIN marca ON modelos.idMarca = marca.idMarcas
+    WHERE (modelos.modelos LIKE @busqueda
+        OR marca.marcas LIKE @busqueda)";
 
             MySqlCommand command = new MySqlCommand(consulta, con);
             command.Parameters.AddWithValue("@busqueda", "%" + filtro + "%");
@@ -330,9 +306,7 @@ namespace Mantenimientos_de_computo
             DataTable table = new DataTable();
 
             adapter.Fill(table);
-            DgvModelos.DataSource = table;
-            DgvModelos.Columns["Id_modelo"].Visible = false;
-            DgvModelos.Columns["Estado"].Visible = false;
+            dgvModelos.DataSource = table;
 
             con.Close();
         }
@@ -345,6 +319,11 @@ namespace Mantenimientos_de_computo
         }
 
         private void LblIngresMarca_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }

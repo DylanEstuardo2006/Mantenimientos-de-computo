@@ -25,7 +25,7 @@ namespace Mantenimientos_de_computo
             this.MaximizeBox = false;
             cargaDatos();
             DgvMarcas.EnableHeadersVisualStyles = false; // Necesario para que se apliquen los estilos personalizados
-            DgvMarcas.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(47, 65, 86);
+            DgvMarcas.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 136, 62);
             DgvMarcas.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             DgvMarcas.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold); // Fuente opcional
         }
@@ -40,7 +40,7 @@ namespace Mantenimientos_de_computo
             {
                 //Creamos la consulta 
 
-                string consulta = "SELECT marca.Id_marca,marca.marca,marca.Estado FROM marca where Estado = 1";
+                string consulta = "SELECT marca.idMarcas,marca.marcas FROM marca";
 
                 //Creamos un adaptador 
 
@@ -54,9 +54,6 @@ namespace Mantenimientos_de_computo
                 //Asignamos el datatable al souce del datagrid 
 
                 DgvMarcas.DataSource = dataTable;
-
-                DgvMarcas.Columns["Id_marca"].Visible = false;
-                DgvMarcas.Columns["Estado"].Visible = false; // <--- Ocultamos la columna de Estado por seguridad   
                 DgvMarcas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             else
@@ -67,31 +64,31 @@ namespace Mantenimientos_de_computo
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            string marcaNombre = txtMarcas.Text.Trim();
+            string marcaNombre = txtMarca.Text;
 
             if (string.IsNullOrWhiteSpace(marcaNombre))
             {
                 MessageBox.Show("Por favor ingresa un nombre de marca válido.", "Validación");
                 return;
             }
-
             try
             {
                 using (MySqlConnection conn = conexion.getConnection())
                 {
-                    string Estado = "1";
-                    string query = "INSERT INTO marca (marca, Estado) VALUES (@marca,@Estado)";
+                    string query = "INSERT INTO marca (marcas) VALUES (@marcas)";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@marca", marcaNombre);
-                    cmd.Parameters.AddWithValue("Estado", Estado);
-
+                    cmd.Parameters.AddWithValue("@marcas", marcaNombre);
+                   
 
                     int resultado = cmd.ExecuteNonQuery();
 
                     if (resultado > 0)
                     {
                         MessageBox.Show("Marca registrada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtMarcas.Clear();
+                        txtMarca.Text = "";
+                        txtEliminar.Text = "";
+                        txtBuscar.Text = "";
+                        lblIdMarca.Text = "";
                         // Si tienes algún componente que se actualiza con las marcas, puedes llamarlo aquí.
                         cargaDatos();
                     }
@@ -110,11 +107,11 @@ namespace Mantenimientos_de_computo
 
         private void txtBusqueda_TextChanged(object sender, EventArgs e)
         {
-            string filtro = txtBusqueda.Text;
+            string filtro = txtBuscar.Text;
             conexion = new clsConexion();
             MySqlConnection con = conexion.getConnection();
 
-            string consulta = "SELECT marca.Id_marca, marca.marca, marca.Estado FROM marca WHERE (marca.marca LIKE @busqueda) AND marca.Estado = 1";
+            string consulta = "SELECT marca.idMarcas, marca.marcas FROM marca WHERE marca.marcas LIKE @busqueda";
             MySqlCommand command = new MySqlCommand(consulta, con);
             command.Parameters.AddWithValue("@busqueda", "%" + filtro + "%");
 
@@ -123,8 +120,6 @@ namespace Mantenimientos_de_computo
 
             adapter.Fill(table);
             DgvMarcas.DataSource = table;
-            DgvMarcas.Columns["Id_marca"].Visible = false;
-            DgvMarcas.Columns["Estado"].Visible = false;
             con.Close();
         }
 
@@ -132,29 +127,29 @@ namespace Mantenimientos_de_computo
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(lblIDMarcas.Text))
+                string marcas = txtMarca.Text;
+                if (string.IsNullOrWhiteSpace(lblIdMarca.Text))
                 {
                     MessageBox.Show("Selecciona una marca antes de eliminar");
                     return;
                 }
                 else
                 {
-                    MessageBox.Show("ID a eliminar: " + lblIDMarcas.Text);
+                    MessageBox.Show("Desea Eliminar " + marcas);
                 }
 
-                string Estado = "0";
-                int IdMarca = Convert.ToInt32(lblIDMarcas.Text); // Conversión directa
+             
+                int IdMarca = Convert.ToInt32(lblIdMarca.Text); // Conversión directa
 
                 conexion = new clsConexion();
                 MySqlConnection con = conexion.getConnection();
 
                 if (con != null)
                 {
-                    string consulta = "UPDATE marca SET Estado = @Estado WHERE Id_marca = @Id_marca";
+                    string consulta = "DELETE FROM marca SET  WHERE idMarcas = @idMarcas";
                     MySqlCommand command = new MySqlCommand(consulta, con);
 
-                    command.Parameters.AddWithValue("@Estado", Estado);
-                    command.Parameters.AddWithValue("@Id_marca", IdMarca);
+                    command.Parameters.AddWithValue("@idMarcas", IdMarca);
 
                     int filasAfectadas = command.ExecuteNonQuery();
                     con.Close();
@@ -162,16 +157,16 @@ namespace Mantenimientos_de_computo
                     if (filasAfectadas > 0)
                     {
                         MessageBox.Show("Marca eliminada correctamente.");
+                        txtMarca.Text = "";
+                        txtEliminar.Text = "";
+                        txtBuscar.Text = "";
+                        lblIdMarca.Text= "";
                         cargaDatos(); // Refrescar tabla
                     }
                     else
                     {
                         MessageBox.Show("No se pudo eliminar la marca.");
                     }
-
-                    // Limpiar campos
-                    txtMarcas.Text = "";
-                    lblIDMarcas.Text = "";
                 }
                 else
                 {
@@ -186,33 +181,35 @@ namespace Mantenimientos_de_computo
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(lblIDMarcas.Text))
+            if (string.IsNullOrEmpty(lblIdMarca.Text))
             {
                 MessageBox.Show("Ingrese un valor de la tabla antes de actualizar");
             }
             //En este apartado obtenemos los datos de las cajas de texto 
-            string Nombre = txtMarcas.Text;
-            string IdMarca = lblIDMarcas.Text;
+            string nombre = txtMarca.Text;
+            string IdMarca = lblIdMarca.Text;
+         
             conexion = new clsConexion();
             MySqlConnection con = conexion.getConnection();
 
-            if (string.IsNullOrEmpty(Nombre))
+            if (string.IsNullOrEmpty(nombre))
             {
                 MessageBox.Show("Faltan casillas por llenar");
             }
             else
             {
-                string consulta = "UPDATE marca SET marca=@marca WHERE Id_marca=@Id_marca";
+                string consulta = "UPDATE marca SET marcas=@marcas WHERE idMarcas=@idMarcas";
                 MySqlCommand command = new MySqlCommand(consulta, con);
 
-                command.Parameters.AddWithValue("@marca", Nombre);
-                command.Parameters.AddWithValue("@Id_marca", IdMarca);
+                command.Parameters.AddWithValue("@marcas", nombre);
+                command.Parameters.AddWithValue("@idMarcas", IdMarca);
                 int filasAfectadas = command.ExecuteNonQuery();
                 con.Close();
 
                 if (filasAfectadas > 0)
                 {
                     MessageBox.Show("Registro editado exitosamente...");
+                  
                     cargaDatos();
                 }
                 else
@@ -221,8 +218,9 @@ namespace Mantenimientos_de_computo
                 }
             }
             // En este apartado la caja se limpia inmediatamente de haber echo la operación 
-            txtMarcas.Text = "";
-
+            txtMarca.Text = "";
+            txtEliminar.Text = "";
+            txtBuscar.Text = "";
         }
 
         private void DgvMarcas_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -230,8 +228,9 @@ namespace Mantenimientos_de_computo
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow fila = DgvMarcas.Rows[e.RowIndex];
-                txtMarcas.Text = fila.Cells["marca"].Value?.ToString();
-                lblIDMarcas.Text = fila.Cells["Id_marca"].Value?.ToString();
+                txtMarca.Text = fila.Cells["marcas"].Value?.ToString();
+                txtEliminar.Text = fila.Cells["marcas"].Value?.ToString();
+                lblIdMarca.Text = fila.Cells["idMarcas"].Value?.ToString();
             }
         }
 

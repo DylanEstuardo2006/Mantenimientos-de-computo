@@ -28,191 +28,272 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.PnlFondo = new System.Windows.Forms.Panel();
-            this.lblIngresaTipoDispositivo = new System.Windows.Forms.Label();
-            this.txtTipoDispositivo = new System.Windows.Forms.TextBox();
-            this.DgvTipoDispositivo = new System.Windows.Forms.DataGridView();
-            this.lblIDTipoDispositivo = new System.Windows.Forms.Label();
+            this.pnlHeader = new System.Windows.Forms.Panel();
+            this.picTureBoxLocoCarrera = new System.Windows.Forms.PictureBox();
             this.btnVolver = new System.Windows.Forms.Button();
-            this.btnRegistrar = new System.Windows.Forms.Button();
-            this.PnCaja = new System.Windows.Forms.Panel();
-            this.txtBusqueda = new System.Windows.Forms.TextBox();
-            this.lblBuscar = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblIdTipoDispositivo = new System.Windows.Forms.Label();
+            this.groupBoxRegistrarTipoDispositivo = new System.Windows.Forms.GroupBox();
+            this.txtTipoDispositivo = new System.Windows.Forms.TextBox();
             this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnRegistrar = new System.Windows.Forms.Button();
+            this.lblApellidoMaterno = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.PnlFondo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvTipoDispositivo)).BeginInit();
-            this.PnCaja.SuspendLayout();
+            this.txtEliminar = new System.Windows.Forms.TextBox();
+            this.gruopBoxBuscarTipoDispositivo = new System.Windows.Forms.GroupBox();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.dgvTipoDispositivo = new System.Windows.Forms.DataGridView();
+            this.pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picTureBoxLocoCarrera)).BeginInit();
+            this.groupBoxRegistrarTipoDispositivo.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.gruopBoxBuscarTipoDispositivo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTipoDispositivo)).BeginInit();
             this.SuspendLayout();
             // 
-            // PnlFondo
+            // pnlHeader
             // 
-            this.PnlFondo.BackColor = System.Drawing.Color.Bisque;
-            this.PnlFondo.Controls.Add(this.lblIngresaTipoDispositivo);
-            this.PnlFondo.Controls.Add(this.txtTipoDispositivo);
-            this.PnlFondo.Controls.Add(this.DgvTipoDispositivo);
-            this.PnlFondo.Controls.Add(this.lblIDTipoDispositivo);
-            this.PnlFondo.Controls.Add(this.btnVolver);
-            this.PnlFondo.Controls.Add(this.btnRegistrar);
-            this.PnlFondo.Controls.Add(this.PnCaja);
-            this.PnlFondo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PnlFondo.Location = new System.Drawing.Point(1, 2);
-            this.PnlFondo.Name = "PnlFondo";
-            this.PnlFondo.Size = new System.Drawing.Size(1178, 718);
-            this.PnlFondo.TabIndex = 21;
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(136)))), ((int)(((byte)(62)))));
+            this.pnlHeader.Controls.Add(this.picTureBoxLocoCarrera);
+            this.pnlHeader.Controls.Add(this.btnVolver);
+            this.pnlHeader.Controls.Add(this.label4);
+            this.pnlHeader.Controls.Add(this.lblIdTipoDispositivo);
+            this.pnlHeader.Location = new System.Drawing.Point(1, 0);
+            this.pnlHeader.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlHeader.Name = "pnlHeader";
+            this.pnlHeader.Size = new System.Drawing.Size(784, 110);
+            this.pnlHeader.TabIndex = 52;
             // 
-            // lblIngresaTipoDispositivo
+            // picTureBoxLocoCarrera
             // 
-            this.lblIngresaTipoDispositivo.AutoSize = true;
-            this.lblIngresaTipoDispositivo.Location = new System.Drawing.Point(60, 441);
-            this.lblIngresaTipoDispositivo.Name = "lblIngresaTipoDispositivo";
-            this.lblIngresaTipoDispositivo.Size = new System.Drawing.Size(300, 23);
-            this.lblIngresaTipoDispositivo.TabIndex = 39;
-            this.lblIngresaTipoDispositivo.Text = "Ingresa el tipo de dispositivo: ";
-            // 
-            // txtTipoDispositivo
-            // 
-            this.txtTipoDispositivo.Location = new System.Drawing.Point(408, 441);
-            this.txtTipoDispositivo.Name = "txtTipoDispositivo";
-            this.txtTipoDispositivo.Size = new System.Drawing.Size(249, 31);
-            this.txtTipoDispositivo.TabIndex = 26;
-            this.txtTipoDispositivo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTipoDispositivo_KeyPress);
-            // 
-            // DgvTipoDispositivo
-            // 
-            this.DgvTipoDispositivo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvTipoDispositivo.Location = new System.Drawing.Point(13, 13);
-            this.DgvTipoDispositivo.Name = "DgvTipoDispositivo";
-            this.DgvTipoDispositivo.ReadOnly = true;
-            this.DgvTipoDispositivo.RowHeadersWidth = 51;
-            this.DgvTipoDispositivo.RowTemplate.Height = 24;
-            this.DgvTipoDispositivo.Size = new System.Drawing.Size(1144, 259);
-            this.DgvTipoDispositivo.TabIndex = 38;
-            this.DgvTipoDispositivo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvTipoDispositivo_CellClick);
-            // 
-            // lblIDTipoDispositivo
-            // 
-            this.lblIDTipoDispositivo.AutoSize = true;
-            this.lblIDTipoDispositivo.Location = new System.Drawing.Point(529, 275);
-            this.lblIDTipoDispositivo.Name = "lblIDTipoDispositivo";
-            this.lblIDTipoDispositivo.Size = new System.Drawing.Size(183, 23);
-            this.lblIDTipoDispositivo.TabIndex = 37;
-            this.lblIDTipoDispositivo.Text = "lblTipoDispositivo";
-            this.lblIDTipoDispositivo.Visible = false;
+            this.picTureBoxLocoCarrera.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picTureBoxLocoCarrera.Image = global::Mantenimientos_de_computo.Properties.Resources.imagenLogoCarrera;
+            this.picTureBoxLocoCarrera.Location = new System.Drawing.Point(41, 2);
+            this.picTureBoxLocoCarrera.Name = "picTureBoxLocoCarrera";
+            this.picTureBoxLocoCarrera.Size = new System.Drawing.Size(107, 105);
+            this.picTureBoxLocoCarrera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picTureBoxLocoCarrera.TabIndex = 53;
+            this.picTureBoxLocoCarrera.TabStop = false;
             // 
             // btnVolver
             // 
-            this.btnVolver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnVolver.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVolver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(136)))), ((int)(((byte)(62)))));
+            this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnVolver.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVolver.ForeColor = System.Drawing.Color.White;
-            this.btnVolver.Location = new System.Drawing.Point(12, 657);
+            this.btnVolver.Location = new System.Drawing.Point(594, 37);
+            this.btnVolver.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(162, 54);
-            this.btnVolver.TabIndex = 26;
+            this.btnVolver.Size = new System.Drawing.Size(168, 50);
+            this.btnVolver.TabIndex = 51;
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = false;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(248, 37);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(274, 38);
+            this.label4.TabIndex = 45;
+            this.label4.Text = "Tipo Dispositivo";
+            // 
+            // lblIdTipoDispositivo
+            // 
+            this.lblIdTipoDispositivo.AutoSize = true;
+            this.lblIdTipoDispositivo.Location = new System.Drawing.Point(300, 9);
+            this.lblIdTipoDispositivo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIdTipoDispositivo.Name = "lblIdTipoDispositivo";
+            this.lblIdTipoDispositivo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblIdTipoDispositivo.Size = new System.Drawing.Size(202, 23);
+            this.lblIdTipoDispositivo.TabIndex = 37;
+            this.lblIdTipoDispositivo.Text = "lblIdTipoDispositivo";
+            this.lblIdTipoDispositivo.Visible = false;
+            // 
+            // groupBoxRegistrarTipoDispositivo
+            // 
+            this.groupBoxRegistrarTipoDispositivo.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBoxRegistrarTipoDispositivo.Controls.Add(this.txtTipoDispositivo);
+            this.groupBoxRegistrarTipoDispositivo.Controls.Add(this.btnActualizar);
+            this.groupBoxRegistrarTipoDispositivo.Controls.Add(this.btnRegistrar);
+            this.groupBoxRegistrarTipoDispositivo.Controls.Add(this.lblApellidoMaterno);
+            this.groupBoxRegistrarTipoDispositivo.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.groupBoxRegistrarTipoDispositivo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxRegistrarTipoDispositivo.Location = new System.Drawing.Point(14, 128);
+            this.groupBoxRegistrarTipoDispositivo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.groupBoxRegistrarTipoDispositivo.Name = "groupBoxRegistrarTipoDispositivo";
+            this.groupBoxRegistrarTipoDispositivo.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.groupBoxRegistrarTipoDispositivo.Size = new System.Drawing.Size(445, 228);
+            this.groupBoxRegistrarTipoDispositivo.TabIndex = 53;
+            this.groupBoxRegistrarTipoDispositivo.TabStop = false;
+            this.groupBoxRegistrarTipoDispositivo.Text = "Registrar y Actualizar Tipo Dispositivo";
+            // 
+            // txtTipoDispositivo
+            // 
+            this.txtTipoDispositivo.Location = new System.Drawing.Point(12, 77);
+            this.txtTipoDispositivo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtTipoDispositivo.Name = "txtTipoDispositivo";
+            this.txtTipoDispositivo.Size = new System.Drawing.Size(252, 31);
+            this.txtTipoDispositivo.TabIndex = 51;
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(136)))), ((int)(((byte)(62)))));
+            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnActualizar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.ForeColor = System.Drawing.Color.White;
+            this.btnActualizar.Location = new System.Drawing.Point(251, 155);
+            this.btnActualizar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(172, 44);
+            this.btnActualizar.TabIndex = 50;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
             // btnRegistrar
             // 
-            this.btnRegistrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(124)))), ((int)(((byte)(141)))));
+            this.btnRegistrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(136)))), ((int)(((byte)(62)))));
+            this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRegistrar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrar.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrar.Location = new System.Drawing.Point(320, 544);
+            this.btnRegistrar.Location = new System.Drawing.Point(8, 155);
+            this.btnRegistrar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(162, 54);
+            this.btnRegistrar.Size = new System.Drawing.Size(184, 44);
             this.btnRegistrar.TabIndex = 26;
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = false;
             this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
-            // PnCaja
+            // lblApellidoMaterno
             // 
-            this.PnCaja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(217)))), ((int)(((byte)(230)))));
-            this.PnCaja.Controls.Add(this.txtBusqueda);
-            this.PnCaja.Controls.Add(this.lblBuscar);
-            this.PnCaja.Controls.Add(this.btnActualizar);
-            this.PnCaja.Controls.Add(this.btnEliminar);
-            this.PnCaja.Location = new System.Drawing.Point(726, 292);
-            this.PnCaja.Name = "PnCaja";
-            this.PnCaja.Size = new System.Drawing.Size(431, 318);
-            this.PnCaja.TabIndex = 20;
+            this.lblApellidoMaterno.AutoSize = true;
+            this.lblApellidoMaterno.Location = new System.Drawing.Point(8, 42);
+            this.lblApellidoMaterno.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblApellidoMaterno.Name = "lblApellidoMaterno";
+            this.lblApellidoMaterno.Size = new System.Drawing.Size(171, 23);
+            this.lblApellidoMaterno.TabIndex = 29;
+            this.lblApellidoMaterno.Text = "Tipo Dispositivo:";
             // 
-            // txtBusqueda
+            // groupBox1
             // 
-            this.txtBusqueda.Location = new System.Drawing.Point(101, 146);
-            this.txtBusqueda.Name = "txtBusqueda";
-            this.txtBusqueda.Size = new System.Drawing.Size(249, 31);
-            this.txtBusqueda.TabIndex = 25;
-            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
-            // 
-            // lblBuscar
-            // 
-            this.lblBuscar.AutoSize = true;
-            this.lblBuscar.Location = new System.Drawing.Point(121, 104);
-            this.lblBuscar.Name = "lblBuscar";
-            this.lblBuscar.Size = new System.Drawing.Size(216, 23);
-            this.lblBuscar.TabIndex = 24;
-            this.lblBuscar.Text = "¿Qué desea buscar? ";
-            // 
-            // btnActualizar
-            // 
-            this.btnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(124)))), ((int)(((byte)(141)))));
-            this.btnActualizar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizar.ForeColor = System.Drawing.Color.White;
-            this.btnActualizar.Location = new System.Drawing.Point(250, 252);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(162, 54);
-            this.btnActualizar.TabIndex = 22;
-            this.btnActualizar.Text = "Actualizar ";
-            this.btnActualizar.UseVisualStyleBackColor = false;
-            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            this.groupBox1.Controls.Add(this.btnEliminar);
+            this.groupBox1.Controls.Add(this.txtEliminar);
+            this.groupBox1.Location = new System.Drawing.Point(467, 128);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.groupBox1.Size = new System.Drawing.Size(318, 130);
+            this.groupBox1.TabIndex = 54;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Eliminar Tipo Dispositivo: ";
             // 
             // btnEliminar
             // 
-            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnEliminar.BackColor = System.Drawing.Color.Brown;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEliminar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
-            this.btnEliminar.Location = new System.Drawing.Point(30, 252);
+            this.btnEliminar.Location = new System.Drawing.Point(57, 77);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(162, 54);
-            this.btnEliminar.TabIndex = 21;
+            this.btnEliminar.Size = new System.Drawing.Size(136, 38);
+            this.btnEliminar.TabIndex = 53;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            this.btnEliminar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtEliminar
+            // 
+            this.txtEliminar.Location = new System.Drawing.Point(8, 30);
+            this.txtEliminar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtEliminar.Name = "txtEliminar";
+            this.txtEliminar.Size = new System.Drawing.Size(252, 31);
+            this.txtEliminar.TabIndex = 52;
+            // 
+            // gruopBoxBuscarTipoDispositivo
+            // 
+            this.gruopBoxBuscarTipoDispositivo.Controls.Add(this.txtBuscar);
+            this.gruopBoxBuscarTipoDispositivo.Location = new System.Drawing.Point(467, 264);
+            this.gruopBoxBuscarTipoDispositivo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.gruopBoxBuscarTipoDispositivo.Name = "gruopBoxBuscarTipoDispositivo";
+            this.gruopBoxBuscarTipoDispositivo.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.gruopBoxBuscarTipoDispositivo.Size = new System.Drawing.Size(318, 92);
+            this.gruopBoxBuscarTipoDispositivo.TabIndex = 55;
+            this.gruopBoxBuscarTipoDispositivo.TabStop = false;
+            this.gruopBoxBuscarTipoDispositivo.Text = "Buscar Tipo Dispositivo: ";
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Location = new System.Drawing.Point(8, 42);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(252, 31);
+            this.txtBuscar.TabIndex = 52;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // dgvTipoDispositivo
+            // 
+            this.dgvTipoDispositivo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTipoDispositivo.Location = new System.Drawing.Point(12, 362);
+            this.dgvTipoDispositivo.Name = "dgvTipoDispositivo";
+            this.dgvTipoDispositivo.RowHeadersWidth = 51;
+            this.dgvTipoDispositivo.RowTemplate.Height = 24;
+            this.dgvTipoDispositivo.Size = new System.Drawing.Size(773, 215);
+            this.dgvTipoDispositivo.TabIndex = 56;
+            this.dgvTipoDispositivo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // frmTipoDispositivo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1179, 721);
-            this.Controls.Add(this.PnlFondo);
+            this.ClientSize = new System.Drawing.Size(789, 589);
+            this.Controls.Add(this.dgvTipoDispositivo);
+            this.Controls.Add(this.gruopBoxBuscarTipoDispositivo);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxRegistrarTipoDispositivo);
+            this.Controls.Add(this.pnlHeader);
+            this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmTipoDispositivo";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmTipoDispositivo";
             this.Load += new System.EventHandler(this.frmTipoDispositivo_Load);
-            this.PnlFondo.ResumeLayout(false);
-            this.PnlFondo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvTipoDispositivo)).EndInit();
-            this.PnCaja.ResumeLayout(false);
-            this.PnCaja.PerformLayout();
+            this.pnlHeader.ResumeLayout(false);
+            this.pnlHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picTureBoxLocoCarrera)).EndInit();
+            this.groupBoxRegistrarTipoDispositivo.ResumeLayout(false);
+            this.groupBoxRegistrarTipoDispositivo.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.gruopBoxBuscarTipoDispositivo.ResumeLayout(false);
+            this.gruopBoxBuscarTipoDispositivo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTipoDispositivo)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel PnlFondo;
-        private System.Windows.Forms.DataGridView DgvTipoDispositivo;
-        private System.Windows.Forms.Label lblIDTipoDispositivo;
+        private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Button btnVolver;
-        private System.Windows.Forms.Button btnRegistrar;
-        private System.Windows.Forms.Panel PnCaja;
-        private System.Windows.Forms.TextBox txtBusqueda;
-        private System.Windows.Forms.Label lblBuscar;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblIdTipoDispositivo;
+        private System.Windows.Forms.GroupBox groupBoxRegistrarTipoDispositivo;
         private System.Windows.Forms.Button btnActualizar;
-        private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Label lblIngresaTipoDispositivo;
+        private System.Windows.Forms.Button btnRegistrar;
+        private System.Windows.Forms.Label lblApellidoMaterno;
         private System.Windows.Forms.TextBox txtTipoDispositivo;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txtEliminar;
+        private System.Windows.Forms.GroupBox gruopBoxBuscarTipoDispositivo;
+        private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.PictureBox picTureBoxLocoCarrera;
+        private System.Windows.Forms.DataGridView dgvTipoDispositivo;
     }
 }

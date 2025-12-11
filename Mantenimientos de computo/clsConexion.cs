@@ -15,7 +15,7 @@ namespace Mantenimientos_de_computo
 
         public clsConexion()
         {
-            cadenaConeccion = "Server=localhost; Database=mantenimientos_computo;Uid=root;Pwd=;Port=3306;";
+            cadenaConeccion = "Server=199.127.60.8; Port=3306; Database=bcorpsov_mantenimientocomputo; Uid=bcorpsov_Alberto; Pwd=BRz2kSWIM8De0Qhg;";
         }
         public MySqlConnection getConnection()
         {

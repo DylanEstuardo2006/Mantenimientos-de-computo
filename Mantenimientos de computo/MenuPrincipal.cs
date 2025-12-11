@@ -36,16 +36,8 @@ namespace Mantenimientos_de_computo
         }
         //Botón que al darle un click te muestra los apartados sobre los dispositivos
         private void btnDispositivos_Click(object sender, EventArgs e)
-        {
+        { 
 
-            if (!PalDespegableDispositivos.Visible)
-            {
-                PalDespegableDispositivos.Visible = true; // <---- Poner los Botones (Panel) Visibles 
-            }
-            else
-            {
-                PalDespegableDispositivos.Visible = false; // <--- Poner los Botones (Panel) Invisinles 
-            }
         }
         //Botón Que cuando entra al apartado dispositivos si el audio esta activado lo muestre
         private void btnDispositivos_MouseEnter(object sender, EventArgs e)
@@ -57,14 +49,6 @@ namespace Mantenimientos_de_computo
             }
         }
 
-        private void btnDiagnostico_MouseEnter(object sender, EventArgs e)
-        {
-            if (Audios.Accesibilidad)
-            {
-                sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
-                sintetizador.SpeakAsync("Esta sobre el botón Diagnosticos");
-            }
-        }
         private void btnTecnicos_MouseEnter(object sender, EventArgs e)
         {
             if(Audios.Accesibilidad)
@@ -107,14 +91,7 @@ namespace Mantenimientos_de_computo
             }
         }
 
-        private void btnHistorial_MouseEnter(object sender, EventArgs e)
-        {
-            if (Audios.Accesibilidad)
-            {
-                sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
-                sintetizador.SpeakAsync("Esta sobre el botón Historial");
-            }
-        }
+     
         private void btnModelo_MouseEnter(object sender, EventArgs e)
         {
             if (Audios.Accesibilidad)
@@ -131,29 +108,17 @@ namespace Mantenimientos_de_computo
                 sintetizador.SpeakAsync("Esta sobre el botón Dispositivos");
             }
         }
-        private void btnEjemplar_MouseEnter(object sender, EventArgs e)
-        {
-            if (Audios.Accesibilidad)
-            {
-                sintetizador.SpeakAsyncCancelAll(); // Cancela cualquier voz en curso
-                sintetizador.SpeakAsync("Esta sobre el botón Ejemplar");
-            }
-        }
+   
 
 
 
         private void btnTecnicos_Click(object sender, EventArgs e)
         {
             this.Close();
-            frmTecnicos principal = new frmTecnicos();
+            frmUsuario principal = new frmUsuario();
             principal.Show();
         }
-        private void btnMantenimiento_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            frmMantenimiento principal = new frmMantenimiento();
-            principal.Show();
-        }
+      
         private void btnMarca_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -161,14 +126,6 @@ namespace Mantenimientos_de_computo
             principal.Show(); // <--- Cierra el formulario MenuPrincipal y abre el formulario frmMarcas
         }
         // BtnTecncios click, oculta el formulario de MenuPrincipal y muestra el de Tecnicos
-        private void btnDiagnostico_Click(object sender, EventArgs e)
-        {
-            
-            this.Close();
-            frmDiagnosticos principal = new frmDiagnosticos();
-            principal.Show();
-        }
-       
         private void btnTipoDispositivo_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -187,12 +144,6 @@ namespace Mantenimientos_de_computo
             frmLaboratorios principal = new frmLaboratorios();
             principal.Show();
         }
-        private void btnHistorial_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            frmHistorial principal = new frmHistorial();
-            principal.Show(); // <--- Cierra el formulario MenuPrincipal y abre el formulario frmHistorial
-        }
         private void btnDetalles_Click(object sender, EventArgs e)
         {
             this.Close(); // <--- Cierra el formulario MenuPrincipal
@@ -200,13 +151,7 @@ namespace Mantenimientos_de_computo
             principal.Show();
         }
 
-        private void btnEjemplar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            frmEjemplares principal = new frmEjemplares();
-            principal.Show();
-        }
-
+      
 
         private void PbxSonido_MouseEnter(object sender, EventArgs e)
         {
@@ -242,14 +187,9 @@ namespace Mantenimientos_de_computo
         }
         private void btnSalir_Click(object sender, EventArgs e)
         {
-         Application.Exit(); // <--- Cierra el formulario MenuPrincipal
+          Application.Exit(); // <--- Cierra el formulario MenuPrincipal
         }
 
-        private void btnMapadeSitio_Click(object sender, EventArgs e)
-        {
-            this.Close(); // <--- Cierra el formulario MenuPrincipal
-            frmMapaNavegacion principal = new frmMapaNavegacion(); // <--- Creamos una instancia del form frmMapaDeSitio  
-            principal.Show(); // <--- Muestra el formulario Mapa de Sitio
-        }
+      
     }
 }
